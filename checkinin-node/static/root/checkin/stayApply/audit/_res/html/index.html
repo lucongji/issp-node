@@ -1,0 +1,26 @@
+<div class="add">
+    <ul class="input-list">
+        <li>
+            <label>福利模块负责人<i>*</i></label>
+            <input ng-model="editApply.headAudit" type="text">
+        </li>
+        <li>
+            <label>审核状态<i>*</i></label>
+            <select ng-model="editApply.checkStatus" class="drop-down">
+                <option value="" disabled>请选择</option>
+                <option value="PASS">通过</option>
+                <option value="NOTPASS">未通过</option>
+            </select>
+        </li>
+    </ul>
+    <p class="input-bottom">
+        <button class="cancel" ng-click="demandAuditCan()">取消</button>
+        <button class="sure" ng-click="demandAuditFun()">确定</button>
+    </p>
+</div>
+<script type="text/javascript">
+    // !function(){
+    //     laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    // }();
+
+</script>

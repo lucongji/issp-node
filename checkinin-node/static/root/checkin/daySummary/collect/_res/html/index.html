@@ -1,0 +1,39 @@
+<div class="company">
+                    <ul class="input-list">
+                        <li class="multiple-select-li">
+                            <label>操作对象范围</label>
+                            <div class="multiple-select">
+                                <p class="select-text" >
+                                    <span ng-repeat="innerName in names">{{innerName}},</span>
+                                </p>
+                                <div class="mymultiselect" events="getSummary" ng-dropdown-multiselect="" options="workOptions" selected-model="names" extra-settings="stringSettings"></div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="input-table">
+                        <ul class="table-body">
+                            <li class="body-head">
+                                <span title="姓名">姓名</span>
+                                <span title="员工编号">员工编号</span>
+                                <span title="地区">地区</span>
+                                <span title="项目组">项目组</span>
+                                <span title="入住宿舍">入住宿舍</span>
+                                <span title="入住时间">入住时间</span>
+                                <span title="离宿时间">离宿时间</span>
+                                <span title="领用/归还钥匙">领用/归还钥匙</span>
+                                <span title="领用/归还床上用品">领用/归还床上用品</span>
+                            </li>
+                            <li class="body-body" ng-repeat="Lists in summaryLists">
+                                <span title="{{::Lists.name}}">{{::Lists.name}}</span>
+                                <span title="{{::Lists.num}}">{{::Lists.num}}</span>
+                                <span title="{{::Lists.area}}">{{::Lists.area}}</span>
+                                <span title="{{::Lists.projectGroup}}">{{::Lists.projectGroup}}</span>
+                                <span title="{{::Lists.address}}">{{::Lists.address}}</span>
+                                <span title="{{::Lists.stayTime}}">{{::Lists.stayTime}}</span>
+                                <span title="{{::Lists.hostTime}}">{{::Lists.hostTime}}</span>
+                                <span title="{{::Lists.receiveKey}}">{{::Lists.receiveKey}}</span>
+                                <span title="{{::Lists.bed}}">{{::Lists.bed}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>

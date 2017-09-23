@@ -1,0 +1,96 @@
+<div class="list">
+    <ul class="table">
+        <li class="list-head">
+            <span>
+              <label class="tick"></label>
+             </span>
+            <span>序号</span>
+            <span>地区</span>
+            <span>项目组</span>
+            <span>宿舍地址</span>
+            <span>员工姓名</span>
+            <span>员工编号</span>
+            <span>离宿原因</span>
+            <span>操作</span>
+        </li>
+        <li class="list-all"  ng-repeat="lists in departureLists" style="display: {{lists._delete?'none':'block'}};">
+            <div class="list-text {{lists._selectList?'selectList':''}}"  ng-click="selectList(lists)" >
+                <p>
+                    <span class="tick {{lists._selectList?'select':''}}"></span>
+                </p>
+                <p>{{$index+1+num}}</p>
+                <p>{{::lists.area}}</p>
+                <p>{{::lists.projectGroup}}</p>
+                <p>{{::lists.address}}</p>
+                <p>{{::lists.name}}</p>
+                <p>{{::lists.num}}</p>
+                <p>{{::lists.hostCause}}</p>
+                <p ng-click="moreList(lists)">
+                    <a href="javascript:void(0)" class="more">
+                        <svg role="img" class="search2">
+                            <use xlink:href="#search2"></use>
+                        </svg>
+                        查看详细
+                    </a>
+                </p>
+            </div>
+            <div class="can"  style="display: {{lists._moreList?'block':'none'}};" >
+                <ul class="can-see">
+                    <li>
+                        <p class="see-head">
+                            <span>离宿时间</span>
+                            <span>是否归还钥匙</span>
+                            <span>三件套是否收费</span>
+                            <span>收费金额</span>
+                        </p>
+                        <p class="see-body">
+                            <span>{{::lists.hostTime}}</span>
+                            <span>{{::lists.returnKey|cover}}</span>
+                            <span>{{::lists.suitToll|cover}}</span>
+                            <span>{{::lists.tollMoney}}</span>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="see-head">
+                            <span>水电费/燃气费总额</span>
+                            <span>合计总额(收费/水电/燃气费总额)</span>
+                            <span>审核状态</span>
+                            <span>备注</span>
+                        </p>
+                        <p class="see-body">
+                            <span>{{::lists.amount}}</span>
+                            <span>{{::lists.totalAmount}}</span>
+                            <span>{{::lists.checkStatus|cover}}</span>
+                            <span>{{::lists.remark}}</span>
+                        </p>
+                    </li>
+                </ul>
+                <p class="pick" ng-click="moreList(lists)">收起></p>
+
+            </div>
+        </li>
+      </ul>
+    </div>
+        <div class="module">
+            <div class="see-module">
+                <p class="see-type">体现类型</p>
+                <p class="see-description"></p>
+                <button class="btn" modclose>关闭</button>
+            </div>
+        </div>
+        <footer class="footer">
+            <pagination count="custom.itemsCount" take="custom.take" activate="custom.activatePage"></pagination>
+        </footer>
+    <div class="delete mod" ng-show="delShow">
+        <div class="del-head">
+            <h5>温馨提示</h5>
+        </div>
+        <div class="del-con">
+            <p>确定要删除这条数据？</p>
+            <div class="btn">
+                <button ng-click="delFn()">确定</button>
+                <button ng-click="cancel()">取消</button>
+            </div>
+        </div>
+    </div>
+<div id="modalbg" ng-show="delShow"></div>

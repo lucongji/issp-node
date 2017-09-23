@@ -1,0 +1,50 @@
+<div class="add">
+    <ul class="input-list">
+        <li>
+            <label>新入职员工姓名<i>*</i></label>
+            <input  ng-model="editApply.name" type="text">
+        </li>
+        <li>
+            <label>申请入住日期<i>*</i></label>
+            <input  ng-model="editApply.stayDate" type="text" class="drop-date stayDate" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})">
+        </li>
+        <li>
+            <label>申请入住地区<i>*</i></label>
+            <input  ng-model="editApply.area" type="text">
+        </li>
+        <li>
+            <label>申请入住宿舍<i>*</i></label>
+            <input  ng-model="editApply.stayDormitory" type="text">
+        </li>
+        <li>
+            <label>申请入住原因<i>*</i></label>
+            <input  ng-model="editApply.stayCause" type="text">
+        </li>
+        <li>
+            <label>住宿负责人<i>*</i></label>
+            <input  ng-model="editApply.stayHead" type="text">
+        </li>
+        <li>
+            <label>新员工确认入住<i>*</i></label>
+            <select  ng-model="editApply.stay" class="drop-down">
+                <option value="" disabled>请选择</option>
+                <option ng-value="true">是</option>
+                <option ng-value="false">否</option>
+            </select>
+        </li>
+        <li>
+            <label>备注<i></i></label>
+            <input  ng-model="editApply.remark" type="text">
+        </li>
+    </ul>
+    <p class="input-bottom">
+        <button class="cancel" ng-click="applyEditCan()">取消</button>
+        <button class="sure" ng-click="applyEditFun()">确定</button>
+    </p>
+</div>
+<script type="text/javascript">
+    // !function(){
+    //     laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    // }();
+
+</script>

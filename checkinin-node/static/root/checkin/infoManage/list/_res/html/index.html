@@ -1,0 +1,104 @@
+<div class="list">
+    <ul class="table">
+        <li class="list-head">
+            <span>
+              <label class="tick"></label>
+             </span>
+            <span title="序号">序号</span>
+            <span title="地区">地区</span>
+            <span title="项目组">项目组</span>
+            <span title="宿舍地址">宿舍地址</span>
+            <span title="宿舍钥匙数量">宿舍钥匙数量</span>
+            <span title="宿舍钥匙分配情况">宿舍钥匙分配情况</span>
+            <span title="宿舍负责人">宿舍负责人</span>
+            <span title="操作">操作</span>
+        </li>
+        <li class="list-all"  ng-repeat="lists in infoLists" style="display: {{lists._delete?'none':'block'}};">
+            <div class="list-text {{lists._selectList?'selectList':''}}"  ng-click="selectList(lists)" >
+                <p>
+                    <span class="tick {{lists._selectList?'select':''}}"></span>
+                </p>
+                <p>{{$index+1+num}}</p>
+                <p>{{::lists.area}}</p>
+                <p>{{::lists.projectGroup}}</p>
+                <p>{{::lists.address}}</p>
+                <p>{{::lists.keysNumber}}</p>
+                <p>{{::lists.keysDistribution}}</p>
+                <p>{{::lists.head}}</p>
+                <p ng-click="moreList(lists)">
+                    <a href="javascript:void(0)" class="more">
+                        <svg role="img" class="search2">
+                            <use xlink:href="#search2"></use>
+                        </svg>
+                        查看详细
+                    </a>
+                </p>
+            </div>
+            <div class="can"  style="display: {{lists._moreList?'block':'none'}};" >
+                <ul class="can-see">
+                    <li>
+                        <p class="see-head">
+                            <span title="负责人联系方式">负责人联系方式</span>
+                            <span title="宿舍床位数量(个)">宿舍床位数量(个)</span>
+                            <span title="已入住床位(个)">已入住床位(个)</span>
+                            <span title="闲置床位(个)">闲置床位(个)</span>
+                        </p>
+                        <p class="see-body">
+                            <span>{{::lists.headContact}}</span>
+                            <span>{{::lists.berth}}</span>
+                            <span>{{::lists.beeBerth}}</span>
+                            <span>{{::lists.idleBerth}}</span>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="see-head">
+                            <span title="宿舍床上3件套数量(件)">宿舍床上3件套数量(件)</span>
+                            <span title="已领用数量(件)">已领用数量(件)</span>
+                            <span title="闲置数量(件)">闲置数量(件)</span>
+                            <span title="宿舍被褥数量(件)">宿舍被褥数量(件)</span>
+                        </p>
+                        <p class="see-body">
+                            <span>{{::lists.suit}}</span>
+                            <span>{{::lists.recipientsSuit}}</span>
+                            <span>{{::lists.idleSuit}}</span>
+                            <span>{{::lists.bedding}}</span>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="see-head">
+                            <span title="备注">备注</span>
+                        </p>
+                        <p class="see-body">
+                            <span>{{::lists.remark}}</span>
+                        </p>
+                    </li>
+                </ul>
+                <p class="pick" ng-click="moreList(lists)">收起></p>
+
+            </div>
+        </li>
+      </ul>
+    </div>
+        <div class="module">
+            <div class="see-module">
+                <p class="see-type">体现类型</p>
+                <p class="see-description"></p>
+                <button class="btn" modclose>关闭</button>
+            </div>
+        </div>
+        <footer class="footer">
+            <pagination count="custom.itemsCount" take="custom.take" activate="custom.activatePage"></pagination>
+        </footer>
+    <div class="delete mod" ng-show="delShow">
+        <div class="del-head">
+            <h5>温馨提示</h5>
+        </div>
+        <div class="del-con">
+            <p>确定要删除这条数据？</p>
+            <div class="btn">
+                <button ng-click="delFn()">确定</button>
+                <button ng-click="cancel()">取消</button>
+            </div>
+        </div>
+    </div>
+<div id="modalbg" ng-show="delShow"></div>

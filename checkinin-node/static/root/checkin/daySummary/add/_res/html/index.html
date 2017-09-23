@@ -1,0 +1,98 @@
+<div class="add">
+    <ul class="input-list">
+        <li>
+            <label>地区<i>*</i></label>
+            <input  ng-model="appAdd.area" type="text">
+        </li>
+        <li>
+            <label>项目组<i>*</i></label>
+            <input  ng-model="appAdd.projectGroup" type="text">
+        </li>
+        <li>
+            <label>宿舍地址<i>*</i></label>
+            <input  ng-model="appAdd.address" type="text">
+        </li>
+        <li>
+            <label>员工姓名<i>*</i></label>
+            <input  ng-model="appAdd.name" type="text">
+        </li>
+        <li>
+            <label>员工编号<i>*</i></label>
+            <input  ng-model="appAdd.num" type="text">
+        </li>
+        <li>
+            <label>入住时间<i>*</i></label>
+            <input  ng-model="appAdd.stayTime" type="text" class="drop-date stayTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})">
+        </li>
+        <li>
+            <label>入住床位<i>*</i></label>
+            <input  ng-model="appAdd.stayBed" type="number">
+        </li>
+        <li>
+            <label>床上3件套(件)<i>*</i></label>
+            <input  ng-model="appAdd.suit" type="number">
+        </li>
+        <li>
+            <label>被褥(件)<i>*</i></label>
+            <input  ng-model="appAdd.bedding" type="number">
+        </li>
+        <li>
+            <label>床垫<i>*</i></label>
+            <input  ng-model="appAdd.mattress" type="number">
+        </li>
+        <li>
+            <label>是否领用钥匙<i>*</i></label>
+            <select  ng-model="appAdd.receiveKey" class="drop-down">
+                <option value="" disabled>请选择</option>
+                <option value="true">是</option>
+                <option value="false">否</option>
+            </select>
+        </li>
+        <li>
+            <label>当月是否离宿<i>*</i></label>
+            <select  ng-model="appAdd.bed" class="drop-down">
+                <option value="" disabled>请选择</option>
+                <option value="true">是</option>
+                <option value="false">否</option>
+            </select>
+        </li>
+        <li>
+            <label>离宿时间<i>*</i></label>
+            <input  ng-model="appAdd.hostTime" type="text" class="drop-date hostTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})">
+        </li>
+        <li>
+            <label>当月统计住宿时间段<i>*</i></label>
+            <input  ng-model="appAdd.stayWhen" type="text">
+        </li>
+        <li>
+            <label>当月住宿天数<i>*</i></label>
+            <input  ng-model="appAdd.stayNum" type="number">
+        </li>
+        <li>
+            <label>需缴费金额<i>*</i></label>
+            <input  ng-model="appAdd.expendAmount" type="number">
+        </li>
+        <li>
+            <label>员工核实是否有误<i>*</i></label>
+            <select  ng-model="appAdd.employeeVerify" class="drop-down">
+                <option value="" disabled>请选择</option>
+                <option value="true">是</option>
+                <option value="false">否</option>
+            </select>
+        </li>
+        <li>
+            <label>备注<i></i></label>
+            <input  ng-model="appAdd.remark" type="text">
+        </li>
+    </ul>
+    <p class="input-bottom">
+        <button class="cancel" ng-click="dayAddCan()">取消</button>
+        <button class="sure" ng-click="dayAddFun()">确定</button>
+    </p>
+</div>
+<script type="text/javascript">
+    // !function(){
+    //     laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    // }();
+
+</script>
