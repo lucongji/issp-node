@@ -8,8 +8,6 @@ app.factory('implementationSer',function ($http) {
         editImplementationProject:editImplementationProject,
         getImplementationOneById:getImplementationOneById,
         allImplementProjects:allImplementProjects,
-        searchImplementation:searchImplementation,
-        countImplementation2:countImplementation2,
     };
     //列表
     function listImplementation(data) {
@@ -18,8 +16,10 @@ app.factory('implementationSer',function ($http) {
         })
     }
     //分页
-    function countImplementation(){
-        return $http.get('/countImplementation/count')
+    function countImplementation(data){
+        return $http.get('/countImplementation/count',{
+            params:data
+        })
     }
 //删除
     function deleteImplementation(data){
@@ -43,17 +43,5 @@ app.factory('implementationSer',function ($http) {
     }
     function allImplementProjects(){
         return $http.get('/allImplementProjects/id')
-    }
-    //搜索
-    function searchImplementation(data) {
-        return $http.get('/searchImplementation',{
-            params:data
-        })
-    }
-    //搜索count
-    function countImplementation2(data){
-        return $http.get('/countImplementation2/count',{
-            params:data
-        })
     }
 });

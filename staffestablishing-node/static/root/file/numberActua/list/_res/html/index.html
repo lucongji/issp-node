@@ -1,0 +1,97 @@
+<div>
+    <div class="list_new">
+        <ul class="tableList">
+            <li class="table">
+                <ul class="clear left">
+                    <li class="ili">序号</li>
+                    <li class="ili">分类</li>
+                    <li class="ili">分类权重</li>
+                    <li class="ili">部门</li>
+                    <li class="ili">部门权重</li>
+                    <li class="ili">项目分类</li>
+                    <li class="ili">决策层人数</li>
+                    <li class="ili">管理层人数</li>
+                    <li class="ili">管理层占比</li>
+                    <li class="ili">执行层人数</li>
+                    <li class="ili">执行层占比</li>
+                    <li class="ili">编制汇总</li>
+                    <li class="ili">调配人数</li>
+                    <li class="ili">目前实际编制人数</li>
+                    <li class="ili">人数合计</li>
+                    <li class="ili">人数占比</li>
+                    <li class="ili">占比标准</li>
+                </ul>
+            </li>
+            <li class="table-b" ng-repeat="list in annexLists">
+                <ul class="clear left">
+                    <li class="ilil">{{$index+1+num}}</li>
+                    <li class="ilil">{{list.classify}}</li>
+                    <li class="ilil">{{list.classifyWeight}}</li>
+                    <!--部门-->
+                    <li class="ilil listWidth">
+                        <ul class=" clear listWidth2">
+                              <li class="pist listWidth3 {{sqa._selectList?'selectList3':''}}" ng-click="selectList(sqa)" ng-repeat="sqa in list.sons">{{sqa.depart}}</li>
+                           </ul>
+                        <ul class="clear listWidth2">
+                            <li class="pist listWidth3 {{sqa._selectList?'selectList3':''}}" ng-click="selectList(sqa)" ng-repeat="sqa in list.sons">{{sqa.departWeight}}</li>
+                          </ul>
+                        <ul class="clear listWidth2">
+                            <li class="pist listWidth3 {{sqa._selectList?'selectList3':''}}" ng-click="selectList(sqa)" ng-repeat="sqa in list.sons">{{sqa.project}}</li>
+                        </ul>
+                        <ul class="clear listWidth2">
+                            <li class="pist listWidth3 {{sqa._selectList?'selectList3':''}}" ng-click="selectList(sqa)" ng-repeat="sqa in list.sons">{{sqa.policyNum}}</li>
+                        </ul>
+                        <ul class="clear listWidth2">
+                            <li class="pist listWidth3 {{sqa._selectList?'selectList3':''}}" ng-click="selectList(sqa)" ng-repeat="sqa in list.sons">{{sqa.manNum}}</li>
+                        </ul>
+                        <ul class="clear listWidth2">
+                            <li class="pist listWidth3 {{sqa._selectList?'selectList3':''}}" ng-click="selectList(sqa)" ng-repeat="sqa in list.sons">{{sqa.manProportion}}</li>
+                        </ul>
+                        <ul class="clear listWidth2">
+                            <li class="pist listWidth3 {{sqa._selectList?'selectList3':''}}" ng-click="selectList(sqa)" ng-repeat="sqa in list.sons">{{sqa.executeNum}}</li>
+                        </ul>
+                        <ul class="clear listWidth2">
+                            <li class="pist listWidth3 {{sqa._selectList?'selectList3':''}}" ng-click="selectList(sqa)" ng-repeat="sqa in list.sons">{{sqa.executeProportion}}</li>
+                        </ul>
+                        <ul class="clear listWidth2">
+                            <li class="pist listWidth3 {{sqa._selectList?'selectList3':''}}" ng-click="selectList(sqa)" ng-repeat="sqa in list.sons">{{sqa.compileCount}}</li>
+                        </ul>
+                        <ul class="clear listWidth2">
+                            <li class="pist listWidth3 {{sqa._selectList?'selectList3':''}}" ng-click="selectList(sqa)" ng-repeat="sqa in list.sons">{{sqa.deployNum}}</li>
+                        </ul>
+                        <ul class="clear listWidth2">
+                            <li class="pist listWidth3 {{sqa._selectList?'selectList3':''}}" ng-click="selectList(sqa)" ng-repeat="sqa in list.sons">{{sqa.actualNum}}</li>
+                        </ul>
+                    </li>
+                    <li class="ilil">{{list.total}}</li>
+                    <li class="ilil">{{list.proportion}}</li>
+                    <li class="ilil">{{list.standard}}</li>
+               </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="module">
+    <div class="see-module">
+        <p class="see-type">体现类型</p>
+        <p class="see-description"></p>
+        <button class="btn" modclose>关闭</button>
+    </div>
+</div>
+<footer class="footer">
+    <pagination count="abili.itemsCount" take="abili.take" activate="abili.activatePage"></pagination>
+</footer>
+<div class="delete mod" ng-show="delShow">
+    <div class="del-head">
+        <h5>温馨提示</h5>
+    </div>
+    <div class="del-con">
+        <p>确定要删除这条数据？</p>
+        <div class="btn">
+            <button ng-click="delFn()">确定</button>
+            <button ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</div>
+<div id="modalbg" ng-show="delShow"></div>

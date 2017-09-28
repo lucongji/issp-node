@@ -6,7 +6,7 @@ app.factory('monthSer',function ($http) {
         listMonthProject:listMonthProject,
         collectMonthProject:collectMonthProject,
         collectMonthProject2:collectMonthProject2,
-        listTheMonthProject:listTheMonthProject,
+        allprogram:allprogram,
         menuPermission:menuPermission,
         warningCostProjects:warningCostProjects,
     };
@@ -29,8 +29,8 @@ app.factory('monthSer',function ($http) {
         return $http.get('/collectMonthProject2/project')
     }
     //查询当月明细
-    function  listTheMonthProject(data) {
-        return $http.get('/listTheMonthProject/id',{params:data})
+    function  allprogram(data) {
+        return $http.get('/programBya/monthPro',{params:data})
     }
     //菜单权限
     function menuPermission(data) {

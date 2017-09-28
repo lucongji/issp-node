@@ -8,7 +8,8 @@ app.factory('monthSer',function ($http) {
         getOneById:getOneById,
         addContent:addContent,
         editContent:editContent,
-        editStand:editStand
+        editStand:editStand,
+        countTarget:countTarget
     };
     function menuPermission(data) {
         return $http.get('/month/guidePermission/'+data);
@@ -35,5 +36,8 @@ app.factory('monthSer',function ($http) {
     }
     function editStand(data){
         return $http.post('/standmonth/edit',data)
+    }
+    function countTarget(){
+        return $http.get('/countTarget/target')
     }
 });

@@ -8,7 +8,8 @@ app.factory('dateSer',function ($http) {
         getOneById:getOneById,
         addContent:addContent,
         editContent:editContent,
-        editStand:editStand
+        editStand:editStand,
+        countTarget:countTarget
     };
     function menuPermission(data) {
         return $http.get('/date/guidePermission/'+data);
@@ -35,5 +36,8 @@ app.factory('dateSer',function ($http) {
     }
     function editStand(data){
         return $http.post('/stand/edit',data)
+    }
+    function countTarget(){
+        return $http.get('/countTarget/target')
     }
 });

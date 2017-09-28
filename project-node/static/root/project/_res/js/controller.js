@@ -19,16 +19,35 @@ app.controller('projectCtrl', function ($scope,$state) {
         $scope.$emit('isId',true);//每次切换页面更新搜索值
     };
       $scope.showsList = [
-        {id:"1",item:"项目验收、签字、结算进度管理",menuList:[{name:'项目情况'},{name2:"项目实施情况"},{name3:"项目验收情况"},{name4:"项目合同结算跟进"},{name5:"项目实施审核"}],showIs:false},
-        {id:"2",item:"设置",menuList:[{name6:'设置'}],showIs:false},
+        {id:"1",item:"项目验收、签字、结算进度管理",menuList:[
+            {name:"项目情况",msg:'situation'},
+            {name2:"项目实施情况",msg:'implementation'},
+            {name3:"项目验收情况",msg:'projectacceptance'},
+            {name4:"项目合同结算跟进",msg:'settlement'},
+            {name5:"项目实施审核",msg:'audit'}],
+            showIs:false},
+        {id:"2",item:"设置",menuList:[
+            {name6:'设置',msg:'setting'}
+            ],showIs:false},
     ];
+    if(active){
+        for(var i = 0; i < $scope.showsList.length; i++) {
+            var n = $scope.showsList[i].menuList;
+            for (var j = 0; j < n.length; j++) {
+                var m = n[j].msg;
+                if (m == active) {
+                    $scope.showsList[i].showIs = true;
+                    break;
+                }
+            }
+        }
+    }
       $scope.showMenu = function(obj,event) {
         if(event){
             if(obj.showIs){
                 obj.showIs=!event;
             }else{
                 obj.showIs=event;
-               /* angular.forEach(function(item){*/
                 this.showsList.forEach(function(item){
                     if(item.id!=obj.id){
                         item.showIs=!event;

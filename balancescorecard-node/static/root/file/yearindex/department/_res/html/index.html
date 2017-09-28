@@ -1,0 +1,48 @@
+<div class="content-input add" verify-scope="tipStyle: 1">
+    <div class="input-table">
+        <section>
+            <ul>
+                <li class="table-head">
+                    <span><i><img src="/images/mandatory.png"></i>责任部门</span>
+                    <span><i><img src="/images/mandatory.png"></i>年度目标值</span>
+                    <span><i><img src="/images/mandatory.png"></i>指标权重</span>
+                    <span><i><img src="/images/mandatory.png"></i>目标值</span>
+                    <span style="flex: 0.3"></span>
+                </li>
+                <li class="input-body" ng-repeat="list2 in rationdate">
+                    <p class="input-select">
+                        <select class="sele" ng-model="list2.department" ng-verify="{}">
+                            <option value="" disabled>请选择</option>
+                            <option ng-repeat="departs in depData">{{departs}}</option>
+                        </select>
+                    </p>
+                    <p class="input-select">
+                        <input type="number" class="same-input" ng-model="list2.yearTarget" ng-verify="{}">
+                    </p>
+                    <p class="input-select">
+                        <input type="number" class="same-input" ng-model="list2.indexWeight" ng-verify="{}">
+                    </p>
+                       <p class="input-select">
+                           <input type="number"  class="same-input" ng-model="list2.target" value="{{list2.target=list2.yearTarget*list2.indexWeight/100}}" ng-verify="{}">
+                       </p>
+                    <p class="input-select" style="flex: 0.3;padding-left: 30px;">
+                        <a href="javascript:void(0)" class="upload-close" ng-click="del($index)"><img src="/images/close2.png"></a>
+                    </p>
+                    <p class="input-select" style="display: none">
+                        <input type="text" class="same-input" ng-model="list2.id">
+                    </p>
+                </li>
+            </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button style="margin-right: 15px;" ng-click="addLine()">继续添加行</button>
+        <button ng-verify="{control:'myform'}" ng-click="basicEditFun()">提交</button>
+    </p>
+</div>
+<script type="text/javascript">
+    !function(){
+        laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    }();
+</script>

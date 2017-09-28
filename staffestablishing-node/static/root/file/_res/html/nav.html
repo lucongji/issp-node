@@ -1,0 +1,22 @@
+<div class="nav-list" ng-repeat="list in showsList">
+       <h3 class="header-menu big" ng-click="showMenu(list,true)" ng-hide="isHide" ng-init="menuCheck()">
+        <i class="nav-arrow" ng-class="{true: '', false: 'change-angle'}[list.showIs]"></i>{{list.item}}</h3>
+    <ul class="menu" ng-if="list.menuList.length"  ng-show="list.showIs" ng-repeat="menuInfo in list.menuList">
+        <li ng-click="navClass(menuInfo.msg)" ng-show="expendplan" ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.file.artificial.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)" ng-show="configurationplan" ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.file.numberPlan.list[12]">
+        <a href="javascript:void(0)">{{menuInfo.name2}}</a>
+       </li>
+        <li ng-click="navClass(menuInfo.msg)" ng-show="configurationactual" ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.file.numberActua.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name3}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)" ng-show="salary" ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.file.wages.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name4}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)" ng-show="cuspermission" ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.file.setting.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name10}}</a>
+        </li>
+    </ul>
+</div>
+

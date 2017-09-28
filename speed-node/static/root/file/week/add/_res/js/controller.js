@@ -1,5 +1,10 @@
 var app = angular.module('weekAdd', ['toastr']);
 app.controller('weekAddCtrl', function($scope, weekSer,$state,toastr){
+    weekSer.countTarget().then(function(response){
+        if(response.data.code == 0){
+            $scope.proData = response.data.data;
+        }
+    });
     $scope.basicAddFun = function(){
         var vm = $scope;
         weekSer.addContent(vm.add).then(function(response){

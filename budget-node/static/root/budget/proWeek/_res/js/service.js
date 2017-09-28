@@ -7,9 +7,9 @@ app.factory('proWeekSer',function ($http) {
         getProWeek:getProWeek,
         editProWeek:editProWeek,
         deleteProWeek:deleteProWeek,
-        collectProject:collectProject,
-        collectProject2:collectProject2,
-        listSummaryProject:listSummaryProject,
+        collSumSecond:collSumSecond,
+        collAllNew2:collAllNew2,
+        collFirst:collFirst,
         menuPermission:menuPermission,
         warningCostProjects:warningCostProjects,
     };
@@ -32,16 +32,16 @@ app.factory('proWeekSer',function ($http) {
         return $http.get('/deleteProWeek/del',{params:data})
     }
     //查询所有项目
-    function  listSummaryProject() {
-        return $http.get('/listSummaryProject/id')
+    function  collFirst() {
+        return $http.get('/firstColl/first')
     }
     //项目汇总
-    function collectProject(data) {
-        return $http.post('/collectProject/project',data)
+    function collSumSecond(data) {
+        return $http.post('/secondSummary/pro',data)
      }
     //汇总
-    function collectProject2() {
-        return $http.get('/collectProject2/project')
+    function collAllNew2() {
+        return $http.get('/newAllOk/content')
     }
     //菜单权限
     function menuPermission(data) {

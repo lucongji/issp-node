@@ -8,6 +8,7 @@ app.factory('resourcesSer',function ($http) {
         getOneById:getOneById,
         addContent:addContent,
         editContent:editContent,
+        countTarget:countTarget
     };
     function menuPermission(data) {
         return $http.get('/resources/guidePermission/'+data);
@@ -31,5 +32,8 @@ app.factory('resourcesSer',function ($http) {
     }
     function editContent(data){
         return $http.post('/resources/edit',data)
+    }
+    function countTarget(){
+        return $http.get('/countTarget/target')
     }
 });

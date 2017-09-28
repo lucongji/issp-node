@@ -1,0 +1,63 @@
+<div class="nav-list" ng-repeat="list in showsList">
+    <h3 class="header-menu big" ng-click="showMenu(list,true)" ng-hide="isHide" ng-init="menuCheck()">
+        <i class="nav-arrow" ng-class="{true: '', false: 'change-angle'}[list.showIs]"></i>{{list.item}}</h3>
+    <ul class="menu" ng-if="list.menuList.length"  ng-show="list.showIs" ng-repeat="menuInfo in list.menuList">
+        <li ng-click="navClass(menuInfo.msg)" ng-show="fundentry"  ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.file.apply.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)" ng-show="fundentrywrongrecord"  ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.file.record.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name2}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)" ng-show="fundentryconfirmed"  ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.file.sure.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name3}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)"  ng-show="accrualallot" ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.file.respons.list[12]">
+        <a href="javascript:void(0)">{{menuInfo.name4}}</a>
+       </li>
+        <li ng-click="navClass(menuInfo.msg)" ng-show="callinfo"  ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.file.inform.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name5}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)" ng-show="investform"  ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.file.investForm.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name6}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)" ng-show="creditorsinvest"  ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.file.creditor.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name7}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)" ng-show="equityinvest" ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.file.stock.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name8}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)" ng-show="cashinvest" ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.file.cash.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name9}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)" ng-show="capitalinvest" ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.file.investment.list[12]">
+        <a href="javascript:void(0)">{{menuInfo.name10}}</a>
+         </li>
+        <li ng-click="navClass(menuInfo.msg)" ng-show="investtransfer"  ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.file.transfer.list[12]">
+        <a href="javascript:void(0)">{{menuInfo.name11}}</a>
+         </li>
+        <li ng-click="navClass(menuInfo.msg)" ng-show="incomedistribution" ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.file.profit.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name12}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)" ng-show="incomequota"  ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.file.allotment.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name13}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)" ng-show="moneyexitapply" ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.file.sign.list[12]">
+        <a href="javascript:void(0)">{{menuInfo.name14}}</a>
+    </li>
+        <li ng-click="navClass(menuInfo.msg)" ng-show="moneyexitapplywrongrecord" ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.file.records.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name15}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)" ng-show="moneyexitapplyconfirmed" ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.file.recordss.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name16}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)" ng-show="customerinfo" ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.file.custom.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name17}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)" ng-show="customerinfocollect" ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.file.customSum.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name18}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)" ng-show="cuspermission" ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.file.setting.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name19}}</a>
+        </li>
+    </ul>
+</div>

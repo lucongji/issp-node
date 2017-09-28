@@ -1,0 +1,39 @@
+<div class="nav-list" ng-repeat="list in showsList">
+    <h3 class="header-menu big" ng-click="showMenu(list,true)" ng-hide="isHide" ng-init="menuCheck()">
+        <i class="nav-arrow" ng-class="{true: '', false: 'change-angle'}[list.showIs]"></i>{{list.item}}</h3>
+    <ul class="menu" ng-if="list.menuList.length"  ng-show="list.showIs" ng-repeat="menuInfo in list.menuList">
+        <li ng-click="navClass(menuInfo.msg)" ng-show="indexType" ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.file.basic.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name1}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)" ng-show="indexName" ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.file.dimension.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name2}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)" ng-show="indexName" ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.file.assessment.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name3}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)" ng-show="indexName" ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.file.name.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name4}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)" ng-show="yearIndex" ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.file.yearindex.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name5}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)" ng-show="departYearIndex" ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.file.departindex.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name6}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)" ng-show="departMonthIndex" ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.file.monthindex.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name7}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)" ng-show="positionIndex" ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.file.postindex.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name8}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)" ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.file.mineindex.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name9}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)" ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.file.libraryindex.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name10}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)" ng-show="cuspermission" ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.file.setting.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name11}}</a>
+        </li>
+    </ul>
+</div>

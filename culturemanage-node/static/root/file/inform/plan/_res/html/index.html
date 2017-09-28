@@ -1,0 +1,57 @@
+<div class="content-tab list">
+    <ul class="table com-table">
+        <li class="list-head">
+            <span></span>
+            <span>方案名称</span>
+            <span>刊物理念</span>
+            <span>发刊形式</span>
+            <span>发刊规格</span>
+            <span>执笔人</span>
+            <span>刊物名称</span>
+            <span>发刊时间</span>
+            <span></span>
+        </li>
+        <li class="list-all">
+            <section class="twos" ng-repeat="lists in basicLists">
+                <div  class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
+                    <p mod>{{$index+1}}</p>
+                    <p mod>{{::lists.programName}}</p>
+                    <p mod>{{::lists.ida}}</p>
+                    <p mod>{{::lists.way}}</p>
+                    <p mod>{{::lists.standard}}</p>
+                    <p mod>{{::lists.executer}}</p>
+                    <p mod>{{::lists.periodicalName}}</p>
+                    <p mod>{{::lists.time}}</p>
+                    <p>
+                        <a href="javascript:void(0)" class="more"  ng-click="moreList(lists)">更多详细</a>
+                    </p>
+                </div>
+                <div class="can">
+                    <ul class="can-see" style="display: {{lists._moreList?'block':'none'}};">
+                        <li>
+                            <p class="see-parent">
+                                <span>刊物费用</span>
+                                <span>发刊周期</span>
+                                <span>审核结果</span>
+                                <span>审核意见</span>
+                            </p>
+                            <p class="see-children">
+                                <span mod>{{::lists.cost}}</span>
+                                <span mod>{{::lists.cycle}}</span>
+                                <span mod>{{::lists.auditResult|cover}}</span>
+                                <span mod>{{::lists.auditSuggestion}}</span>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </li>
+    </ul>
+    <div class="module">
+        <div class="see-module">
+            <p class="see-type">体现类型</p>
+            <p class="see-description"></p>
+            <button class="btn" modclose>关闭</button>
+        </div>
+    </div>
+</div>

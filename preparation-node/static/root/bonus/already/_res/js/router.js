@@ -12,7 +12,7 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.bonus.already.list[12]",{
-        url:"/list[12]?id=&name=&page=",
+        url:"/list[12]?id=&name=&page=&startDifference=&endDifference=&projectGroup=",
         views:{
             "content@root.bonus.already":{
                 templateUrl : "root/bonus/already/list/_res/html/index.html",

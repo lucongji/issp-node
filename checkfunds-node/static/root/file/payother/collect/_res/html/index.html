@@ -1,0 +1,27 @@
+<div class="collect">
+    <section class="collect-select">
+        <ul>
+            <li>
+                <label><em>开始日期</em></label>
+                <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" ng-model="startTime" class="startTime">
+            </li>
+            <li>
+                <label><em>结束日期</em></label>
+                <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" ng-model="endTime" class="endTime">
+            </li>
+            <button style="position: absolute; right: 10%; margin-top: 23px;" ng-click="collect()">汇总</button>
+        </ul>
+    </section>
+    <ul class="sum-list">
+        <li class="sum-thead"  ng-repeat="stockName in workOptions">
+            <span>日期</span>
+            <span ng-repeat="share in stockName.typeList track by $index">{{share}}</span>
+            <span>合计</span>
+        </li>
+        <li class="sum-tbody" ng-repeat="summaryList in workOptions">
+            <span>{{summaryList.date}}</span>
+            <span ng-repeat="money in summaryList.moneyList track by $index">{{money}}</span>
+            <span>{{summaryList.money}}</span>
+        </li>
+    </ul>
+</div>

@@ -1421,6 +1421,79 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
+    }).get('/management/templateExport', function*(){//员工档案导入模板下载
+        var $self = this;
+        var fileName = '员工档案导入模板.xlsx';
+        yield (fetch(config()['rurl']+`/staffrecords/v1/templateExcel`, {
+            method : 'GET',
+        }).then(function(res){
+            $self.set('content-type', 'application/vnd.ms-excel;charset=utf-8');
+            $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
+            return res.buffer();
+        }).then(function(data){
+            $self.body = data;
+        }));
+    }) .post('/management/import', koaBody({multipart:true}),function *(next) {//员工档案展示导入
+        var $self = this;
+        var fileData = $self.request.body;
+        fileData.token = $self.cookies.get("token");
+        yield (server().manImport(fileData)
+            .then((parsedBody) =>{
+                $self.body = parsedBody;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/listStaff/list', function*(){
+        var $self = this;
+        var page = $self.request.query;
+        page.token = this.cookies.get('token');
+        yield (server().staffList(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/countStaff/count', function*(){
+        var $self = this;
+        var token={token:$self.cookies.get('token')};
+        yield (server().staffCount(token)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/staffInforms/templateExport', function*(){//离职模板下载
+        var $self = this;
+        var fileName = '离职员工信息导入模板.xlsx';
+        yield (fetch(config()['rurl']+`/staffrecords/v1/dimission/templateExcel`, {
+            method : 'GET',
+        }).then(function(res){
+            $self.set('content-type', 'application/vnd.ms-excel;charset=utf-8');
+            $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
+            return res.buffer();
+        }).then(function(data){
+            $self.body = data;
+        }));
+    }) .post('/staffInforms/import', koaBody({multipart:true}),function *(next) {//离职 展示导入
+        var $self = this;
+        var fileData = $self.request.body;
+        fileData.token = $self.cookies.get("token");
+        yield (server().staffImport(fileData)
+            .then((parsedBody) =>{
+                $self.body = parsedBody;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
     })
     return router;
 };

@@ -1,0 +1,25 @@
+<div class="content-input add" verify-scope="tipStyle: 1">
+    <div class="input-list">
+        <section>
+            <ul>
+                <li class="required">
+                    <label><em>地区</em></label>
+                    <select class="sele" ng-model="area">
+                        <option value="">全部导出</option>
+                        <option ng-repeat="name in areas">{{name.area}}</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><em>部门/项目组</em></label>
+                    <select class="sele" ng-model="department">
+                        <option value="">全部导出</option>
+                        <option ng-repeat="name2 in departs" ng-verify="{}">{{name2.value}}</option>
+                    </select>
+                </li>
+            </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <button ng-verify="{control:'myform'}" ng-click="workersAddFun()">导出</button>
+    </p>
+</div>

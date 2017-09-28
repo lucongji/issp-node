@@ -1,0 +1,26 @@
+<ul class="list">
+    <li ng-click="list()" ng-class="{'current':menuClass=='listMenu'}" ui-sref=".list[12]"  ng-show="LIST" class="lis" ng-init="menuCheck('LIST')">
+        <a href="javascript:void(0)" class="same-one">列表</a>
+    </li>
+    <li ng-click="export()" ng-class="{'current':menuClass=='exportMenu'}" ui-sref=".export[12]" ng-show="EXPORT" ng-init="menuCheck('EXPORT')">
+        <a href="javascript:void(0)" class="same-two" >年度报告</a>
+    </li>
+    <li style="width: 13%" ng-click="departExport()" ng-class="{'current':menuClass=='departExportMenu'}" ui-sref=".departExport[12]" ng-show="EXPORT" ng-init="menuCheck('EXPORT')">
+        <a href="javascript:void(0)" class="same-three" >部门年度报告</a>
+    </li>
+    <li style="width: 13%" ng-click="departMonExport()" ng-class="{'current':menuClass=='departMonExportMenu'}" ui-sref=".departMonExport[12]" ng-show="EXPORT" ng-init="menuCheck('EXPORT')">
+        <a href="javascript:void(0)" class="same-one" >部门月度报告</a>
+    </li>
+    <li ng-click="departPosExport()" ng-class="{'current':menuClass=='departPosExportMenu'}" ui-sref=".departPosExport[12]" ng-show="EXPORT" ng-init="menuCheck('EXPORT')">
+        <a href="javascript:void(0)" class="same-two" >岗位报告</a>
+    </li>
+    <li ng-click="departPerExport()" ng-class="{'current':menuClass=='departPerExportMenu'}" ui-sref=".departPerExport[12]" ng-show="EXPORT" ng-init="menuCheck('EXPORT')">
+        <a href="javascript:void(0)" class="same-three" >个人报告</a>
+    </li>
+    <li ng-click="departDimExport()" ng-class="{'current':menuClass=='departDimExportMenu'}" ui-sref=".departDimExport[12]" ng-show="EXPORT" ng-init="menuCheck('EXPORT')">
+        <a href="javascript:void(0)" class="same-one" >维度报告</a>
+    </li>
+    <li style="width: 13%" ng-click="departTypeExport()" ng-class="{'current':menuClass=='departTypeExportMenu'}" ui-sref=".departTypeExport[12]" ng-show="EXPORT" ng-init="menuCheck('EXPORT')">
+        <a href="javascript:void(0)" class="same-two" >指标类型报告</a>
+    </li>
+</ul>

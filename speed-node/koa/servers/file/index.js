@@ -431,6 +431,16 @@ module.exports = function(){
         };
         return request(options);
     };
-
+    this.targetBaseInfo = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/weektarget/v1/getStandard',
+            headers : {
+                userToken : argvs.token
+            }
+        };
+        return request(options);
+    };
     return this;
 };

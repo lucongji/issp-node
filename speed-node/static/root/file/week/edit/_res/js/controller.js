@@ -1,5 +1,10 @@
 var app = angular.module('weekEdit', ['toastr']);
 app.controller('weekEditCtrl', function($scope, weekSer,$state,toastr,$stateParams){
+    weekSer.countTarget().then(function(response){
+        if(response.data.code == 0){
+            $scope.proData = response.data.data;
+        }
+    });
     var basicId = {id : $stateParams.id};
     //获取值
     weekSer.getOneById(basicId).then(function(response){

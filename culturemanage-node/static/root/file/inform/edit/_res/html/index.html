@@ -1,0 +1,46 @@
+<div class="content-input edit" verify-scope="tipStyle: 1">
+    <div class="input-list">
+        <section>
+            <ul>
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>主题</em></label>
+                    <input type="text"  ng-verify="{}" ng-model="editInfo.theme">
+                </li>
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>执行阶段</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editInfo.executeStage">
+                </li>
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>执行问题</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editInfo.executeQuestion">
+                </li>
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>解决方案</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editInfo.solution">
+                </li>
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>员工意见</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editInfo.employeeSuggest">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>更新类型</em></label>
+                    <select class="sele" ng-verify="{}" ng-model="editInfo.updateType">
+                        <option value="" disabled>请选择</option>
+                        <option value="COVER">覆盖</option>
+                        <option value="RESERVE">保留</option>
+                    </select>
+                </li>
+            </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="basicEditFun()">提交</button>
+    </p>
+</div>
+
+<script type="text/javascript">
+    !function(){
+        laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    }();
+</script>

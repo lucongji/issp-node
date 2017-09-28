@@ -17,10 +17,10 @@
                     <p mod>{{$index+1+num}}</p>
                     <p mod>{{::list.driverName}}</p>
                     <p mod>{{::list.carDate}}</p>
-                    <p mod>{{::list.acctype|cover}}</p>
+                    <p mod>{{::list.number}}</p>
                     <p mod>{{::list.arrival}}</p>
                     <p mod>{{::list.carUser}}</p>
-                    <p mod>{{::list.project}}</p>
+                    <p mod>{{::list.acctype|cover}}</p>
                     <p mod>{{::list.carPrice}}</p>
                     <p>
                         <a href="javascript:void(0)" class="more"  ng-click="moreList(list)">更多详细</a>
@@ -66,3 +66,16 @@
         <pagination count="abili.itemsCount" take="abili.take" activate="abili.activatePage"></pagination>
     </footer>
 </div>
+<div class="delete mod" ng-show="delShow">
+    <div class="del-head">
+        <h5>温馨提示</h5>
+    </div>
+    <div class="del-con">
+        <p>确定要删除这条数据？</p>
+        <div class="btn">
+            <button ng-click="delFn()">确定</button>
+            <button ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</div>
+<div id="modalbg" ng-show="delShow"></div>

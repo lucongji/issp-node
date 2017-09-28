@@ -1,6 +1,11 @@
 var app = angular.module('dateEdit', ['toastr']);
 app.controller('dateEditCtrl', function($scope, dateSer,$state,toastr,$stateParams){
     var basicId = {id : $stateParams.id};
+    dateSer.countTarget().then(function(response){
+        if(response.data.code == 0){
+            $scope.proData = response.data.data;
+        }
+    });
     //获取值
     dateSer.getOneById(basicId).then(function(response){
         if(response.data.code==0){

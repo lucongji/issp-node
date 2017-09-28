@@ -57,10 +57,39 @@ app.controller('implementationListCtrl',function($scope,implementationSer,toastr
         });
         event._moreList = !event._moreList;
     };
+
+    $scope.signCondition = $stateParams.signCondition?$stateParams.signCondition:'';
+    $scope.signProject = $stateParams.signProject?$stateParams.signProject:'';
+    $scope.area = $stateParams.area?$stateParams.area:'';
+    $scope.businessType = $stateParams.businessType?$stateParams.businessType:'';
+    $scope.businessSubject = $stateParams.businessSubject?$stateParams.businessSubject:'';
+    if($stateParams.signCondition || $stateParams.signProject || $stateParams.area || $stateParams.businessType || $stateParams.businessSubject){
+        $scope.$emit('isId', false);
+        $scope.isView = false;
+    }else{
+        $scope.$emit('isId', true);
+    }
+    $scope.search = function(){
+        $state.go('root.project.implementation.list[12]',
+            {signCondition:$scope.signCondition,signProject:$scope.signProject,area:$scope.area,businessType:$scope.businessType,businessSubject:$scope.businessSubject,page:1});
+    };
     function activatePage(page) {
         var listData = {
-            page:page||1
+            page:page||1,
+            signCondition:$scope.signCondition|| " ",
+            signProject:$scope.signProject|| " ",
+            area:$scope.area|| " ",
+            businessType:$scope.businessType|| " ",
+            businessSubject:$scope.businessSubject|| " ",
         }
+        implementationSer.countImplementation(listData).then(function(response){
+            if(response.data.code==0){
+                $scope.abili.itemsCount = response.data.data;
+                $scope.num = $stateParams.page*10>10?($stateParams.page-1)*10:null;
+            }else{
+                toastr.error(response.data.msg, '温馨提示');
+            }
+        });
         implementationSer.listImplementation(listData).then(function(response){
             if(response.data.code==0){
                 $scope.implementationLists = response.data;
@@ -80,48 +109,11 @@ app.controller('implementationListCtrl',function($scope,implementationSer,toastr
                 toastr.error(response.data.msg, '温馨提示');
             }
         });
-        $scope.collect = function(){
-            $scope.abili = {
-                itemsCount: 2,//总条数
-                take: 10,        //每页显示
-                activatePage: activatePage, //当前页
-            };
-            implementationSer.countImplementation2($scope.signCondition,$scope.signProject,$scope.area,$scope.businessType,$scope.businessSubject).then(function (response) {
-                if(response.data.code==0){
-                    $scope.abili.itemsCount = response.data.data;
-                }else{
-                    toastr.error(response.data.msg, '温馨提示');
-                }
-            })
-            var data = {
-                signCondition: $scope.signCondition,
-                signProject: $scope.signProject,
-                area: $scope.area,
-                businessType: $scope.businessType,
-                businessSubject: $scope.businessSubject,
-                page: page
-            };
-            implementationSer.searchImplementation(data).then(function(response){
-                if(response.data.code == 0){
-                    $scope.implementationLists = response.data
-                }else{
-                    toastr.error(response.data.msg, '温馨提示');
-                }
-            });
-        };
     }
     $scope.abili = {
         itemsCount: 2, //总条数
         take: 10, //每页显示
         activatePage: activatePage
     };
-    implementationSer.countImplementation().then(function(response){
-        if(response.data.code==0){
-            $scope.abili.itemsCount = response.data.data;
-            $scope.num = $stateParams.page*10>10?($stateParams.page-1)*10:null;
-        }else{
-            toastr.error(response.data.msg, '温馨提示');
-        }
-    });
     $scope.titles = ["合同签订情况","立项情况","地区","业务类型","业务方向科目"];
 });

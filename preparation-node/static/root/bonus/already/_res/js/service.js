@@ -20,8 +20,8 @@ app.factory('alreadySer',function ($http) {
         })
     }
     //分页
-    function countAlready(){
-        return $http.get('/countAlready/count')
+    function countAlready(data){
+        return $http.get('/countAlready/count',{params:data})
     }
     //删除
     function deleteAlready(data){

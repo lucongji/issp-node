@@ -1,18 +1,18 @@
-var app = angular.module('business', [{
+var app = angular.module('budget', [{
     files: ['root/budget/_res/js/service.js']
 }]);
-app.controller('businessCtrl', function ($scope,$state) {
+app.controller('budgetCtrl', function ($scope,$state) {
     if ($state.current.url == '/budget') {//默认加载列表
         $state.go('root.budget.proWeek');
     }
     //父 Ctrl 监听到事件，向下广播
-    $scope.$on("changeId",function(event,id){
-        $scope.$broadcast("passId",id)
+    $scope.$on('changeId',function(event,msg){
+        $scope.$broadcast('listId',msg)
     });
     $scope.$on('page',function(event,msg){
         $scope.$broadcast('pageId',msg)
     });
-}).controller('navCtrl',function($scope,$state,$location,businessSer){
+}).controller('navCtrl',function($scope,$state,$location,budgetSer){
     $scope.navCla='proWeek';
     var active = $location.path().split('/')[3];
     $scope.navCla=active?active:'proWeek';
@@ -20,7 +20,7 @@ app.controller('businessCtrl', function ($scope,$state) {
         $scope.navCla = name;
     };
     // 前面下拉导航权限
-    businessSer.navPermission().then(function(response){
+    budgetSer.navPermission().then(function(response){
         if(response.data.code == 0){
             var data = response.data.data;
             if(data && data.length){
@@ -37,7 +37,7 @@ app.controller('businessCtrl', function ($scope,$state) {
         }
     });
     // 设置导航权限
-    businessSer.setPermission().then(function(response){
+    budgetSer.setPermission().then(function(response){
         if(response.data.code == 0){
             var data = response.data.data;
             if(data && data.length){
@@ -54,9 +54,21 @@ app.controller('businessCtrl', function ($scope,$state) {
         }
     });
     $scope.showsList = [
-        {id:"1",item:"往年账务情况",menuList:[{name:'项目收入周'},{name2:"项目收入月"},{name3:"地区收入周"},{name4:"地区收入月"},{name5:"预警"}],showIs:true},
-        {id:"2",item:"设置",menuList:[{name6:'设置'}],showIs:true}
+        {id:"1",item:"往年账务情况",menuList:[{name:'项目收入周',msg:'proWeek'},{name2:"项目收入月",msg:'month'},{name3:"地区收入周",msg:'areaWeek'},{name4:"地区收入月",msg:'areaMonth'},{name5:"预警",msg:'warning'}],showIs:false},
+        {id:"2",item:"设置",menuList:[{name6:'设置',msg:'setting'}],showIs:false}
     ];
+    if(active){
+        for(var i = 0; i < $scope.showsList.length; i++) {
+            var n = $scope.showsList[i].menuList;
+            for (var j = 0; j < n.length; j++) {
+                var m = n[j].msg;
+                if (m == active) {
+                    $scope.showsList[i].showIs = true;
+                    break;
+                }
+            }
+        }
+    }
     $scope.showMenu = function(obj,event) {
         if(event){
             if(obj.showIs){

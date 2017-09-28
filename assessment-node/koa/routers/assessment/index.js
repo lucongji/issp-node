@@ -1590,6 +1590,43 @@ module.exports = function(){
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
             }));
+    }).get('/areaInfo/area', function*(){//新加的
+        var $self = this;
+        var token={token:$self.cookies.get('token')};
+        yield (server().getarea(token)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/nameInfo/name', function*(){//新加的
+        var $self = this;
+        var token={token:$self.cookies.get('token')};
+        yield (server().getname(token)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/otherSubject/name', function*(){
+        var $self = this;
+        var fileData = $self.request.query;
+        fileData.token = $self.cookies.get("token");
+        yield (server().getpayment(fileData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
     })
     return router;
 };

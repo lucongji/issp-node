@@ -7,7 +7,10 @@ app.factory('basicInfoSer',function ($http) {
         editBasicInfo:editBasicInfo,
         findInfoId:findInfoId,
         deleteBasicInfo:deleteBasicInfo,
-        menuPermission:menuPermission
+        menuPermission:menuPermission,
+        areaInfo:areaInfo,
+        nameInfo:nameInfo,
+        otherSubject:otherSubject,
     };
     function listBasicInfo(data) {
         return $http.get('/listBasicInfo/list',{
@@ -41,5 +44,16 @@ app.factory('basicInfoSer',function ($http) {
     //菜单权限
     function menuPermission(data) {
         return $http.get('/basicInfo/menu/'+data);
+    }
+   // 地区
+    function areaInfo(){
+        return $http.get('/areaInfo/area')
+    }
+    //项目名称
+    function nameInfo(){
+        return $http.get('/nameInfo/name')
+    }
+    function otherSubject(data){
+        return $http.get('/otherSubject/name',{params:data})
     }
 });

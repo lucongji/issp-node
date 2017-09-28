@@ -28,7 +28,7 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.project.audit.list[12]",{
-        url:"/list[12]?id=&name=&page=",
+        url:"/list[12]?id=&name=&page=&saleNum=&signProjectCondition=",
         views:{
             "content@root.project.audit":{
                 templateUrl : "root/project/audit/list/_res/html/index.html",

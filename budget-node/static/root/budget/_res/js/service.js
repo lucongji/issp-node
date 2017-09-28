@@ -1,5 +1,5 @@
-var app = angular.module('business');
-app.factory('businessSer', function($http){
+var app = angular.module('budget');
+app.factory('budgetSer', function($http){
     return {
         navPermission : navPermission,
         setPermission : setPermission

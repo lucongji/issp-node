@@ -1127,5 +1127,54 @@ module.exports = function(){
         };
         return request(options);
     };
+    //新加的
+    this.manImport = function(argvs){
+        var options = {
+            url: config()['rurl']+'/staffrecords/v1/upload',
+            method: 'POST',
+            formData: {
+                files: uploadFile(argvs.files.files)
+            },
+            headers:{
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    this.staffList= function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/staffrecords/v1/dimission/maps?limit=10&page='+argvs.page,
+            headers : {
+                userToken : argvs.token
+            }
+        };
+        return request(options);
+    };
+    this.staffCount = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/staffrecords/v1/dimission/count',
+            headers : {
+                userToken : argvs.token
+            }
+        };
+        return request(options);
+    };
+    this.staffImport = function(argvs){
+        var options = {
+            url: config()['rurl']+'/staffrecords/v1/dimission/upload',
+            method: 'POST',
+            formData: {
+                files: uploadFile(argvs.files.files)
+            },
+            headers:{
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
     return this;
 };

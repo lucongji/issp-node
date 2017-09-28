@@ -8,6 +8,14 @@ app.controller('situationListCtrl',function($scope,situationSer,toastr,$location
         $scope.delShow = false;
         $state.go('root.project.situation.list[12]',{id:null,name:null});
     };
+    //获取id
+    if($stateParams.id){
+        switch ($stateParams.name){
+            case 'delete':
+                $scope.delShow = true;
+                break;
+        }
+    }
     var count = 0;
     $scope.delFn = function(){//确认删除
         var data = {
@@ -50,10 +58,31 @@ app.controller('situationListCtrl',function($scope,situationSer,toastr,$location
         });
         event._moreList = !event._moreList;
     };
+    $scope.enginPlace = $stateParams.enginPlace?$stateParams.enginPlace:'';
+    $scope.completeCondition = $stateParams.completeCondition?$stateParams.completeCondition:'';
+    if($stateParams.enginPlace || $stateParams.completeCondition){
+        $scope.$emit('isId', false);
+        $scope.isView = false;
+    }else{
+        $scope.$emit('isId', true);
+    }
+    $scope.search = function(){
+        $state.go('root.project.situation.list[12]',{enginPlace:$scope.enginPlace,completeCondition:$scope.completeCondition,page:1});
+    };
     function activatePage(page) {
         var listData = {
-            page:page||1
-        }
+            page:page||1,
+            enginPlace:$scope.enginPlace || "",
+            completeCondition:$scope.completeCondition || "",
+        };
+        situationSer.countProjectBaseInfo(listData).then(function(response){
+            if(response.data.code==0){
+                $scope.abili.itemsCount = response.data.data;
+                $scope.num = $stateParams.page*10>10?($stateParams.page-1)*10:null;
+            }else{
+                toastr.error(response.data.msg, '温馨提示');
+            }
+        });
         situationSer.listProjectSituationCap(listData).then(function(response){
             if(response.data.code==0){
                 $scope.situationLists = response.data;
@@ -73,49 +102,11 @@ app.controller('situationListCtrl',function($scope,situationSer,toastr,$location
                 toastr.error(response.data.msg, '温馨提示');
             }
         });
-        $scope.collect = function(){
-            $scope.abili = {
-                itemsCount: 2,//总条数
-                take: 10,        //每页显示
-                activatePage: activatePage, //当前页
-            };
-            var keywords = {
-                enginPlace: $scope.enginPlace,
-                completeCondition: $scope.completeCondition,
-            };
-            situationSer.countProjectBaseInfo2(keywords).then(function (response) {
-                if(response.data.code==0){
-                    $scope.abili.itemsCount = response.data.data;
-                }else{
-                    toastr.error(response.data.msg, '温馨提示');
-                }
-            });
-            var data = {
-                enginPlace: $scope.enginPlace,
-                completeCondition: $scope.completeCondition,
-                page: page
-            };
-            situationSer.searchProject(data).then(function(response){
-                if(response.data.code == 0){
-                    $scope.situationLists = response.data
-                }else{
-                    toastr.error(response.data.msg, '温馨提示');
-                }
-            });
-        };
     }
     $scope.abili = {
         itemsCount: 2, //总条数
         take: 10, //每页显示
         activatePage: activatePage
     };
-    situationSer.countProjectBaseInfo().then(function(response){
-        if(response.data.code==0){
-            $scope.abili.itemsCount = response.data.data;
-            $scope.num = $stateParams.page*10>10?($stateParams.page-1)*10:null;
-        }else{
-            toastr.error(response.data.msg, '温馨提示');
-        }
-    });
     $scope.titles = ["工程地点","完工情况"];
 });

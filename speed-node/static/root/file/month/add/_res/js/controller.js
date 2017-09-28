@@ -1,5 +1,10 @@
 var app = angular.module('monthAdd', ['toastr']);
 app.controller('monthAddCtrl', function($scope, monthSer,$state,toastr){
+    monthSer.countTarget().then(function(response){
+        if(response.data.code == 0){
+            $scope.proData = response.data.data;
+        }
+    });
     $scope.basicAddFun = function(){
         var vm = $scope;
         monthSer.addContent(vm.add).then(function(response){

@@ -75,14 +75,6 @@ app.config(function($provide, $stateProvider){
                 controller:'timeCtrl'
             }
         }
-    }).state("root.payment.detail.collect[12]",{
-        url:"/collect[12]?suId=&name=",
-        views:{
-            "content@root.payment.detail":{
-                templateUrl : "root/payment/detail/collect/_res/html/index.html",
-                controller:'detailCollectCtrl'
-            }
-        }
     }).state("root.payment.detail.import[12]",{
         url:"/import[12]",
         views:{

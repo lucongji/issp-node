@@ -1,0 +1,20 @@
+<div class="collect ">
+    <ul class="sum-list">
+        <li class="sum-thead">
+            <span>一级科目</span>
+            <span>二级科目</span>
+            <span>x-3年准备金</span>
+            <span>x-2年准备金</span>
+            <span>x-1年准备金</span>
+            <span>本年准备金</span>
+        </li>
+        <li class="sum-tbody {{summaryList._selectList?'selectList':''}}" ng-click="selectList(summaryList)" ng-repeat="summaryList in summaryLists">
+            <span>{{summaryList.firstSubject}}</span>
+            <span>{{summaryList.secondSubject}}</span>
+            <span>{{summaryList.fund3}}</span>
+            <span>{{summaryList.fund2}}</span>
+            <span>{{summaryList.fund1}}</span>
+            <span>{{summaryList.fund}}</span>
+       </li>
+    </ul>
+</div>

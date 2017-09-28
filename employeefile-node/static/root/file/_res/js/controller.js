@@ -55,7 +55,7 @@ app.controller('fileCtrl', function ($scope,$state) {
         }
     });
     $scope.showsList = [
-        {id:"1",item:"员工档案管理",menuList:[{name:'员工档案',msg:'management'}],showIs:false},
+        {id:"1",item:"员工档案管理",menuList:[{name:'员工档案',msg:'management'},{name0:'离职员工信息',msg:'staffInforms'}],showIs:false},
         {id:"2",item:"档案管理",menuList:[{name1:'人员资质',msg:'qualified'},{name2:'档案调阅',msg:'archives'},
             {name3:'档案明细',msg:'detailed'},{name4:'档案收集',msg:'collect'}],showIs:false},
         {id:"3",item:"对外信息管理",menuList:[{name5:'对外人员基本信息设置',msg:'basic'},{name6:'对外人员信息',msg:'message'}],showIs:false},

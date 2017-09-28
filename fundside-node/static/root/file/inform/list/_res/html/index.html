@@ -1,0 +1,136 @@
+<div class="content-tab list">
+    <ul class="table com-table">
+        <li class="list-head">
+            <span></span>
+            <span>地区</span>
+            <span>项目内部名称</span>
+            <span>开工时间</span>
+            <span>完工时间</span>
+            <span>合同金额</span>
+            <span>项目负责人</span>
+            <span>合同单价</span>
+            <span></span>
+        </li>
+        <li class="list-all">
+            <section ng-repeat="lists in basicLists.data">
+                <div  class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
+                    <p mod>{{$index+1+num}}</p>
+                    <p mod>{{::lists.area}}</p>
+                    <p mod>{{::lists.innerProject}}</p>
+                    <p mod>{{::lists.startProjectTime}}</p>
+                    <p mod>{{::lists.endProjectTime}}</p>
+                    <p mod>{{::lists.money}}</p>
+                    <p mod>{{::lists.projectCharge}}</p>
+                    <p mod>{{::lists.price}}</p>
+                    <p>
+                        <a href="javascript:void(0)" class="more"  ng-click="moreList(lists)">更多详细</a>
+                    </p>
+                </div>
+                <div class="can">
+                    <ul class="can-see" style="display: {{lists._moreList?'block':'none'}};">
+                        <li>
+                            <p class="see-parent">
+                                <span>合同规模</span>
+                                <span>是否签订合同</span>
+                                <span>回款周期</span>
+                                <span>预估到账时间</span>
+                                <span>承保商</span>
+                                <span>难易程度</span>
+                                <span>预估利润率(%)</span>
+                                <span>资金分配率(%)</span>
+                            </p>
+                            <p class="see-children">
+                                <span mod>{{::lists.size}}</span>
+                                <span mod>{{::lists.signedContract|cov2}}</span>
+                                <span mod>{{::lists.paybackPeriod}}</span>
+                                <span mod>{{::lists.forecastArriveTime}}</span>
+                                <span mod>{{::lists.contractor}}</span>
+                                <span mod>{{::lists.complexity}}</span>
+                                <span mod>{{::lists.forecastProfitMargin}}</span>
+                                <span mod>{{::lists.capitalAlloRate}}</span>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="see-parent">
+                                <span mod>预估投资收益率(%)</span>
+                                <span>预估分配时间</span>
+                                <span mod>提取风险准备金率(%)</span>
+                                <span>筹资总额</span>
+                                <span>已筹资金额</span>
+                                <span>还需筹资总额</span>
+                                <span>投资人</span>
+                                <span>投资对象</span>
+                            </p>
+                            <p class="see-children">
+                                <span mod>{{::lists.forecastReturnInvestment}}</span>
+                                <span mod>{{::lists.forecastAllotTime}}</span>
+                                <span mod>{{::lists.extractRiskRserveRatio}}</span>
+                                <span mod>{{::lists.totalFund}}</span>
+                                <span mod>{{::lists.hasBeenRaised}}</span>
+                                <span mod>{{::lists.needTotalFund}}</span>
+                                <span mod>{{::lists.investor}}</span>
+                                <span mod>{{::lists.investObject}}</span>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="see-parent">
+                                <span>投资形式</span>
+                                <span>投资总额</span>
+                                <span>投资占比</span>
+                                <span>投资日期</span>
+                                <span>本次投资额</span>
+                                <span>累计投资额</span>
+                                <span>累计投资比</span>
+                                <span mod>提取风险控制保证金</span>
+                            </p>
+                            <p class="see-children">
+                                <span mod>{{::lists.investForm}}</span>
+                                <span mod>{{::lists.investTotal}}</span>
+                                <span mod>{{::lists.investProportion}}</span>
+                                <span mod>{{::lists.investDate}}</span>
+                                <span mod>{{::lists.thisInvestMoney}}</span>
+                                <span mod>{{::lists.accumulativeInvestMoney}}</span>
+                                <span mod>{{::lists.accumulativeInvestProportion}}</span>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="see-parent">
+                                <span>打款账户</span>
+                                <span>打款账号</span>
+                                <span>备注</span>
+                            </p>
+                            <p class="see-children">
+                                <span mod>{{::lists.moneyAccountName}}</span>
+                                <span mod>{{::lists.moneyAccount}}</span>
+                                <span mod>{{::lists.remark}}</span>
+                            </p>
+                        </li>
+                    </ul>
+                    </div>
+            </section>
+        </li>
+     </ul>
+    <div class="module">
+        <div class="see-module">
+            <p class="see-type">体现类型</p>
+            <p class="see-description"></p>
+            <button class="btn" modclose>关闭</button>
+        </div>
+    </div>
+    <footer class="footer">
+        <pagination count="abili.itemsCount" take="abili.take" activate="abili.activatePage"></pagination>
+    </footer>
+</div>
+<div class="delete mod" ng-show="delShow">
+    <div class="del-head">
+        <h5>温馨提示</h5>
+    </div>
+    <div class="del-con">
+        <p>确定要删除这条数据？</p>
+        <div class="btn">
+            <button ng-click="delFn()">确定</button>
+            <button ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</div>
+<div id="modalbg" ng-show="delShow"></div>

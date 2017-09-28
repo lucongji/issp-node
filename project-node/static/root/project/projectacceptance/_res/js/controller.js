@@ -18,7 +18,9 @@ app.controller('projectacceptanceCtrl',function ($scope,$state) {
     });
     if (window.location.href.split('id=')[1]) {//如果是刷新进来的页面，没有经过list
         $scope.idList = window.location.href.split('id=')[1];
-        if($location.search().name){$scope.menuClass = $location.search().name + 'Menu'}
+        if($location.search().name){
+            $scope.menuClass = $location.search().name + 'Menu';
+        }
     }
     //监听到父Ctrl后改变事件
     $scope.$on("listId", function(event, id){
@@ -53,17 +55,4 @@ app.controller('projectacceptanceCtrl',function ($scope,$state) {
         $scope.idList = ''
     };
 });
-//自定义过滤器
-app.filter('cover', function(){
-    return function(val){
-        var result;
-        switch(val){
-            case "WOMAN":
-                result = "女";
-                break;
-        }
-        return result;
-    }
-
-})
 

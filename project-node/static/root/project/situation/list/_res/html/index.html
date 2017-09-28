@@ -1,6 +1,6 @@
 <div class="content-tab list">
     <div class="search-big" style="display :{{ isView?'none':'block'}}">
-        <select class="salc" ng-model="checkedName">
+        <select class="salc" ng-model="checkedName" ng-init="checkedName='工程地点'">
             <option ng-repeat="item in titles">{{item}}</option>
         </select>
         <input type="text" ng-model="enginPlace" ng-show="checkedName=='工程地点'">
@@ -9,7 +9,7 @@
             <option value="是">是</option>
             <option value="否">否</option>
         </select>
-        <a href="javascript:void(0)" ng-click="collect()"><img src="/images/search2.png"></a>
+        <a href="javascript:void(0)" ng-click="search()"><img src="/images/search2.png"></a>
     </div>
     <ul class="table com-table">
         <li class="list-head">
@@ -30,6 +30,7 @@
                     <p mod>{{::list.outerName}}</p>
                     <p mod>{{::list.innerName}}</p>
                     <p mod>{{::list.signCondition}}</p>
+                    <p mod>{{::list.saleNum}}</p>
                     <p mod>{{::list.depatchNum}}</p>
                     <p mod>{{::list.startWorkTime}}</p>
                     <p mod>{{::list.planCompleteTime}}</p>

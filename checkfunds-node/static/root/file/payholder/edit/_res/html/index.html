@@ -1,0 +1,48 @@
+<div class="content-input add" verify-scope="tipStyle: 1">
+    <div class="input-list">
+        <section>
+            <ul>
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>日期</em></label>
+                    <input type="text" ng-model="editInfo.date" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image date" >
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>一级科目</em></label>
+                    <select class="sele" ng-verify="{}" ng-model="editInfo.firstName" ng-change="myFun()">
+                        <option value="" disabled>请选择</option>
+                        <option ng-repeat="pros in firstSub1">{{pros}}</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>二级科目</em></label>
+                    <select class="sele" ng-verify="{}" ng-model="editInfo.secondName" ng-change="myFun2()">
+                        <option value="" disabled>请选择</option>
+                        <option ng-repeat="pros2 in firstSub2">{{pros2}}</option>
+                    </select>
+                </li>
+
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>股东名</em></label>
+                    <select class="sele" ng-verify="{}" ng-model="editInfo.stockName">
+                        <option value="" disabled>请选择</option>
+                        <option ng-repeat="pros3 in firstSub3">{{pros3}}</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>金额</em></label>
+                    <input type="number" ng-verify="{}" ng-model="editInfo.money">
+                </li>
+            </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="basicEditFun()">提交</button>
+    </p>
+</div>
+
+<script type="text/javascript">
+    !function(){
+        laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    }();
+</script>

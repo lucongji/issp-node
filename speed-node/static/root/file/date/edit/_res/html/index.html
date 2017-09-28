@@ -26,8 +26,8 @@
                     <div class="sele side">
                         <select class="sele" ng-model="editInfo.node">
                             <option value="" disabled>请选择</option>
+                            <option ng-repeat="pros in proData">{{pros}}</option>
                         </select>
-                        <input type="text"  ng-verify="{}" class="inputDom" ng-model="editInfo.node">
                     </div>
                 </li>
                 <li class="required">

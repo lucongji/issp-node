@@ -11,6 +11,14 @@ app.config(function($provide, $stateProvider){
                 controller:"projectacceptanceMenuCtrl"
             }
         }
+    }).state("root.project.projectacceptance.list[12]",{
+        url:"/list[12]?id=&name=&page=",
+        views:{
+            "content@root.project.projectacceptance":{
+                templateUrl : "root/project/projectacceptance/list/_res/html/index.html",
+                controller:'projectacceptanceListCtrl'
+            }
+        }
     }).state("root.project.projectacceptance.add[12]",{
         url:"/add[12]",
         views:{
@@ -25,14 +33,6 @@ app.config(function($provide, $stateProvider){
             "content@root.project.projectacceptance":{
                 templateUrl : "root/project/projectacceptance/edit/_res/html/index.html",
                 controller:'projectacceptanceEditCtrl'
-            }
-        }
-    }).state("root.project.projectacceptance.list[12]",{
-        url:"/list[12]?id=&name=&page=",
-        views:{
-            "content@root.project.projectacceptance":{
-                templateUrl : "root/project/projectacceptance/list/_res/html/index.html",
-                controller:'projectacceptanceListCtrl'
             }
         }
     })

@@ -13,12 +13,12 @@ app.controller('areaMonthCtrl',function ($scope,$state) {
     var urlName = $state.current.url.split('/')[1].split('[')[0];
     $scope.menuClass = urlName.split('?')[0] + "Menu";
     $rootScope.$on('$locationChangeSuccess', function () {//url地扯改变或者刷新
-        if($location.path().split('/').slice(-1)=='list' && window.location.href.indexOf('id=') == -1){
+        if($location.path().split('/').slice(-1)=='list[12]' && window.location.href.indexOf('id=') == -1){
             $scope.menuClass = 'listMenu';
         }
     });
     if (window.location.href.split('id=')[1]) {//如果是刷新进来的页面，没有经过list
-        $scope.idListd = window.location.href.split('id=')[1];
+        $scope.idList = window.location.href.split('id=')[1];
         if($location.search().name){$scope.menuClass = $location.search().name + 'Menu'}
     }
     $scope.menuCheck = function (name) {
@@ -33,8 +33,8 @@ app.controller('areaMonthCtrl',function ($scope,$state) {
         });
         $scope.menuAdd = false;
     };
-    $scope.$on("passId",function(event,id){
-        $scope.getId = id;
+    $scope.$on("listId", function(event, id){
+        $scope.idList = id;
     });
     $scope.$on('pageId',function(event,flag){
         $scope.page = flag;
@@ -43,18 +43,18 @@ app.controller('areaMonthCtrl',function ($scope,$state) {
         $scope.page = $location.search().page;
     }
     $scope.theMonth = function(){
-        if($scope.getId){
-            $state.go('root.budget.areaMonth.theMonth[12]',{id:$scope.getId,page:$scope.page});
+        if($scope.idList){
+            $state.go('root.budget.areaMonth.theMonth[12]',{id:$scope.idList,page:$scope.page});
             $scope.menuClass='theMonthMenu';
         }
     };
        $scope.list = function(){
         $scope.menuClass = 'listMenu';
-           $scope.getId = ''
+           $scope.idList = ''
     };
-    $scope.collect = function(){
-        $scope.menuClass = 'collectMenu';
-        $scope.getId = ''
+    $scope.collect2 = function(){
+        $scope.menuClass = 'collect2Menu';
+        $scope.idList = ''
     };
 });
 

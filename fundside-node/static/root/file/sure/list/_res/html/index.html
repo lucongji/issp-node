@@ -1,0 +1,69 @@
+<div class="content-tab list">
+    <ul class="table com-table">
+        <li class="list-head">
+            <span></span>
+            <span>申请人</span>
+            <span>资金进入方式</span>
+            <span>资金进入时间</span>
+            <span>金额</span>
+            <span>打款账号名</span>
+            <span>打款账号</span>
+            <span>确认人</span>
+            <span></span>
+        </li>
+        <li class="list-all">
+            <section ng-repeat="lists in basicLists.data">
+                <div  class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
+                    <p mod>{{$index+1+num}}</p>
+                    <p mod>{{::lists.investor}}</p>
+                    <p mod>{{::lists.accessToFund}}</p>
+                    <p mod>{{::lists.fundEntryTime}}</p>
+                    <p mod>{{::lists.money}}</p>
+                    <p mod>{{::lists.moneyAccountName}}</p>
+                    <p mod>{{::lists.moneyAccount}}</p>
+                    <p mod>{{::lists.confirmPeople}}</p>
+                    <p>
+                        <a href="javascript:void(0)" class="more"  ng-click="moreList(lists)">更多详细</a>
+                    </p>
+                </div>
+                <div class="can">
+                    <ul class="can-see" style="display: {{lists._moreList?'block':'none'}};">
+                        <li>
+                            <p class="see-parent">
+                                <span>确认情况</span>
+                                <span>是否通过</span>
+                            </p>
+                            <p class="see-children">
+                                <span mod>{{::lists.confirmSituation}}</span>
+                                <span mod>{{::lists.pass|cover3}}</span>
+                            </p>
+                        </li>
+                    </ul>
+                    </div>
+            </section>
+        </li>
+     </ul>
+    <div class="module">
+        <div class="see-module">
+            <p class="see-type">体现类型</p>
+            <p class="see-description"></p>
+            <button class="btn" modclose>关闭</button>
+        </div>
+    </div>
+    <footer class="footer">
+        <pagination count="abili.itemsCount" take="abili.take" activate="abili.activatePage"></pagination>
+    </footer>
+</div>
+<div class="delete mod" ng-show="delShow">
+    <div class="del-head">
+        <h5>温馨提示</h5>
+    </div>
+    <div class="del-con">
+        <p>确定要删除这条数据？</p>
+        <div class="btn">
+            <button ng-click="delFn()">确定</button>
+            <button ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</div>
+<div id="modalbg" ng-show="delShow"></div>

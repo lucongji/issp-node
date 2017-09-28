@@ -1,5 +1,10 @@
 var app = angular.module('dateAdd', ['toastr']);
 app.controller('dateAddCtrl', function($scope, dateSer,$state,toastr){
+    dateSer.countTarget().then(function(response){
+        if(response.data.code == 0){
+            $scope.proData = response.data.data;
+        }
+    });
     $scope.basicAddFun = function(){
         var vm = $scope;
         vm.add.targetDate = angular.element('.targetDate').val();
