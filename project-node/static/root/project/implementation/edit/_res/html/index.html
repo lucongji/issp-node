@@ -69,6 +69,7 @@
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>是否初验</em></label>
                     <select class="sele" ng-verify="{}" ng-model="editInfo.startTestCondition" ng-init="editInfo.startTestCondition">
+                        <option value="" disabled>请选择</option>
                         <option>已初验</option>
                         <option>未初验</option>
                     </select>
@@ -76,6 +77,7 @@
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>是否终验</em></label>
                     <select class="sele" ng-verify="{}" ng-model="editInfo.finalTestCondition" ng-init="editInfo.finalTestCondition">
+                        <option value="" disabled>请选择</option>
                         <option>已终验</option>
                         <option>未终验</option>
                     </select>

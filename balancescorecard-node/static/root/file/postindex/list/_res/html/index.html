@@ -1,0 +1,143 @@
+<div class="content-tab list">
+    <div class="search-big" style="display :{{ isView?'none':'block'}}">
+        <select class="salc" ng-model="checkedName" ng-init="checkedName='指标名称'">
+            <option ng-repeat="item in titles">{{item}}</option>
+        </select>
+        <select class="sle" ng-model="indexName" ng-show="checkedName=='指标名称'">
+            <option value="">请选择</option>
+            <option ng-repeat="types in nameData">{{types.typeName}}</option>
+        </select>
+        <select class="sle" ng-model="year" ng-show="checkedName=='年份'">
+            <option value="">请选择</option>
+            <option ng-repeat="years in proData">{{years}}</option>
+        </select>
+        <select class="sle" ng-model="month" ng-show="checkedName=='月份'"
+                ng-options='x.id as x.name for x  in [{id:1,name:"1"},
+                        {id:2,name:"2"},{id:3,name:"3"},{id:4,name:"4"},{id:5,name:"5"},{id:6,name:"6"}
+                        ,{id:7,name:"7"},{id:8,name:"8"},{id:9,name:"9"},{id:10,name:"10"},{id:11,name:"11"},{id:12,name:"12"}]'
+        >
+            <option value="" disabled>请选择</option>
+        </select>
+         <input type="text" ng-model="positioner" ng-show="checkedName=='责任人'">
+        <a href="javascript:void(0)" ng-click="search()"><img src="/images/search2.png"></a>
+    </div>
+    <ul class="table com-table">
+        <li class="list-head">
+            <span></span>
+            <span>指标编号</span>
+            <span>指标名称</span>
+            <span>年份</span>
+            <span>月份</span>
+            <span>指标类型</span>
+            <span>维度</span>
+            <span>责任部门</span>
+            <span></span>
+        </li>
+        <li class="list-all">
+            <section ng-repeat="lists in basicLists.data">
+                <div  class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
+                    <p mod>{{$index+1+num}}</p>
+                    <p mod>{{::lists.indexNumber}}</p>
+                    <p mod>{{::lists.indexName}}</p>
+                    <p mod>{{::lists.year}}</p>
+                    <p mod>{{::lists.month}}</p>
+                    <p mod>{{::lists.indexType}}</p>
+                    <p mod>{{::lists.dimension}}</p>
+                    <p mod>{{::lists.department}}</p>
+                    <p>
+                        <a href="javascript:void(0)" class="more" ng-click="moreList(lists)">更多详细</a>
+                    </p>
+                  </div>
+                <div class="can">
+                    <ul class="can-see" style="display: {{lists._moreList?'block':'none'}};">
+                        <li>
+                            <p class="see-parent">
+                                <span>总指标权重</span>
+                                <span>部门年度指标权重</span>
+                                <span>部门月度对赌值</span>
+                                <span>责任岗位</span>
+                                <span>责任人</span>
+                                <span>责任人工号</span>
+                                <span>岗位指标权重</span>
+                                <span>岗位指标权重之和</span>
+                            </p>
+                            <p class="see-children">
+                                <span mod>{{::lists.describtion}}</span>
+                                <span mod>{{::lists.departYearWeight}}</span>
+                                <span mod>{{::lists.departYearWager}}</span>
+                                <span mod>{{::lists.position}}</span>
+                                <span mod>{{::lists.positioner}}</span>
+                                <span mod>{{::lists.positionerNumber}}</span>
+                                <span mod>{{::lists.weight}}</span>
+                                <span mod>{{::lists.weightSum}}</span>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="see-parent">
+                                <span>岗位指标目标值</span>
+                                <span>对赌值</span>
+                                <span>完成值</span>
+                                <span>考核方式</span>
+                                <span>是否达标</span>
+                                <span>达成率</span>
+                                <span>考核得分</span>
+                                <span>填报人员</span>
+                            </p>
+                            <p class="see-children">
+                                <span mod>{{::lists.target}}</span>
+                                <span mod>{{::lists.wager}}</span>
+                                <span mod>{{::lists.complete}}</span>
+                                <span mod>{{::lists.examWay}}</span>
+                                <span mod>{{::lists.whetherStandar}}</span>
+                                <span mod>{{::lists.standardRate}}</span>
+                                <span mod>{{::lists.examScore}}</span>
+                                <span mod>{{::lists.writePerson}}</span>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="see-parent">
+                                <span>考核部门</span>
+                                <span>数据来源</span>
+                                <span>考核周期</span>
+                                <span>岗位指标添加人</span>
+                                <span>岗位指标添加时间</span>
+                                <span>是否由分解得来状态</span>
+                             </p>
+                            <p class="see-children">
+                                <span mod>{{::lists.examDepart}}</span>
+                                <span mod>{{::lists.dataOrigin}}</span>
+                                <span mod>{{::lists.examDuring}}</span>
+                                <span mod>{{::lists.posionIndexPersion}}</span>
+                                <span mod>{{::lists.posionIndexTime}}</span>
+                                <span mod>{{::lists.seperateComeStatus|cover4}}</span>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </li>
+     </ul>
+    <div class="module">
+        <div class="see-module">
+            <p class="see-type">体现类型</p>
+            <p class="see-description"></p>
+            <button class="btn" modclose>关闭</button>
+        </div>
+    </div>
+    <footer class="footer">
+        <pagination count="abili.itemsCount" take="abili.take" activate="abili.activatePage"></pagination>
+    </footer>
+</div>
+<div class="delete mod" ng-show="delShow">
+    <div class="del-head">
+        <h5>温馨提示</h5>
+    </div>
+    <div class="del-con">
+        <p>确定要删除这条数据？</p>
+        <div class="btn">
+            <button ng-click="delFn()">确定</button>
+            <button ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</div>
+<div id="modalbg" ng-show="delShow"></div>

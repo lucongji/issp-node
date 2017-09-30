@@ -1,0 +1,33 @@
+<div class="collect">
+    <section class="collect-select">
+        <ul>
+            <li>
+                <label><em>开始日期</em></label>
+                <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" ng-model="startTime" class="startTime">
+            </li>
+            <li>
+                <label><em>结束日期</em></label>
+                <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" ng-model="endTime" class="endTime">
+            </li>
+            <button style="position: absolute; right: 10%; margin-top: 23px;" ng-click="collect()">汇总</button>
+        </ul>
+    </section>
+    <ul class="sum-list">
+        <li class="sum-thead">
+            <span>日期</span>
+            <span>初期余额</span>
+            <span>账务支出</span>
+            <span>账上余额</span>
+            <span>资金差异</span>
+            <span>账务收入</span>
+        </li>
+        <li class="sum-tbody" ng-repeat="summaryList in workOptions">
+            <span>{{summaryList.date}}</span>
+            <span>{{summaryList.beginningBalance}}</span>
+            <span>{{summaryList.accountSpend}}</span>
+            <span>{{summaryList.accountBalance}}</span>
+            <span>{{summaryList.fundsDifference}}</span>
+            <span>{{summaryList.accountIncome}}</span>
+        </li>
+    </ul>
+</div>

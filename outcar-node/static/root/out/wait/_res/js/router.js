@@ -20,11 +20,27 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.out.wait.list[12]",{
-        url:"/list[12]",
+        url:"/list[12]?id=&name=",
         views:{
             "content@root.out.wait":{
                 templateUrl : "root/out/wait/list/_res/html/index.html",
                 controller:'waitListCtrl'
+            }
+        }
+    }).state("root.out.wait.add[12]",{
+        url:"/add[12]",
+        views:{
+            "content@root.out.wait":{
+                templateUrl : "root/out/wait/add/_res/html/index.html",
+                controller:'waitAddCtrl'
+            }
+        }
+    }).state("root.out.wait.edit[12]",{
+        url:"/edit[12]?id=&page=",
+        views:{
+            "content@root.out.wait":{
+                templateUrl : "root/out/wait/edit/_res/html/index.html",
+                controller:'waitEditCtrl'
             }
         }
     })

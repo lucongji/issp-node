@@ -53,16 +53,4 @@ app.controller('auditCtrl',function ($scope,$state) {
         $scope.idList = ''
     };
 });
-//自定义过滤器
-app.filter('cover', function(){
-    return function(val){
-        var result;
-        switch(val){
-            case "WOMAN":
-                result = "女";
-                break;
-        }
-        return result;
-    }
-});
 

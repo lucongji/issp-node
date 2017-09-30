@@ -325,6 +325,45 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
+    }).post('/addWait/add', function*(){
+        var $self = this;
+        var addData = this.request.body;
+        addData.token = this.cookies.get('token');
+        yield (server().waitAdd(addData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/deleteWait/delete', function*(){
+        var $self = this;
+        var delData = $self.request.query;
+        delData.token = this.cookies.get('token');
+        yield (server().waitDelete(delData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/editWait/edit', function*(){
+        var $self = this;
+        var editData = this.request.body;
+        editData.token = this.cookies.get('token');
+        yield (server().waitEdit(editData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
     })
     return router;
 };

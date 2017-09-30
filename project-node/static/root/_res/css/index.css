@@ -1356,7 +1356,7 @@ body {
 .right-section .top-content .content .content-wrap .content-tab .table-top{
   margin-top: 80px;
 }
-.right-section .top-content .content .content-wrap .content-tab .table .list-all:nth-child(even){
+.right-section .top-content .content .content-wrap .content-tab .table .list-all section:nth-child(even){
   background-color: #f0f6f4;
 }
 

@@ -358,8 +358,9 @@ module.exports = function(){
             }));
     }).get('/countAlready/count', function*(){
         var $self = this;
-        var token={token:$self.cookies.get('token')};
-        yield (server().alreadyCount(token)
+        var page = $self.request.query;
+        page.token = this.cookies.get('token');
+        yield (server().alreadyCount(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;

@@ -1,0 +1,64 @@
+<div class="content-input add" verify-scope="tipStyle: 1">
+    <div class="input-list">
+        <section>
+            <ul>
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>投资人</em></label>
+                     <input type="text" ng-verify="{}" ng-model="add.investor">
+                 </li>
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>投资对象</em></label>
+                    <input type="text" ng-verify="{}" ng-model="add.investObject">
+                </li>
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>投资形象</em></label>
+                    <select class="sele" ng-model="add.investForm" ng-verify="{}">
+                        <option disabled value="">请选择</option>
+                        <option value="债权投资">债权投资</option>
+                        <option value="股权投资">股权投资</option>
+                        <option value="现金投资">现金投资</option>
+                        <option value="员工借贷">员工借贷</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>投资总额</em></label>
+                    <input type="number" ng-verify="{}" ng-model="add.investTotal">
+                </li>
+                 <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>投资日期</em></label>
+                    <input type="text" ng-model="add.investDate" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image investDate" >
+                </li>
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>本次投资额</em></label>
+                    <input type="number" ng-verify="{}" ng-model="add.thisInvestMoney">
+                </li>
+             <!--   <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>累计投资额</em></label>
+                    <input type="number" ng-verify="{}" ng-model="add.accumulativeInvestMoney">
+                </li>-->
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>打款账户</em></label>
+                    <input type="text" ng-verify="{}" ng-model="add.moneyAccountName">
+                </li>
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>打款账号</em></label>
+                    <input type="text" ng-verify="{}" ng-model="add.moneyAccount">
+                </li>
+                <li>
+                    <label ><em>备注</em></label>
+                    <input type="text" ng-model="add.price">
+                </li>
+           </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="basicAddFun()">提交</button>
+    </p>
+</div>
+
+<script type="text/javascript">
+    !function(){
+        laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    }();
+</script>

@@ -7,9 +7,9 @@ app.factory('areaWeekSer',function ($http) {
         getAreaWeek:getAreaWeek,
         editAreaWeek:editAreaWeek,
         deleteAreaWeek:deleteAreaWeek,
-        listSummaryArea:listSummaryArea,
-        collectArea:collectArea,
-        collectArea2:collectArea2,
+        whereName:whereName,
+        fourthBynameSum:fourthBynameSum,
+        fourthArea4:fourthArea4,
         menuPermission:menuPermission,
         warningCostProjects:warningCostProjects,
     };
@@ -32,16 +32,16 @@ app.factory('areaWeekSer',function ($http) {
         return $http.get('/deleteAreaWeek/del',{params:data})
     }
     //查询所有地区
-    function  listSummaryArea() {
-        return $http.get('/listSummaryArea/id')
+    function  whereName() {
+        return $http.get('/fourCol/sum')
     }
     //地区汇总
-    function collectArea(data) {
-        return $http.post('/collectArea/area',data)
+    function fourthBynameSum(data) {
+        return $http.post('/foutSum/sum4',data)
      }
     //汇总
-    function collectArea2() {
-        return $http.get('/collectArea2/area')
+    function fourthArea4() {
+        return $http.get('/area4Fourth/area')
     }
     //菜单权限
     function menuPermission(data) {

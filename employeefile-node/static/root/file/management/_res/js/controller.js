@@ -47,6 +47,10 @@ app.controller('managementCtrl',function ($scope,$state) {
         $scope.menuClass = 'listMenu';
         $scope.idList = ''
     };
+    $scope.import = function(){
+        $scope.menuClass = 'importMenu';
+        $scope.idList = ''
+    };
     $scope.upload = function(){
         if($scope.idList){
             $state.go('root.file.management.upload[12]',{id:$scope.idList,page:$scope.page});

@@ -10,9 +10,7 @@ module.exports = function(){
     router.get('/project/listProjectSituationCap/list', function*(){
         var $self = this;
        var page = this.request.query;
-
         page.token = this.cookies.get('token');
-        console.log(page)
         yield (server().ProjectBaseinfoList(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -24,8 +22,9 @@ module.exports = function(){
             }));
     }).get('/countProjectBaseInfo/count', function*(){
         var $self = this;
-        var token={token:$self.cookies.get('token')};
-        yield (server().countProject(token)
+        var countData = this.request.query;
+        countData.token = this.cookies.get('token');
+        yield (server().countProject(countData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -103,8 +102,9 @@ module.exports = function(){
             }));
     }).get('/countImplementation/count', function*(){
         var $self = this;
-        var token={token:$self.cookies.get('token')};
-        yield (server().implementationCount(token)
+        var page = this.request.query;
+        page.token = this.cookies.get('token');
+        yield (server().implementationCount(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -340,8 +340,9 @@ module.exports = function(){
             }));
     }).get('/countAudit/count', function*(){ //分页
         var $self = this;
-        var token={token:$self.cookies.get('token')};
-        yield (server().projectAuditCount(token)
+        var page = this.request.query;
+        page.token = this.cookies.get('token');
+        yield (server().projectAuditCount(page)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -408,84 +409,6 @@ module.exports = function(){
         var $self = this;
         var token={token:$self.cookies.get('token')};
         yield (server().getCollectSummary(token)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/searchProject', function*(){
-        var $self = this;
-        var searchName = this.request.query;
-        searchName.token = this.cookies.get('token');
-        yield (server().projectSearch(searchName)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/countProjectBaseInfo2/count', function*(){
-        var $self = this;
-        var countData = this.request.query;
-        countData.token = this.cookies.get('token');
-        yield (server().countProject2Info(countData)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/searchImplementation', function*(){
-        var searchName = this.request.query;
-        var $self = this;
-        searchName.token = this.cookies.get('token');
-        yield (server().implementationSearch(searchName)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/countImplementation2/count', function*(){
-        var $self = this;
-        var countData = this.request.query;
-        countData.token = this.cookies.get('token');
-        yield (server().countImple2Info(countData)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/searchAudit', function*(){
-        var searchName = this.request.query;
-        var $self = this;
-        searchName.token = this.cookies.get('token');
-        yield (server().auditSearch(searchName)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-                console.error(error.error);
-            }));
-    }).get('/countAudit2/count', function*(){
-        var $self = this;
-        var countData = this.request.query;
-        countData.token = this.cookies.get('token');
-        yield (server().countAudit2Info(countData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;

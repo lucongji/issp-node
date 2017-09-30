@@ -1,0 +1,74 @@
+<table id="travel">
+    <thead>
+    <tr>
+        <th scope="col">序号</th>
+        <th scope="col">时间</th>
+        <th scope="col">计划人工成本</th>
+        <th scope="col">公司整体平均工资水平</th>
+        <th scope="col">公司总人数配置</th>
+        <th scope="col">总经办成本占比</th>
+        <th scope="col">薪资区间</th>
+        <th ng-repeat="list3 in annexLists2">{{::list3.title}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="list in annexLists">
+        <td>{{$index+1+num}}</td>
+        <td>{{::list.time}}</td>
+        <td>{{::list.planExpend}}</td>
+        <td>{{::list.avg}}</td>
+        <td>{{::list.total}}</td>
+        <td>{{::list.bossProportion}}</td>
+        <td><p class="sad" ng-repeat="list5 in list.planSons">{{::list5.sal}}</p></td>
+        <td valign="top" ng-repeat="lists in annexLists2">
+            <table class="inside" cellspacing="0">
+                <tbody class="inside2" ng-repeat="titles in lists.fieldVOs track by $index">
+                  <tr class="inside2-1"><td class="tdinside">{{::titles.title}}</td></tr>
+                  <tr class="inside3">
+                     <td class="inside3-1" ng-repeat="titles2 in titles.fieldVOs track by $index">
+                        <p class="inside3-3">{{::titles2.title}}</p>
+                        <div class="inside3-2 {{titles6._selectList?'selectList2':''}}"
+                             ng-repeat="titles6 in list.planSons track by $index"
+                             ng-click="selectList(titles6)">
+                            <div class="inside3-2-1" ng-repeat="titles7 in titles6.details track by $index">
+                                <p class="line2" ng-class="{true: 'ify', false: ''}[titles7.titleIndex!=titles2.titleIndex]" >
+                                    {{::titles7.content}}
+                                </p>
+                            </div>
+                        </div>
+                    </td>
+                  </tr>
+                  <tr ng-repeat="titles6 in list.planSons track by $index">
+                      <td ng-repeat="titles7 in titles6.details track by $index" style="border: 0!important;">
+                          <span ng-class="{true: 'ify', false: ''}[titles7.titleIndex!=titles.titleIndex]" style="border: 0!important;">
+                              {{::titles7.content}}
+                          </span>
+                      </td>
+                  </tr>
+                </tbody>
+            </table>
+            <div class="con-xi9" ng-repeat="titles5 in list.details track by $index">
+                <p ng-class="{true: 'ify', false: ''}[titles5.listTitleIndex!=lists.listTitleIndex]">
+                    {{::titles5.content}}
+                </p>
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<footer class="footer">
+    <pagination count="abili.itemsCount" take="abili.take" activate="abili.activatePage"></pagination>
+</footer>
+<div class="delete mod" ng-show="delShow">
+    <div class="del-head">
+        <h5>温馨提示</h5>
+    </div>
+    <div class="del-con">
+        <p>确定要删除这条数据？</p>
+        <div class="btn">
+            <button ng-click="delFn()">确定</button>
+            <button ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</div>
+<div id="modalbg" ng-show="delShow"></div>

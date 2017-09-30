@@ -58,10 +58,47 @@ app.controller('alreadyListCtrl',function($scope,alreadySer,toastr,$stateParams,
         });
         event._moreList = !event._moreList;
     };
+
+    //搜索
+    $scope.projectGroup = $stateParams.projectGroup?$stateParams.projectGroup:'';
+    $scope.startDifference = $stateParams.startDifference?$stateParams.startDifference:'';
+    $scope.endDifference = $stateParams.endDifference?$stateParams.endDifference:'';
+    //搜索功能
+    if($stateParams.projectGroup || $stateParams.startDifference || $stateParams.endDifference){
+        $scope.$emit('isId', false);
+        $scope.isView = false;
+    }else{
+        $scope.$emit('isId', true);
+    }
+    $scope.search = function(){
+        var startDifference =$scope.startDifference || angular.element('.startDifference').val();
+        var endDifference =$scope.endDifference || angular.element('.endDifference').val();
+        $state.go('root.bonus.already.list[12]',{
+            projectGroup:$scope.projectGroup,startDifference:startDifference,endDifference:endDifference,page:1
+        });
+    };
+    $scope.abili = {
+        itemsCount: 2, //总条数
+        take: 10, //每页显示
+        activatePage: activatePage
+    };
     function activatePage(page) {
+        var startDifference =$scope.startDifference || angular.element('.startDifference').val();
+        var endDifference =$scope.endDifference || angular.element('.endDifference').val();
         var listData = {
-            page:page||1
+            page:page||1,
+            projectGroup:$scope.projectGroup || " ",
+            startDifference:startDifference || " ",
+            endDifference:endDifference || " " ,
         };
+        alreadySer.countAlready(listData).then(function(response){
+            if(response.data.code==0){
+                $scope.abili.itemsCount = response.data.data;
+                $scope.num = $stateParams.page*10>10?($stateParams.page-1)*10:null;
+            }else{
+                toastr.error(response.data.msg, '温馨提示');
+            }
+        });
         alreadySer.listAlready(listData).then(function(response){
             if(response.data.code==0) {
                 $scope.alreadyLists = response.data;
@@ -81,52 +118,6 @@ app.controller('alreadyListCtrl',function($scope,alreadySer,toastr,$stateParams,
                 toastr.error( response.data.msg, '温馨提示');
             }
         });
-
-        $scope.collect = function() {
-            $scope.abili = {
-                itemsCount: 2,//总条数
-                take: 10,        //每页显示
-                activatePage: activatePage, //当前页
-            };
-            var data2 = {
-                projectGroup: $scope.projectGroup,
-                startDifference:angular.element('.startDifference').val(),
-                endDifference:angular.element('.endDifference').val(),
-            };
-            alreadySer.count2Already(data2).then(function (response) {
-                if (response.data.code == 0) {
-                    $scope.abili.itemsCount = response.data.data;
-                } else {
-                    toastr.error(response.data.msg, '温馨提示');
-                }
-            })
-            var data = {
-                projectGroup: $scope.projectGroup,
-                startDifference:angular.element('.startDifference').val(),
-                endDifference:angular.element('.endDifference').val(),
-                page: page
-            };
-            alreadySer.searchAlready(data).then(function (response) {
-                if (response.data.code == 0) {
-                    $scope.alreadyLists = response.data
-                } else {
-                    toastr.error(response.data.msg, '温馨提示');
-                }
-            });
-        }
     }
-    $scope.abili = {
-        itemsCount: 2, //总条数
-        take: 10, //每页显示
-        activatePage: activatePage
-    };
-    alreadySer.countAlready().then(function(response){
-        if(response.data.code==0){
-            $scope.abili.itemsCount = response.data.data;
-            $scope.num = $stateParams.page*10>10?($stateParams.page-1)*10:null;
-        }else{
-            toastr.error(response.data.msg, '温馨提示');
-        }
-    });
     $scope.titles = ["项目组","开始时间","结束时间"];
 });

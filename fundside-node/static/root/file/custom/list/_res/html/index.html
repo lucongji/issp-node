@@ -1,0 +1,75 @@
+<div class="content-tab list">
+    <ul class="table com-table">
+        <li class="list-head">
+            <span></span>
+            <span>姓名</span>
+            <span>年龄</span>
+            <span>性别</span>
+            <span>籍贯</span>
+            <span>身份证号</span>
+            <span>联系方式</span>
+            <span>邮箱</span>
+            <span></span>
+        </li>
+        <li class="list-all">
+            <section ng-repeat="lists in basicLists.data">
+                <div  class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
+                    <p mod>{{$index+1+num}}</p>
+                    <p mod>{{::lists.name}}</p>
+                    <p mod>{{::lists.age}}</p>
+                    <p mod>{{::lists.sex}}</p>
+                    <p mod>{{::lists.nativePlace}}</p>
+                    <p mod>{{::lists.idNumber}}</p>
+                    <p mod>{{::lists.phone}}</p>
+                    <p mod>{{::lists.email}}</p>
+                    <p>
+                        <a href="javascript:void(0)" class="more" ng-click="moreList(lists)">更多详细</a>
+                    </p>
+                </div>
+                <div class="can">
+                    <ul class="can-see" style="display: {{lists._moreList?'block':'none'}};">
+                        <li>
+                            <p class="see-parent">
+                                <span>地址</span>
+                                <span>其他</span>
+                                <span>银行开户名</span>
+                                <span>银行卡号</span>
+                                <span>银行开户行</span>
+                            </p>
+                            <p class="see-children">
+                                <span mod>{{::lists.address}}</span>
+                                <span mod>{{::lists.other}}</span>
+                                <span mod>{{::lists.bankAccountName}}</span>
+                                <span mod>{{::lists.bankCardNumber}}</span>
+                                <span mod>{{::lists.bankOfDeposit}}</span>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </li>
+     </ul>
+    <div class="module">
+        <div class="see-module">
+            <p class="see-type">体现类型</p>
+            <p class="see-description"></p>
+            <button class="btn" modclose>关闭</button>
+        </div>
+    </div>
+    <footer class="footer">
+        <pagination count="abili.itemsCount" take="abili.take" activate="abili.activatePage"></pagination>
+    </footer>
+</div>
+<div class="delete mod" ng-show="delShow">
+    <div class="del-head">
+        <h5>温馨提示</h5>
+    </div>
+    <div class="del-con">
+        <p>确定要删除这条数据？</p>
+        <div class="btn">
+            <button ng-click="delFn()">确定</button>
+            <button ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</div>
+<div id="modalbg" ng-show="delShow"></div>

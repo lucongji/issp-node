@@ -17,7 +17,7 @@ app.controller('proWeekCtrl',function ($scope,$state) {
         }
     });
     if (window.location.href.split('id=')[1]) {//如果是刷新进来的页面，没有经过list
-        $scope.idListd = window.location.href.split('id=')[1];
+        $scope.idList = window.location.href.split('id=')[1];
         if($location.search().name){$scope.menuClass = $location.search().name + 'Menu'}
     }
     $scope.menuCheck = function (name) {
@@ -32,8 +32,9 @@ app.controller('proWeekCtrl',function ($scope,$state) {
         });
         $scope.menuAdd = false;
     };
-    $scope.$on("passId",function(event,id){
-        $scope.getId = id;
+    //监听到父Ctrl后改变事件
+    $scope.$on("listId", function(event, id){
+        $scope.idList = id;
     });
     $scope.$on('pageId',function(event,flag){
         $scope.page = flag;
@@ -43,29 +44,29 @@ app.controller('proWeekCtrl',function ($scope,$state) {
     }
     //编辑
     $scope.edit = function(){
-        if($scope.getId){
-            $state.go('root.budget.proWeek.edit[12]',{id:$scope.getId,page:$scope.page});
+        if($scope.idList){
+            $state.go('root.budget.proWeek.edit[12]',{id:$scope.idList,page:$scope.page});
             $scope.menuClass='editMenu';
         }
     };
     //删除
     $scope.delete = function(){
-        if($scope.getId){
-            $state.go('root.budget.proWeek.list[12]',{id:$scope.getId,name:'delete',page:$scope.page});
+        if($scope.idList){
+            $state.go('root.budget.proWeek.list[12]',{id:$scope.idList,name:'delete',page:$scope.page});
             $scope.menuClass='deleteMenu';
         }
     };
     $scope.list = function(){
         $scope.menuClass = 'listMenu';
-        $scope.getId = ''
+        $scope.idList = ''
     };
     $scope.add = function(){
         $scope.menuClass = 'addMenu';
-        $scope.getId = ''
+        $scope.idList = ''
     };
-    $scope.collect = function(){
-        $scope.menuClass = 'collectMenu';
-        $scope.getId = ''
+    $scope.collect1 = function(){
+        $scope.menuClass = 'collect1Menu';
+        $scope.idList = ''
     };
 });
 

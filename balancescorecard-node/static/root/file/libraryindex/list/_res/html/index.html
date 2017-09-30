@@ -1,0 +1,121 @@
+<div class="content-tab list threeBox">
+    <ul class="table">
+        <li class="list-head">
+            <span></span>
+            <span>指标名称</span>
+            <span>指标编号</span>
+            <span>年份</span>
+            <span>指标类型</span>
+            <span>维度</span>
+            <span>年度目标值</span>
+            <span>完成值</span>
+            <span></span>
+       </li>
+        <li class="list-all">
+            <section ng-repeat="lists in firstLists"  style="display: {{lists._delete?'none':'block'}};">
+                <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
+                    <p mod>{{$index+1}}</p>
+                    <p mod>{{lists.indexName}}</p>
+                    <p mod>{{lists.indexNumber}}</p>
+                    <p mod>{{lists.year}}</p>
+                    <p mod>{{lists.indexType}}</p>
+                    <p mod>{{lists.dimension}}</p>
+                    <p mod>{{lists.yearTarget}}</p>
+                    <p mod>{{lists.complete}}</p>
+                    <p>
+                        <a href="javascript:void(0)" class="more threeMore" ng-click="moreList1(lists)" style="background:#042649">查看更多</a>
+                    </p>
+                </div>
+                <div class="can">
+                    <ul class="can-see" style="display: {{lists._moreList1?'block':'none'}};">
+                        <li>
+                            <p class="see-parent">
+                                <span>指标名称</span>
+                                <span>指标编号</span>
+                                <span>年份</span>
+                                <span>指标类型</span>
+                                <span>维度</span>
+                                <span>年度目标值</span>
+                                <span>完成值</span>
+                                <span></span>
+                            </p>
+                            <p class="see-children">
+                            <span mod>{{lists.indexName}}</span>
+                            <span mod>{{lists.indexNumber}}</span>
+                            <span mod>{{lists.year}}</span>
+                            <span mod>{{lists.indexType}}</span>
+                            <span mod>{{lists.dimension}}</span>
+                            <span mod>{{lists.yearTarget}}</span>
+                            <span mod>{{lists.complete}}</span>
+                            <span>
+                                <a href="javascript:void(0)" class="more threeMore" ng-click="moreList2(lists)">查看更多</a>
+                            </span>
+                            </p>
+                            <div class="can">
+                                <ul class="can-see" style="display: {{lists._moreList2?'block':'none'}};">
+                                    <li>
+                                        <p class="see-parent">
+                                            <span>指标名称</span>
+                                            <span>指标编号</span>
+                                            <span>年份</span>
+                                            <span>指标类型</span>
+                                            <span>维度</span>
+                                            <span>年度目标值</span>
+                                            <span>完成值</span>
+                                        </p>
+                                        <p class="see-children">
+                                            <span mod>{{lists.indexName}}</span>
+                                            <span mod>{{lists.indexNumber}}</span>
+                                            <span mod>{{lists.year}}</span>
+                                            <span mod>{{lists.indexType}}</span>
+                                            <span mod>{{lists.dimension}}</span>
+                                            <span mod>{{lists.yearTarget}}</span>
+                                            <span mod>{{lists.complete}}</span>
+                                            <span>
+                                <a href="javascript:void(0)" class="more threeMore" ng-click="moreList3(lists)">查看更多</a>
+                            </span>
+                                        </p>
+                                        <div class="can">
+                                            <ul class="can-see" style="display: {{lists._moreList3?'block':'none'}};">
+                                                <li>
+                                                    <p class="see-parent">
+                                                        <span>指标名称</span>
+                                                        <span>指标编号</span>
+                                                        <span>年份</span>
+                                                        <span>指标类型</span>
+                                                        <span>维度</span>
+                                                        <span>年度目标值</span>
+                                                        <span>完成值</span>
+                                                    </p>
+                                                    <p class="see-children">
+                                                        <span mod>{{lists.indexName}}</span>
+                                                        <span mod>{{lists.indexNumber}}</span>
+                                                        <span mod>{{lists.year}}</span>
+                                                        <span mod>{{lists.indexType}}</span>
+                                                        <span mod>{{lists.dimension}}</span>
+                                                        <span mod>{{lists.yearTarget}}</span>
+                                                        <span mod>{{lists.complete}}</span>
+                                                    </p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                   </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </li>
+    </ul>
+    <div class="module">
+        <div class="see-module">
+            <p class="see-type">体现类型</p>
+            <p class="see-description"></p>
+            <button class="btn" modclose>关闭</button>
+        </div>
+    </div>
+</div>
+
+
+

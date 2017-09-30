@@ -9,6 +9,14 @@ app.controller('auditListCtrl',function($scope,auditSer,toastr,$stateParams,$loc
         $scope.delShow = false;
         $state.go('root.project.audit.list[12]',{id:null,name:null});
     };
+    //获取id
+    if($stateParams.id){
+        switch ($stateParams.name){
+            case 'delete':
+                $scope.delShow = true;
+                break;
+        }
+    }
     var count = 0;
     $scope.delFn = function(){//确认删除
         var data = {
@@ -50,11 +58,31 @@ app.controller('auditListCtrl',function($scope,auditSer,toastr,$stateParams,$loc
         });
         event._moreList = !event._moreList;
     };
-
+    $scope.saleNum = $stateParams.saleNum?$stateParams.saleNum:'';
+    $scope.signProjectCondition = $stateParams.signProjectCondition?$stateParams.signProjectCondition:'';
+    if($stateParams.saleNum || $stateParams.signProjectCondition){
+        $scope.$emit('isId', false);
+        $scope.isView = false;
+    }else{
+        $scope.$emit('isId', true);
+    }
+    $scope.search = function(){
+        $state.go('root.project.audit.list[12]',{saleNum:$scope.saleNum,signProjectCondition:$scope.signProjectCondition,page:1});
+    };
     function activatePage(page) {
         var listData = {
-            page:page||1
-        }
+            page:page||1,
+            saleNum:$scope.saleNum || '',
+            signProjectCondition:$scope.signProjectCondition|| ''
+        };
+        auditSer.countAudit(listData).then(function(response){
+            if(response.data.code==0){
+                $scope.abili.itemsCount = response.data.data;
+                $scope.num = $location.search().page*10>10?($location.search().page-1)*10:null;
+            }else{
+                toastr.error(response.data.msg, '温馨提示');
+            }
+        });
         auditSer.listAudit(listData).then(function(response){
             if(response.data.code==0){
                 $scope.auditLists = response.data;
@@ -74,53 +102,11 @@ app.controller('auditListCtrl',function($scope,auditSer,toastr,$stateParams,$loc
                 toastr.error( response.data.msg, '温馨提示');
             }
         });
-        $scope.collect = function(){
-            $scope.abili = {
-                itemsCount: 2,//总条数
-                take: 10,        //每页显示
-                activatePage: activatePage, //当前页
-            };
-            auditSer.countAudit2($scope.saleNum,$scope.signProjectCondition).then(function (response) {
-                if(response.data.code==0){
-                    $scope.abili.itemsCount = response.data.data;
-                }else{
-                    toastr.error(response.data.msg, '温馨提示');
-                }
-            })
-            var data = {
-                saleNum: $scope.saleNum,
-                signProjectCondition: $scope.signProjectCondition,
-                page: page
-            };
-            auditSer.searchAudit(data).then(function(response){
-                if(response.data.code == 0){
-                    $scope.auditLists = response.data
-                }else{
-                    toastr.error(response.data.msg, '温馨提示');
-                }
-            });
-        };
     }
     $scope.abili = {
         itemsCount: 2, //总条数
         take: 10, //每页显示
         activatePage: activatePage
     };
-    auditSer.countAudit().then(function(response){
-        if(response.data.code==0){
-            $scope.abili.itemsCount = response.data.data;
-            $scope.num = $location.search().page*10>10?($location.search().page-1)*10:null;
-        }else{
-            toastr.error(response.data.msg, '温馨提示');
-        }
-    });
-    //删除
-    $scope.$on('deletedId',function(event,delid){
-        angular.forEach($scope.auditLists.data,function(obj){
-            if(obj.id == delid){
-                obj._delete = true
-            }
-        })
-    });
     $scope.titles = ["销售合同号","立项情况"];
 });

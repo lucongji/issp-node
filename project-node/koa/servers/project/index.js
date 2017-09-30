@@ -9,7 +9,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['project']['rurl'] + '/projectsituation/v1/listProjectSituation?limit=10&page='+argvs.page,
+            uri : config()['project']['rurl'] + `/projectsituation/v1/listProjectSituation${urlEncode(argvs,true)}`,
             headers:{
                 userToken:argvs.token
             },
@@ -21,7 +21,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['project']['rurl'] + '/projectsituation/v1/count',
+            uri : config()['project']['rurl'] + `/projectsituation/v1/count${urlEncode(argvs,true)}`,
             headers:{
                 userToken:argvs.token
             },
@@ -84,7 +84,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['project']['rurl'] + '/projectcarry/v1/list?limit=10&page='+argvs.page,
+            uri : config()['project']['rurl'] + `/projectcarry/v1/list${urlEncode(argvs,true)}`,
             headers:{
                 userToken:argvs.token
             },
@@ -96,7 +96,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['project']['rurl'] + '/projectcarry/v1/count',
+            uri : config()['project']['rurl'] + `/projectcarry/v1/count${urlEncode(argvs,true)}`,
             headers:{
                 userToken:argvs.token
             },
@@ -307,7 +307,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['project']['rurl'] + '/projectcarryaudit/v1/listProjectCarryAudit?limit=10&page='+argvs.page,
+            uri : config()['project']['rurl'] + `/projectcarryaudit/v1/listProjectCarryAudit${urlEncode(argvs,true)}`,
             headers:{
                 userToken:argvs.token
             },
@@ -319,7 +319,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['project']['rurl'] + '/projectcarryaudit/v1/count',
+            uri : config()['project']['rurl'] + `/projectcarryaudit/v1/count${urlEncode(argvs,true)}`,
             headers:{
                 userToken:argvs.token
             },
@@ -391,78 +391,6 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['project']['rurl'] + '/projectsettlementfollow/v1/collectSettle',
-            headers:{
-                userToken:argvs.token
-            },
-        };
-        return request(options);
-    };
-    //搜索
-    this.projectSearch= function(argvs){
-        var options = {
-            method : 'GET',
-            timeout : 3000,
-            uri : config()['project']['rurl'] + '/projectsituation/v1/listProjectSituation'+urlEncode(argvs,true),
-            form : argvs,
-            headers:{
-                userToken:argvs.token
-            },
-        };
-        return request(options);
-    };
-    this.countProject2Info = function(argvs){
-        var options = {
-            method : 'GET',
-            timeout : 3000,
-            uri : config()['project']['rurl'] + '/projectsituation/v1/count'+urlEncode(argvs,true),
-            headers:{
-                userToken:argvs.token
-            },
-        };
-        return request(options);
-    };
-    this.implementationSearch= function(argvs){
-        var options = {
-            method : 'GET',
-            timeout : 3000,
-            uri : config()['project']['rurl'] + '/projectcarry/v1/list'+urlEncode(argvs,true),
-            form : argvs,
-            headers:{
-                userToken:argvs.token
-            },
-        };
-        return request(options);
-    };
-
-    this.countImple2Info = function(argvs){
-        var options = {
-            method : 'GET',
-            timeout : 3000,
-            uri : config()['project']['rurl'] + '/projectcarry/v1/count'+urlEncode(argvs,true),
-            headers:{
-                userToken:argvs.token
-            },
-        };
-        return request(options);
-    };
-    this.auditSearch= function(argvs){
-        var options = {
-            method : 'GET',
-            timeout : 3000,
-            uri : config()['project']['rurl'] + '/projectcarryaudit/v1/listProjectCarryAudit'+urlEncode(argvs,true),
-            form : argvs,
-            headers:{
-                userToken:argvs.token
-            },
-        };
-        return request(options);
-    };
-    this.countAudit2Info= function(argvs){
-        var options = {
-            method : 'GET',
-            timeout : 3000,
-            uri : config()['project']['rurl'] + '/projectcarryaudit/v1/count'+urlEncode(argvs,true),
-            form : argvs,
             headers:{
                 userToken:argvs.token
             },

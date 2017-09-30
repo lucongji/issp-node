@@ -1,5 +1,10 @@
 var app = angular.module('resourcesAdd', ['toastr']);
 app.controller('resourcesAddCtrl', function($scope, resourcesSer,$state,toastr){
+    resourcesSer.countTarget().then(function(response){
+        if(response.data.code == 0){
+            $scope.proData = response.data.data;
+        }
+    });
     $scope.basicAddFun = function(){
         var vm = $scope;
         resourcesSer.addContent(vm.add).then(function(response){

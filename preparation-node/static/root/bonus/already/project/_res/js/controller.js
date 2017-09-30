@@ -17,7 +17,9 @@ app.controller('alreadyProjectCtrl', function($scope, alreadySer,toastr){
             projectGroup:$scope.projectGroup
         };
         alreadySer.projectReady(data).then(function(response){
-            if(response.data.code == 0&&response.data.data){
+            if(data.length == 0){
+                $scope.summaryLists = {}
+            }else if(response.data.code == 0){
                 $scope.summaryLists = response.data.data
             }else{
                 toastr.error(response.data.msg, '温馨提示');

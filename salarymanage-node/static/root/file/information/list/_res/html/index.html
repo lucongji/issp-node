@@ -1,0 +1,277 @@
+<!--<div class="content-tab list">
+    <ul class="table com-table">
+        <li class="list-head">
+            <span></span>
+            <span>地区</span>
+            <span>体系</span>
+            <span mod>部门/项目组</span>
+            <span>岗位</span>
+            <span>基本工资</span>
+        </li>
+        <li class="list-all">
+            <section ng-repeat="lists in basicLists.data">
+                <div  class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
+                    <p mod>{{$index+1+num}}</p>
+                    <p mod>{{::lists.area}}</p>
+                    <p mod>{{::lists.system}}</p>
+                    <p mod>{{::lists.department}}</p>
+                    <p mod>{{::lists.position}}</p>
+                    <p mod>{{::lists.basePay}}</p>
+                </div>
+            </section>
+        </li>
+     </ul>
+    <div class="module">
+        <div class="see-module">
+            <p class="see-type">体现类型</p>
+            <p class="see-description"></p>
+            <button class="btn" modclose>关闭</button>
+        </div>
+    </div>
+    <footer class="footer">
+        <pagination count="abili.itemsCount" take="abili.take" activate="abili.activatePage"></pagination>
+    </footer>
+</div>
+<div class="delete mod" ng-show="delShow">
+    <div class="del-head">
+        <h5>温馨提示</h5>
+    </div>
+    <div class="del-con">
+        <p>确定要删除这条数据？</p>
+        <div class="btn">
+            <button ng-click="delFn()">确定</button>
+            <button ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</div>
+<div id="modalbg" ng-show="delShow"></div>-->
+<div class="list_new">
+    <ul class="tableList">
+        <li class="table">
+            <ul class="clear left">
+                <li class="ili">序号</li>
+                <li class="ili">计薪周期开始时间</li>
+                <li class="ili">计薪周期结束时间</li>
+                <li class="ili">地区</li>
+                <li class="ili">员工编号</li>
+                <li class="ili">姓名</li>
+                <li class="ili">体系</li>
+                <li class="ili">部门/项目组</li>
+                <li class="ili">岗位</li>
+                <li class="ili">岗位层级</li>
+                <li class="ili">管理等级</li>
+                <li class="ili">技能项</li>
+                <li class="ili">技能专业</li>
+                <li class="ili">技能级别</li>
+                <li class="ili">入职时间</li>
+                <li class="ili">转正时间</li>
+                <li class="ili">在职时间(月)</li>
+                <!--工资构成-->
+                <li class="ili2 ili5">
+                    工资构成
+                    <ul class="ili3 ili5">
+                        <li>
+                            <span>基本工资</span>
+                            <span>岗位工资</span>
+                            <span>技能工资</span>
+                            <span>管理工资</span>
+                            <span>技能职衔补助</span>
+                            <span>管理等级职衔补助</span>
+                            <span>工龄职衔补助</span>
+                            <span>职衔补助总额</span>
+                            <span>项目津贴</span>
+                        </li>
+                    </ul>
+                </li>
+                <li class="ili">定薪</li>
+                <li class="ili">工资</li>
+                <li class="ili2">
+                    公司补助
+                    <ul class="ili3">
+                        <li>
+                            <span>电脑补助</span>
+                            <span>住宿补助</span>
+                            <span>工龄补助</span>
+                            <span>高温补贴</span>
+                        </li>
+                    </ul>
+                </li>
+                <li class="ili">工资总额</li>
+                <li class="ili2 ili4">
+                    综合扣款情况
+                    <ul class="ili3 ili4">
+                        <li>
+                            <span>扣社保</span>
+                            <span>社保补助</span>
+                            <span>水电费</span>
+                            <span>个税</span>
+                            <span>奖励处罚得分汇总</span>
+                            <span>奖励处罚费用汇总</span>
+                        </li>
+                    </ul>
+                </li>
+                <!--正常工作日-->
+                <li class="ili6">
+                    正常工作日
+                    <ul class="ili6-1">
+                        <li>
+                            <span>出勤天数</span>
+                            <span>请假天数</span>
+                            <span>旷工天数</span>
+                            <span>未完成任务工时</span>
+                            <span>加班天数</span>
+                        </li>
+                    </ul>
+                </li>
+                <!--法定节假日-->
+                <li class="ili7">
+                    法定节假日
+                    <ul class="ili7-1">
+                        <li>
+                            <span>实际休息天数</span>
+                            <span>加班天数</span>
+                        </li>
+                    </ul>
+                </li>
+                <!--正常休息天数-->
+                <li class="ili7">
+                    正常休息天数
+                    <ul class="ili7-1">
+                        <li>
+                            <span>实际休息天数</span>
+                            <span>加班天数</span>
+                        </li>
+                    </ul>
+                </li>
+                <li class="ili">剩余加班天数</li>
+                <li class="ili">加班抵事假和其他假的天数</li>
+                <li class="ili">抵扣事假和其他假后剩余加班天数</li>
+                <li class="ili">月工作日</li>
+                <li class="ili">可享受带薪天数</li>
+                <li class="ili">备注</li>
+            </ul>
+        </li>
+        <li ng-repeat="list in basicLists.data" class="table-b {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
+            <ul class="clear left">
+                <li class="ilil">{{$index+1+num}}</li>
+                <li class="ilil">{{list.payStartTime}}</li>
+                <li class="ilil">{{list.payEndTime}}</li>
+                <li class="ilil">{{list.area}}</li>
+                <li class="ilil">{{list.employeeId}}</li>
+                <li class="ilil">{{list.employeeName}}</li>
+                <li class="ilil">{{list.system}}</li>
+                <li class="ilil">{{list.section}}</li>
+                <li class="ilil">{{list.station}}</li>
+                <li class="ilil">{{list.stationLevel}}</li>
+                <li class="ilil">{{list.manageLevel}}</li>
+                <li class="ilil">{{list.skill}}</li>
+                <li class="ilil">{{list.proSkills}}</li>
+                <li class="ilil">{{list.skillLevel}}</li>
+                <li class="ilil">{{list.hiredate}}</li>
+                <li class="ilil">{{list.positiveTime}}</li>
+                <li class="ilil">{{list.workingTime}}</li>
+                <!--工资构成-->
+                <li class="ilil2-3 ilil">
+                    <ul class="clear">
+                        <li class="pist3">
+                            <span>{{list.basicSalary}}</span>
+                            <span>{{list.postSalary}}</span>
+                            <span>{{list.skillPay}}</span>
+                            <span>{{list.managePay}}</span>
+                            <span>{{list.skillSubsidies}}</span>
+                            <span>{{list.manageSubsidies}}</span>
+                            <span>{{list.seniorityLevSubsidies}}</span>
+                            <span>{{list.allSubsidies}}</span>
+                            <span>{{list.projectBenefits}}</span>
+                        </li>
+                    </ul>
+                </li>
+                <li class="ilil">{{list.wage}}</li>
+                <li class="ilil">{{list.salary}}</li>
+                <!--公司补助内容-->
+                <li class="ilil2-1 ilil">
+                    <ul class="clear">
+                        <li class="pist">
+                            <span>{{list.computerSubsidies}}</span>
+                            <span>{{list.accommodationSubsidies}}</span>
+                            <span>{{list.senioritySubsidies}}</span>
+                            <span>{{list.hyperthermiaSubsidies}}</span>
+                        </li>
+                    </ul>
+                </li>
+                <li class="ilil">{{list.allSalary}}</li>
+                <li class="ilil2-2 ilil">
+                    <ul class="clear">
+                        <li class="pist2">
+                            <span>{{list.jinpoCost}}</span>
+                            <span>{{list.jinpoSubsidies}}</span>
+                            <span>{{list.utilities}}</span>
+                            <span>{{list.personTax|cover9}}</span>
+                            <span>{{list.allRewardScore}}</span>
+                            <span>{{list.allRewardCost}}</span>
+                        </li>
+                    </ul>
+                </li>
+                <!--正常工作日-->
+                <li class="ilil2-4 ilil">
+                    <ul class="clear">
+                        <li class="pist">
+                            <span>{{list.attendanceDay}}</span>
+                            <span>{{list.vacateDay}}</span>
+                            <span>{{list.absenteeismDay}}</span>
+                            <span style="width: 120px;">{{list.unfinishedTime}}</span>
+                            <span>{{list.normalOvertimeDay}}</span>
+                        </li>
+                    </ul>
+                </li>
+                <!--法定节假日-->
+                <li class="ilil2-5 ilil">
+                    <ul class="clear">
+                        <li class="pist6">
+                            <span>{{list.legalRestDay}}</span>
+                            <span>{{list.legalOvertimeDay}}</span>
+                        </li>
+                    </ul>
+                </li>
+                <!--正常休息天数-->
+                <li class="ilil2-5 ilil">
+                    <ul class="clear">
+                        <li class="pist6">
+                            <span>{{list.normalRestDay}}</span>
+                            <span>{{list.restOvertimeDay}}</span>
+                        </li>
+                    </ul>
+                </li>
+                <li class="ilil">{{list.surplusOvertimeDay}}</li>
+                <li class="ilil">{{list.offsetOvertime}}</li>
+                <li class="ilil">{{list.effectiveOvertime}}</li>
+                <li class="ilil">{{list.weekDays}}</li>
+                <li class="ilil">{{list.paidDay}}</li>
+                <li class="ilil">{{list.remark}}</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<div class="module">
+    <div class="see-module">
+        <p class="see-type">体现类型</p>
+        <p class="see-description"></p>
+        <button class="btn" modclose>关闭</button>
+    </div>
+</div>
+<footer class="footer">
+    <pagination count="abili.itemsCount" take="abili.take" activate="abili.activatePage"></pagination>
+</footer>
+<div class="delete mod" ng-show="delShow">
+    <div class="del-head">
+        <h5>温馨提示</h5>
+    </div>
+    <div class="del-con">
+        <p>确定要删除这条数据？</p>
+        <div class="btn">
+            <button ng-click="delFn()">确定</button>
+            <button ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</div>
+<div id="modalbg" ng-show="delShow"></div>

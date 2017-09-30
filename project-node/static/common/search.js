@@ -1,5 +1,5 @@
 function searchToggle() {
-    $(".search-big").toggle();
+    $(".search-big").toggle()
 }
 function searchShow() {
     $(".search-btns").show();

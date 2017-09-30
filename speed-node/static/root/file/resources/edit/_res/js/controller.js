@@ -1,5 +1,10 @@
 var app = angular.module('resourcesEdit', ['toastr']);
 app.controller('resourcesEditCtrl', function($scope, resourcesSer,$state,toastr,$stateParams){
+    resourcesSer.countTarget().then(function(response){
+        if(response.data.code == 0){
+            $scope.proData = response.data.data;
+        }
+    });
     var basicId = {id : $stateParams.id};
     //获取值
     resourcesSer.getOneById(basicId).then(function(response){

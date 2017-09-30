@@ -1549,5 +1549,40 @@ module.exports = function(){
         };
         return request(options);
     };
+    //新加的
+    this.getarea = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/baseinfo/v1/find/area`,
+            headers:{
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    this.getname = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/baseinfo/v1/find/marketProject`,
+            headers:{
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    this.getpayment = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/baseinfo/v1/find/money?projectName=`+argvs.projectName,
+            form : argvs,
+            headers : {
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
     return this;
 }

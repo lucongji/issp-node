@@ -5,7 +5,10 @@ app.controller('alreadyYearCtrl', function($scope,$state,toastr,alreadySer){
             years:$scope.years,
         };
         alreadySer.yearReady(data).then(function(response){
-            if(response.data.code == 0&&response.data.data){
+            if(data.length == 0){
+                $scope.summaryLists = {}
+            }
+            if(response.data.code == 0){
                 $scope.summaryLists = response.data.data
             }else{
                 toastr.error(response.data.msg, '温馨提示');

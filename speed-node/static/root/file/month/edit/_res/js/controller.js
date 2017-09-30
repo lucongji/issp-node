@@ -1,6 +1,11 @@
 var app = angular.module('monthEdit', ['toastr']);
 app.controller('monthEditCtrl', function($scope,monthSer,$state,toastr,$stateParams){
     var basicId = {id : $stateParams.id};
+    monthSer.countTarget().then(function(response){
+        if(response.data.code == 0){
+            $scope.proData = response.data.data;
+        }
+    });
     //获取值
     monthSer.getOneById(basicId).then(function(response){
         if(response.data.code==0){

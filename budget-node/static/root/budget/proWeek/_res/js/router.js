@@ -27,12 +27,12 @@ app.config(function($provide, $stateProvider){
                 controller:'proWeekEditCtrl'
             }
         }
-    }).state("root.budget.proWeek.collect[12]",{
-        url:"/collect[12]",
+    }).state("root.budget.proWeek.collect1[12]",{
+        url:"/collect1[12]",
         views:{
             "content@root.budget.proWeek":{
-                templateUrl : "root/budget/proWeek/collect/_res/html/index.html",
-                controller:'collectSummaryCtrl'
+                templateUrl : "root/budget/proWeek/collect1/_res/html/index.html",
+                controller:'collect1SumCtrl'
             }
         }
     }).state("root.budget.proWeek.list[12]",{

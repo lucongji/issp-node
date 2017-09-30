@@ -1,0 +1,47 @@
+<div class="collect">
+    <div class="sum-select">
+        <label><i><img src="/images/mandatory.png"></i><em>姓名</em></label>
+        <div class="select">
+            <p class="select-text" >
+                <span ng-repeat="word in words">{{word}}, </span>
+            </p>
+            <div class="mymultiselect" events="getSummary" ng-dropdown-multiselect="" options="workOptions" selected-model="words" extra-settings="stringSettings"></div>
+        </div>
+    </div>
+    <ul class="sum-list">
+        <li class="sum-thead">
+            <span>姓名</span>
+            <span>资金进入方式</span>
+            <span>资金进入时间</span>
+            <span>进入金额</span>
+            <span>投资项目</span>
+            <span>投资总额</span>
+            <span>投资占比(%)</span>
+            <span>资金退出时间</span>
+            <span>退出金额</span>
+            <span>退出利息</span>
+            <span>被转让人</span>
+            <span>转让金额</span>
+            <span>收益分配时间</span>
+            <span>分配利益</span>
+            <span>分配额</span>
+        </li>
+        <li class="sum-tbody" ng-repeat="summaryList in summaryLists">
+            <span>{{summaryList.investor}}</span>
+            <span>{{summaryList.accessToFund}}</span>
+            <span>{{summaryList.fundEntryTime}}</span>
+            <span>{{summaryList.thisInvestMoney}}</span>
+            <span>{{summaryList.investProject}}</span>
+            <span>{{summaryList.investTotal}}</span>
+            <span>{{summaryList.investProportion}}</span>
+            <span>{{summaryList.exitTime}}</span>
+            <span>{{summaryList.exitMoney}}</span>
+            <span>{{summaryList.exitInterest}}</span>
+            <span>{{summaryList.transferee}}</span>
+            <span>{{summaryList.needInvestAmount}}</span>
+            <span>{{summaryList.incomeDistributionTime}}</span>
+            <span>{{summaryList.proportionInvestment}}</span>
+            <span>{{summaryList.totalQuota}}</span>
+        </li>
+    </ul>
+</div>

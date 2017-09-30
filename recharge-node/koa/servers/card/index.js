@@ -265,5 +265,41 @@ module.exports = function(){
         };
         return request(options);
     };
+    //新加的
+    this.waitAdd = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['rurl'] + '/waitpay/v1/save',
+            form:argvs,
+            headers : {
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    this.waitDelete = function(argvs){
+        var options = {
+            method : 'DELETE',
+            timeout : 3000,
+            uri : config()['rurl'] + '/waitpay/v1/delete/'+argvs.id,
+            headers : {
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    this.waitEdit = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['rurl'] + '/waitpay/v1/edit',
+            form : argvs,
+            headers : {
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
     return this;
 };

@@ -28,7 +28,7 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.project.implementation.list[12]",{
-        url:"/list[12]?id=&name=&page=",
+        url:"/list[12]?id=&name=&page=&signCondition=&signProject=&area=&businessType=&businessSubject=",
         views:{
             "content@root.project.implementation":{
                 templateUrl : "root/project/implementation/list/_res/html/index.html",

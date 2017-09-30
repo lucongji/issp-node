@@ -18,7 +18,7 @@ app.controller('warningCtrl',function ($scope,$state) {
         }
     });
     if (window.location.href.split('id=')[1]) {//如果是刷新进来的页面，没有经过list
-        $scope.idListd = window.location.href.split('id=')[1];
+        $scope.idList = window.location.href.split('id=')[1];
         if($location.search().name){$scope.menuClass = $location.search().name + 'Menu'}
     }
     $scope.menuCheck = function (name) {
@@ -33,19 +33,19 @@ app.controller('warningCtrl',function ($scope,$state) {
         });
         $scope.menuAdd = false;
     };
-    $scope.$on("passId",function(event,id){
-        $scope.getId = id;
+    $scope.$on("listId", function(event, id){
+        $scope.idList = id;
     });
     //编辑
     $scope.edit = function(){
-        if($scope.getId){
-            $state.go('root.budget.warning.edit[12]',{id:$scope.getId});
+        if($scope.idList){
+            $state.go('root.budget.warning.edit[12]',{id:$scope.idList});
             $scope.menuClass='editMenu';
         }
     };
     $scope.list = function(){
         $scope.menuClass = 'listMenu';
-        $scope.getId = ''
+        $scope.idList = ''
     };
 });
 

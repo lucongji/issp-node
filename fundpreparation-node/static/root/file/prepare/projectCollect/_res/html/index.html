@@ -1,0 +1,14 @@
+<div class="collect ">
+    <ul class="sum-list">
+        <li class="sum-thead"  ng-repeat="summaryList in summaryLists| unique:'id'">
+            <span>一级科目</span>
+            <span>二级科目</span>
+            <span ng-repeat="names in summaryList.list track by $index">{{names.name}}</span>
+        </li>
+        <li class="sum-tbody" ng-repeat="summaryList in summaryLists">
+            <span>{{summaryList.firstSubject}}</span>
+            <span>{{summaryList.secondSubject}}</span>
+            <span ng-repeat="funds in summaryList.list track by $index">{{funds.fund}}</span>
+       </li>
+    </ul>
+</div>

@@ -1,0 +1,37 @@
+<div class="collect ">
+    <div class="sum-select">
+        <label><i><img src="/images/mandatory.png"></i><em>项目</em></label>
+        <div class="select">
+            <p class="select-text" >
+                <span ng-repeat="project in projects">{{project}}, </span>
+            </p>
+            <div class="mymultiselect" events="getSummary" ng-dropdown-multiselect="" options="workOptions" selected-model="projects" extra-settings="stringSettings"></div>
+        </div>
+        </div>
+    <ul class="sum-list">
+        <li class="sum-thead">
+            <span>地区</span>
+            <span>项目</span>
+            <span>年份</span>
+            <span>月份</span>
+            <span>目标任务总量</span>
+            <span>实际完工总量</span>
+            <span>工作量差异总量</span>
+            <span>目标收入总量</span>
+            <span>计划收入总量</span>
+            <span>收入差异总量</span>
+        </li>
+        <li class="sum-tbody" ng-repeat="summaryList in summaryLists">
+            <span>{{summaryList.arrival}}</span>
+            <span>{{summaryList.project}}</span>
+            <span>{{summaryList.year}}</span>
+            <span>{{summaryList.month}}</span>
+            <span>{{summaryList.targetWorkSum}}</span>
+            <span>{{summaryList.actualWorkSum}}</span>
+            <span>{{summaryList.workDifferencesSum}}</span>
+            <span>{{summaryList.targetIncomeSum}}</span>
+            <span>{{summaryList.planIncomeSum}}</span>
+            <span>{{summaryList.incomeDifferencesSum}}</span>
+        </li>
+    </ul>
+</div>

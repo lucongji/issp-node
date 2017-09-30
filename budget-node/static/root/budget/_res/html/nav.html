@@ -2,22 +2,22 @@
     <h3 class="header-menu big" ng-click="showMenu(list,true)" ng-hide="isHide" ng-init="menuCheck()">
         <i class="nav-arrow" ng-class="{true: '', false: 'change-angle'}[list.showIs]"></i>{{list.item}}</h3>
     <ul class="menu" ng-if="list.menuList.length" ng-show="list.showIs" ng-repeat="menuInfo in list.menuList">
-        <li ng-click="navClass('proWeek')" ng-show="projectweek" ng-class="{'active':navCla=='proWeek'}"  ui-sref="_root.budget.proWeek.list[12]" >
+        <li ng-click="navClass(menuInfo.msg)" ng-show="projectweek" ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.budget.proWeek.list[12]" >
             <a href="javascript:void(0)">{{menuInfo.name}}</a>
         </li>
-        <li ng-click="navClass('month')" ng-show="projectmonth" ng-class="{'active':navCla=='month'}"  ui-sref="_root.budget.month.list" >
+        <li ng-click="navClass(menuInfo.msg)" ng-show="projectmonth" ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.budget.month.list[12]" >
             <a href="javascript:void(0)">{{menuInfo.name2}}</a>
         </li>
-        <li ng-click="navClass('areaWeek')" ng-show="arrivalweek" ng-class="{'active':navCla=='areaWeek'}"  ui-sref="_root.budget.areaWeek.list[12]" >
+        <li ng-click="navClass(menuInfo.msg)" ng-show="arrivalweek" ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.budget.areaWeek.list[12]" >
             <a href="javascript:void(0)">{{menuInfo.name3}}</a>
         </li>
-        <li ng-click="navClass('areaMonth')" ng-show="arrivalmonth" ng-class="{'active':navCla=='areaMonth'}"  ui-sref="_root.budget.areaMonth.list" >
+        <li ng-click="navClass(menuInfo.msg)" ng-show="arrivalmonth" ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.budget.areaMonth.list[12]" >
             <a href="javascript:void(0)">{{menuInfo.name4}}</a>
         </li>
-        <li ng-click="navClass('warning')" ng-show="warn" ng-class="{'active':navCla=='warning'}"  ui-sref="_root.budget.warning.list" >
+        <li ng-click="navClass(menuInfo.msg)" ng-show="warn" ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.budget.warning.list" >
             <a href="javascript:void(0)">{{menuInfo.name5}}</a>
         </li>
-        <li ng-click="navClass('setting')" ng-show="cuspermission" ng-class="{'active':navCla=='setting'}"  ui-sref="_root.budget.setting.list[12]" >
+        <li ng-click="navClass(menuInfo.msg)" ng-show="cuspermission" ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.budget.setting.list[12]" >
             <a href="javascript:void(0)">{{menuInfo.name6}}</a>
         </li>
      </ul>

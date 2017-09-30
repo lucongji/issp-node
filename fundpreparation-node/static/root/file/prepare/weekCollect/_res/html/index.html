@@ -1,0 +1,22 @@
+<div class="collect ">
+    <ul class="sum-list">
+        <li class="sum-thead">
+            <span>一级科目</span>
+            <span>二级科目</span>
+            <span>本月准备金</span>
+            <span>本月10号</span>
+            <span>本月15号</span>
+            <span>本月20号</span>
+            <span>本月30号</span>
+        </li>
+        <li class="sum-tbody {{summaryList._selectList?'selectList':''}}" ng-click="selectList(summaryList)" ng-repeat="summaryList in summaryLists">
+            <span>{{summaryList.firstSubject}}</span>
+            <span>{{summaryList.secondSubject}}</span>
+            <span>{{summaryList.fund}}</span>
+            <span>{{summaryList.firstWeek}}</span>
+            <span>{{summaryList.secondWeek}}</span>
+            <span>{{summaryList.thirdWeek}}</span>
+            <span>{{summaryList.fourWeek}}</span>
+        </li>
+    </ul>
+</div>

@@ -57,7 +57,7 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }) .get('/resources/count', function*(){
+    }).get('/resources/count', function*(){
         var $self = this;
         var token={token:$self.cookies.get('token')};
         yield (server().countBaseInfo(token)
@@ -484,6 +484,18 @@ module.exports = function(){
         var editSet = $self.request.body;
         editSet.token = $self.cookies.get("token");
         yield (server().editSetting(editSet)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/countTarget/target', function*(){
+        var $self = this;
+        var token={token:$self.cookies.get('token')};
+        yield (server().targetBaseInfo(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;

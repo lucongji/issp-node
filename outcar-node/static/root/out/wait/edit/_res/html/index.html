@@ -1,0 +1,79 @@
+<div class="content-input add" verify-scope="tipStyle: 1">
+    <div class="input-list">
+        <section>
+            <ul>
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>司机名称</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editInfo.driverName">
+                </li>
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>出车日期</em></label>
+                    <input type="text" ng-model="editInfo.carDate" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image carDate" >
+                </li>
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>单号</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editInfo.number">
+                </li>
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>地区</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editInfo.arrival">
+                </li>
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>用车人</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editInfo.carUser">
+                </li>
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>科目</em></label>
+                    <select class="sele" ng-verify="{}"  ng-model="editInfo.acctype">
+                        <option value="" disabled>请选择</option>
+                        <option value="MAIN">主营业务成本</option>
+                        <option value="MARKET">市场费</option>
+                        <option value="TRAINING">培训费</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>租车单价</em></label>
+                    <input type="number" ng-verify="{}" ng-model="editInfo.carPrice">
+                </li>
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>加班时长</em></label>
+                    <input type="number" ng-verify="{}" ng-model="editInfo.overtimeHour">
+                </li>
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>加班单价</em></label>
+                    <input type="number" ng-verify="{}" ng-model="editInfo.overtimePrice">
+                </li>
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>加班费</em></label>
+                    <input type="number" ng-verify="{}" ng-model="editInfo.overtimeFee">
+                </li>
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>餐费补贴</em></label>
+                    <input type="number" ng-verify="{}" ng-model="editInfo.allowance">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>停车/过路费</em></label>
+                    <input type="number" ng-verify="{}" ng-model="editInfo.parkFee">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>金额</em></label>
+                    <input type="number" ng-verify="{}" ng-model="editInfo.amount">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>填单人</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editInfo.single">
+                </li>
+            </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="waitAddFun()">提交</button>
+    </p>
+</div>
+
+<script type="text/javascript">
+    !function(){
+        laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    }();
+</script>

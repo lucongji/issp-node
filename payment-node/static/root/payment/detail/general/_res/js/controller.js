@@ -1,5 +1,5 @@
 var app = angular.module('detailGeneral', ['toastr','angularjs-dropdown-multiselect']);
-app.controller('detailGeneralCtrl', function($scope, detailSer,$state){
+app.controller('detailGeneralCtrl', function($scope, detailSer,$state,toastr){
     $scope.$on("socialListId", function(event, suId){
         $scope.idSocialList = suId;
     });
@@ -31,11 +31,10 @@ app.controller('detailGeneralCtrl', function($scope, detailSer,$state){
             }
         })
     }};
-    $scope.generalMore = function(response){
+    $scope.generalMore = function(){
         if($scope.idSocialList){
             $state.go('root.payment.detail.general.generalMore[12]',{suId:$scope.idSocialList});
-        }else{
-            toastr.error(response.data.msg,'温馨提示')
+            $scope.menuClass = 'general?suId=Menu'
         }
     };
 });

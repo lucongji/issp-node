@@ -1,0 +1,64 @@
+<div class="content-input add" verify-scope="tipStyle: 1">
+    <div class="input-list">
+        <section>
+            <ul>
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>投资人</em></label>
+                    <select class="sele" ng-verify="{}" ng-model="add.investor">
+                        <option value="" disabled>请选择</option>
+                        <option ng-repeat="sj in companys">{{sj}}</option>
+                    </select>
+                </li>
+                <li class="required">
+                <label ><i><img src="/images/mandatory.png"></i><em>项目名称</em></label>
+                <select class="sele" ng-verify="{}" ng-model="add.innerProject">
+                    <option value="" disabled>请选择</option>
+                    <option ng-repeat="sjs in projects">{{sjs}}</option>
+                </select>
+                </li>
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>一次分配比例(%)</em></label>
+                    <input type="number" ng-verify="{}" ng-model="add.primaryProportion">
+                </li>
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>入资到账时间比例(%)</em></label>
+                    <input type="number" ng-verify="{}" ng-model="add.proportionGroup">
+                </li>
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>入资信用度比例(%)</em></label>
+                    <input type="number" ng-verify="{}" ng-model="add.creditScale">
+                </li>
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>其他</em></label>
+                    <input type="text" ng-verify="{}" ng-model="add.other">
+                </li>
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>投资分配比例(%)</em></label>
+                    <input type="number" ng-verify="{}" ng-model="add.proportionInvestment">
+                </li>
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>风险控制保证金比例(%)</em></label>
+                    <input type="number" ng-verify="{}" ng-model="add.riskControlMarginRatio">
+                </li>
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>总分配比例(%)</em></label>
+                    <input type="number" ng-verify="{}" ng-model="add.totalProportion">
+                </li>
+                <li>
+                    <label><em>备注</em></label>
+                    <input type="text" ng-model="add.remark">
+                </li>
+           </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="basicAddFun()">提交</button>
+    </p>
+</div>
+
+<script type="text/javascript">
+    !function(){
+        laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    }();
+</script>

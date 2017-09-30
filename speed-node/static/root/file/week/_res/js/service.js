@@ -8,7 +8,8 @@ app.factory('weekSer',function ($http) {
         getOneById:getOneById,
         addContent:addContent,
         editContent:editContent,
-        editStand:editStand
+        editStand:editStand,
+        countTarget:countTarget
     };
     function menuPermission(data) {
         return $http.get('/week/guidePermission/'+data);
@@ -35,5 +36,8 @@ app.factory('weekSer',function ($http) {
     }
     function editStand(data){
         return $http.post('/standweek/edit',data)
+    }
+    function countTarget(){
+        return $http.get('/countTarget/target')
     }
 });

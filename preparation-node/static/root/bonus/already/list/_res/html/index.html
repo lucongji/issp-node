@@ -1,13 +1,12 @@
 <div class="content-tab list">
-
     <div class="search-big" style="display :{{ isView?'none':'block'}}">
         <select class="salc" ng-model="checkedName" ng-init="checkedName='项目组'">
             <option ng-repeat="item in titles">{{item}}</option>
         </select>
         <input type="text" ng-model="projectGroup" ng-show="checkedName=='项目组'">
-        <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image startDifference" ng-model="startDifference" ng-show="checkedName=='开始时间'">
-        <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image endDifference" ng-model="endDifference" ng-show="checkedName=='结束时间'">
-        <a href="javascript:void(0)" ng-click="collect()"><img src="/images/search2.png"></a>
+        <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="startDifference"  ng-show="checkedName=='开始时间'">
+        <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="endDifference"  ng-show="checkedName=='结束时间'">
+        <a href="javascript:void(0)" ng-click="search()"><img src="/images/search2.png"></a>
     </div>
     <ul class="table com-table">
         <li class="list-head">

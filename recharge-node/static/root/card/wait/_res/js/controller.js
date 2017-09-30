@@ -47,6 +47,24 @@ app.controller('waitCtrl',function ($scope,$state) {
         $scope.menuClass = 'listMenu';
         $scope.idList = ''
     };
+    $scope.add = function(){
+        $scope.menuClass = 'addMenu';
+        $scope.idList = ''
+    };
+    //关于删除
+    $scope.delete = function(){
+        if($scope.idList){
+            $state.go('root.card.wait.list[12]',{id:$scope.idList,name:'delete',page:$scope.page});
+            $scope.menuClass = 'deleteMenu'
+        }
+    };
+    //编辑
+    $scope.edit = function(){
+        if($scope.idList){
+            $state.go('root.card.wait.edit[12]',{id:$scope.idList,page:$scope.page});
+            $scope.menuClass = 'editMenu'
+        }
+    };
     $scope.pay = function(){
         if($scope.idList){
             $state.go('root.card.wait.pay[12]',{id:$scope.idList,page:$scope.page});

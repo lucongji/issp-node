@@ -271,7 +271,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/waitingpay/v1/listAlready?limit=10&page='+argvs.page,
+            uri : config()['rurl'] + `/waitingpay/v1/listAlready${urlEncode(argvs,true)}`,
             headers : {
                 userToken : argvs.token
             }
@@ -282,7 +282,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/waitingpay/v1/countAlready',
+            uri : config()['rurl'] + `/waitingpay/v1/countAlready${urlEncode(argvs,true)}`,
             headers : {
                 userToken : argvs.token
             }

@@ -1,7 +1,7 @@
 var app = angular.module('collectTheMonth', ['toastr']);
 app.controller('collectTheMonthCtrl', function($scope,$state,$stateParams,toastr,areaMonthSer){
-    var getId = {id:$stateParams.id};
-    areaMonthSer.listTheMonthArea(getId).then(function(response){
+    var collectId = {id:$stateParams.id};
+    areaMonthSer.listTheMonthArea(collectId).then(function(response){
         if(response.data.code==0){
             $scope.showInfo=response.data.data;
         }else{

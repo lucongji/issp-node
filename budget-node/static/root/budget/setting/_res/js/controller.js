@@ -16,8 +16,8 @@ app.controller('settingCtrl',function ($scope,$state) {
             $scope.menuClass = 'listMenu';
         }
     });
-    $scope.$on("passId",function(event,id){
-        $scope.getId = id;
+    $scope.$on("listId", function(event, id){
+        $scope.idList = id;
     });
     $scope.$on('pageId',function(event,flag){
         $scope.page = flag;
@@ -30,8 +30,8 @@ app.controller('settingCtrl',function ($scope,$state) {
         $scope.menuClass = 'listMenu'
     };
     $scope.edit = function(){
-        if($scope.getId){
-            $state.go('root.budget.setting.edit[12]',{id:$scope.getId,page:$scope.page});
+        if($scope.idList){
+            $state.go('root.budget.setting.edit[12]',{id:$scope.idList,page:$scope.page});
             $scope.menuClass = 'editMenu'
         }
 

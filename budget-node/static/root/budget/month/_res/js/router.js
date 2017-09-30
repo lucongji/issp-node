@@ -35,13 +35,21 @@ app.config(function($provide, $stateProvider){
                 controller:'collectSummaryCtrl'
             }
         }
-    }).state("root.budget.month.theMonth[12]",{
-            url:"/theMonth[12]?id=",
+    }).state("root.budget.month.theMonth2[12]",{
+            url:"/theMonth2[12]?id=",
             views:{
                 "content@root.budget.month":{
-                    templateUrl : "root/budget/month/theMonth/_res/html/index.html",
-                    controller:'collectTheMonthCtrl'
+                    templateUrl : "root/budget/month/theMonth2/_res/html/index.html",
+                    controller:'collectAllMonCtrl'
                 }
             }
-        })
+        }).state("root.budget.month.list[12]",{
+        url:"/list[12]?id=&page=",
+        views:{
+            "content@root.budget.month":{
+                templateUrl : "root/budget/month/list/_res/html/index.html",
+                controller:'monthListCtrl'
+            }
+        }
+    })
 });

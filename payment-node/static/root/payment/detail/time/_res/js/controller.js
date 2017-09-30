@@ -81,7 +81,15 @@ app.controller('timeCtrl', function($scope, detailSer,$stateParams,$state,toastr
     };
     $scope.settlementEditFun = function(){
         var vm = $scope;
-          detailSer.editTime(vm.editInfo).then(function(response){
+        var data ={
+            auditTime:vm.auditTime,
+            id:vm.editInfo.id,
+            countTime:angular.element('.countTime').val(),
+            billTime:angular.element('.billTime').val(),
+            planTime:angular.element('.planTime').val(),
+            accountTime:angular.element('.accountTime').val(),
+        };
+          detailSer.editTime(data).then(function(response){
             if(response.data.code == 0){
                 $scope.listNames = response.data.data;
                 $state.go('root.payment.detail.list[12]');
@@ -91,7 +99,6 @@ app.controller('timeCtrl', function($scope, detailSer,$stateParams,$state,toastr
             }
         });
     };
-
 });
 app.directive('defLaydate', function() {
     return {

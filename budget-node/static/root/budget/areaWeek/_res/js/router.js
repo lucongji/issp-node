@@ -27,12 +27,12 @@ app.config(function($provide, $stateProvider){
                 controller:'areaWeekEditCtrl'
             }
         }
-    }).state("root.budget.areaWeek.collect[12]",{
-        url:"/collect[12]",
+    }).state("root.budget.areaWeek.collect3[12]",{
+        url:"/collect3[12]",
         views:{
             "content@root.budget.areaWeek":{
-                templateUrl : "root/budget/areaWeek/collect/_res/html/index.html",
-                controller:'collectSummaryCtrl'
+                templateUrl : "root/budget/areaWeek/collect3/_res/html/index.html",
+                controller:'collect3SummaryCtrl'
             }
         }
     }).state("root.budget.areaWeek.list[12]",{

@@ -11,12 +11,12 @@ app.config(function($provide, $stateProvider){
                 controller:"areaMonthMenuCtrl"
             }
         }
-    }).state("root.budget.areaMonth.collect[12]",{
-        url:"/collect[12]",
+    }).state("root.budget.areaMonth.collect2[12]",{
+        url:"/collect2[12]",
         views:{
             "content@root.budget.areaMonth":{
-                templateUrl : "root/budget/areaMonth/collect/_res/html/index.html",
-                controller:'collectSummaryCtrl'
+                templateUrl : "root/budget/areaMonth/collect2/_res/html/index.html",
+                controller:'collect2AreCtrl'
             }
         }
     }).state("root.budget.areaMonth.theMonth[12]",{
@@ -25,6 +25,14 @@ app.config(function($provide, $stateProvider){
             "content@root.budget.areaMonth":{
                 templateUrl : "root/budget/areaMonth/theMonth/_res/html/index.html",
                 controller:'collectTheMonthCtrl'
+            }
+        }
+    }).state("root.budget.areaMonth.list[12]",{
+        url:"/list[12]?id=&page=",
+        views:{
+            "content@root.budget.areaMonth":{
+                templateUrl : "root/budget/areaMonth/list/_res/html/index.html",
+                controller:'areaMonthListCtrl'
             }
         }
     })

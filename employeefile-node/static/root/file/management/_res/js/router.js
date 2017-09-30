@@ -35,5 +35,13 @@ app.config(function($provide, $stateProvider){
                 controller:'manageViewCtrl'
             }
         }
+    }).state("root.file.management.import[12]",{
+        url:"/import[12]",
+        views:{
+            "content@root.file.management":{
+                templateUrl : "root/file/management/import/_res/html/index.html",
+                controller:'managementImportCtrl'
+            }
+        }
     })
 });

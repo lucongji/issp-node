@@ -28,7 +28,7 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.project.situation.list[12]",{
-        url:"/list[12]?id=&name=&page=",
+        url:"/list[12]?id=&name=&page=&completeCondition=&enginPlace=",
         views:{
             "content@root.project.situation":{
                 templateUrl : "root/project/situation/list/_res/html/index.html",

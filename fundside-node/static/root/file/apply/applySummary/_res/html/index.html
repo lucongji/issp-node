@@ -1,0 +1,25 @@
+<div class="collect">
+    <div class="sum-select">
+        <label><i><img src="/images/mandatory.png"></i><em>申请人</em></label>
+        <div class="select">
+        <p class="select-text" >
+        <span ng-repeat="word in words">{{word}}, </span>
+       </p>
+        <div class="mymultiselect" events="getSummary" ng-dropdown-multiselect="" options="workOptions" selected-model="words" extra-settings="stringSettings"></div>
+       </div>
+    </div>
+    <ul class="sum-list">
+        <li class="sum-thead">
+            <span>申请人</span>
+            <span>资金进入方式</span>
+            <span>资金进入时间</span>
+            <span>金额</span>
+        </li>
+        <li class="sum-tbody" ng-repeat="summaryList in summaryLists">
+            <span>{{summaryList.investor}}</span>
+            <span>{{summaryList.accessToFund}}</span>
+            <span>{{summaryList.fundEntryTime}}</span>
+            <span>{{summaryList.money}}</span>
+        </li>
+    </ul>
+</div>

@@ -72,7 +72,7 @@ module.exports = function(){
         return request(options);
     };
     //项目汇总
-    this.proCollectByPro = function(argvs){
+    this.secondByPro = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
@@ -84,7 +84,7 @@ module.exports = function(){
         return request(options);
     };
     //汇总
-    this.proWeekSummary = function(argvs){
+    this.proAllcol = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
@@ -96,7 +96,7 @@ module.exports = function(){
         return request(options);
     };
     //查询所有项目
-    this.proWeekGetSummaryById = function(argvs){
+    this.firstSumById = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
@@ -166,7 +166,7 @@ module.exports = function(){
         };
         return request(options);
     };
-    this.theMonthList = function(argvs){
+    this.aprogramByb = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
@@ -246,7 +246,7 @@ module.exports = function(){
         };
         return request(options);
     };
-    this.areaCollectByWeek = function(argvs){
+    this.sums4ByWeek = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
@@ -257,7 +257,7 @@ module.exports = function(){
         };
         return request(options);
     };
-    this.areaWeekSummary = function(argvs){
+    this.four4are = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
@@ -269,7 +269,7 @@ module.exports = function(){
         return request(options);
     };
     //查询所有地区
-    this.areaWeekGetSummaryById = function(argvs){
+    this.colFour = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
@@ -302,7 +302,7 @@ module.exports = function(){
         };
         return request(options);
     };
-    this.areaCollectByMonth = function(argvs){
+    this.sum2ByMonth = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
@@ -313,7 +313,7 @@ module.exports = function(){
         };
         return request(options);
     };
-    this.areaMonthSummary = function(argvs){
+    this.fasSummary = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
@@ -324,7 +324,7 @@ module.exports = function(){
         };
         return request(options);
     };
-    this.areaMonthGetSummaryById = function(argvs){
+    this.sumCollByAll = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
@@ -335,7 +335,7 @@ module.exports = function(){
         };
         return request(options);
     };
-    this.theMonthAreaList = function(argvs){
+    this.aboutMonthAreaList = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,

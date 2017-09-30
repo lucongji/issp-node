@@ -57,10 +57,10 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).get('/listSummaryProject/id', function*(){
+    }).get('/firstColl/first', function*(){
         var $self = this;
         var token={token:$self.cookies.get('token')};
-        yield (server().proWeekGetSummaryById(token)
+        yield (server().firstSumById(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -95,11 +95,11 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).post('/collectProject/project', function*(){
+    }).post('/secondSummary/pro', function*(){
         var $self = this;
         var summaryData = $self.request.body;
         summaryData.token = $self.cookies.get('token');
-        yield (server().proCollectByPro(summaryData)
+        yield (server().secondByPro(summaryData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -108,10 +108,10 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).get('/collectProject2/project', function*(){
+    }).get('/newAllOk/content', function*(){
         var $self = this;
         var token={token:$self.cookies.get('token')};
-        yield (server().proWeekSummary(token)
+        yield (server().proAllcol(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -183,11 +183,11 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).get('/listTheMonthProject/id', function*(){
+    }).get('/programBya/monthPro', function*(){
         var $self = this;
         var idData = this.request.query;
         idData.token = $self.cookies.get('token');
-        yield (server().theMonthList(idData)
+        yield (server().aprogramByb(idData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -273,11 +273,11 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).post('/collectArea/area', function*(){ //地区汇总
+    }).post('/foutSum/sum4', function*(){ //地区汇总
         var $self = this;
         var summaryData = this.request.body;
         summaryData.token=this.cookies.get('token');
-        yield (server().areaCollectByWeek(summaryData)
+        yield (server().sums4ByWeek(summaryData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -286,10 +286,10 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).get('/collectArea2/area', function*(){
+    }).get('/area4Fourth/area', function*(){
         var $self = this;
         var token={token:$self.cookies.get('token')};
-        yield (server().areaWeekSummary(token)
+        yield (server().four4are(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -298,10 +298,10 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).get('/listSummaryArea/id', function*(){ //查询所有地区
+    }).get('/fourCol/sum', function*(){ //查询所有地区
         var $self = this;
         var token={token:$self.cookies.get('token')};
-        yield (server().areaWeekGetSummaryById(token)
+        yield (server().colFour(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -335,11 +335,11 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).post('/collectByArea/area', function*(){ //地区汇总
+    }).post('/col2/area', function*(){ //地区汇总
         var $self = this;
         var summaryData = $self.request.body;
         summaryData.token = $self.cookies.get('token');
-        yield (server().areaCollectByMonth(summaryData)
+        yield (server().sum2ByMonth(summaryData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -348,10 +348,10 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).get('/collectByArea2/area', function*(){
+    }).get('/areaCollFas/fas', function*(){
         var $self = this;
         var token={token:$self.cookies.get('token')};
-        yield (server().areaMonthSummary(token)
+        yield (server().fasSummary(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -360,10 +360,10 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).get('/listAreaCol/id', function*(){ //查询所有地区
+    }).get('/collNew/sum', function*(){ //查询所有地区
         var $self = this;
         var token={token:$self.cookies.get('token')};
-        yield (server().areaMonthGetSummaryById(token)
+        yield (server().sumCollByAll(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -372,11 +372,11 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    }).get('/listTheMonthArea/id', function*(){
+    }).get('/listTheMonthArea/aboutArea', function*(){
         var $self = this;
         var idData = this.request.query;
         idData.token = $self.cookies.get('token');
-        yield (server().theMonthAreaList(idData)
+        yield (server().aboutMonthAreaList(idData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;

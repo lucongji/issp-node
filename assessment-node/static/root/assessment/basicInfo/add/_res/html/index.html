@@ -17,6 +17,7 @@
                     <div class="sele side">
                         <select class="sele" ng-model="add.area">
                             <option value="" disabled>请选择</option>
+                            <option ng-repeat="pros in areanames">{{pros.area}}</option>
                         </select>
                         <input type="text"  class="inputDom" ng-model="add.area">
                     </div>
@@ -25,8 +26,9 @@
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>项目名称</em></label>
                     <div class="sele side">
-                        <select class="sele" ng-model="add.project">
+                        <select class="sele" ng-model="add.project" ng-change="myFun()">
                             <option value="" disabled>请选择</option>
+                            <option ng-repeat="pros in names">{{pros.projectName}}</option>
                         </select>
                     <input type="text"  class="inputDom" ng-model="add.project">
                     </div>
@@ -41,7 +43,7 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>总金额</em></label>
-                    <input type="number" ng-verify="{}" ng-model="add.totalAmount">
+                    <input type="number" ng-verify="{}" ng-model="firstManage.totalAmount">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>工期开始时间</em></label>
@@ -62,7 +64,7 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>税金</em></label>
-                    <input type="number" ng-verify="{}" ng-model="add.taxes">
+                    <input type="number" ng-verify="{}" ng-model="firstManage.taxes">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>管理费</em></label>

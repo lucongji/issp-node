@@ -1,0 +1,70 @@
+<div class="content-input edit" verify-scope="tipStyle: 1">
+    <div class="input-list">
+        <section>
+            <ul>
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>姓名</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editInfo.name">
+                </li>
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>年龄</em></label>
+                    <input type="number" ng-verify="{}" ng-model="editInfo.age">
+                </li>
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>性别</em></label>
+                    <select class="sele" ng-model="editInfo.sex" ng-verify="{}">
+                        <option disabled value="">请选择</option>
+                        <option value="男">男</option>
+                        <option value="女">女</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>籍贯</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editInfo.nativePlace">
+                </li>
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>身份证号</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editInfo.idNumber">
+                </li>
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>联系方式</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editInfo.phone">
+                </li>
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>邮箱</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editInfo.email">
+                </li>
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>地址</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editInfo.address">
+                </li>
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>其他</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editInfo.other">
+                </li>
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>银行开户名</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editInfo.bankAccountName">
+                </li>
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>银行卡号</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editInfo.bankCardNumber">
+                </li>
+                <li class="required">
+                    <label ><i><img src="/images/mandatory.png"></i><em>银行开户行</em></label>
+                    <input type="text" ng-verify="{}" ng-model="editInfo.bankOfDeposit">
+                </li>
+            </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="basicEditFun()">提交</button>
+    </p>
+</div>
+
+<script type="text/javascript">
+    !function(){
+        laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    }();
+</script>
