@@ -40,6 +40,7 @@ app.controller('employListCtrl',function($scope,employSer,toastr,$stateParams,$s
         });
     };
     function activatePage(page) {
+        if($scope.employeess)return;
         var listData = {
             page:page || 1
         };

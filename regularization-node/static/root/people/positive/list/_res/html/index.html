@@ -1,0 +1,165 @@
+<div class="content-tab list">
+    <ul class="table">
+        <li class="list-head">
+            <span></span>
+            <span>地区</span>
+            <span>部门/项目组</span>
+            <span>岗位</span>
+            <span>姓名</span>
+            <span>员工编号</span>
+            <span>性别</span>
+            <span>学历</span>
+            <span></span>
+        </li>
+        <li class="list-all" ng-repeat="lists in positives" style="display: {{lists._delete?'none':'block'}};">
+            <section>
+                <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
+                    <p mod>{{$index+1+num}}</p>
+                    <p mod>{{lists.area}}</p>
+                    <p mod>{{lists.department}}</p>
+                    <p mod>{{lists.jobs}}</p>
+                    <p mod>{{lists.name}}</p>
+                    <p mod>{{lists.empNo}}</p>
+                    <p mod>{{lists.gender | follow}}</p>
+                    <p mod>{{lists.education}}</p>
+                    <p>
+                        <a href="javascript:void(0)" class="more"  ng-click="moreList(lists)">更多详细</a>
+                    </p>
+                </div>
+                <div class="can">
+                    <ul class="can-see" style="display: {{lists._moreList?'block':'none'}};">
+                        <li>
+                            <p class="see-parent">
+                                <span>专业</span>
+                                <span>工作年限</span>
+                                <span>入职时间</span>
+                                <span>同意试用期时长</span>
+                                <span>试用期到期时间</span>
+                                <span>三天是否跟进</span>
+                                <span>三天跟进收集的意见</span>
+                                <span>一周内是否跟进</span>
+                            </p>
+                            <p class="see-children">
+                                <span mod>{{lists.profession}}</span>
+                                <span mod>{{lists.workingYear}}</span>
+                                <span mod>{{lists.hiredate}}</span>
+                                <span mod>{{lists.probationaryPer}}</span>
+                                <span mod>{{lists.probationDue}}</span>
+                                <span mod>{{lists.threeFollow | follow}}</span>
+                                <span mod>{{lists.threeFollowOpinion}}</span>
+                                <span mod>{{lists.weekFollow | follow}}</span>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="see-parent">
+                                <span>一周跟进收集的意见</span>
+                                <span>一个月是否跟进</span>
+                                <span>一个月跟进收集的意见</span>
+                                <span>状态</span>
+                                <span>转正申请日期</span>
+                                <span>截止目前试用期时长</span>
+                                <span>确定事项是否确认</span>
+                                <span>确认人</span>
+                            </p>
+                            <p class="see-children">
+                                <span mod>{{lists.weekFollowOpinion}}</span>
+                                <span mod>{{lists.monthFollow | follow}}</span>
+                                <span mod>{{lists.monthFollowOpinion}}</span>
+                                <span mod>{{lists.staffStatus | follow}}</span>
+                                <span mod>{{lists.applyDate}}</span>
+                                <span mod>{{lists.asProbationLength}}</span>
+                                <span mod>{{lists.confirmEvent | follow}}</span>
+                                <span mod>{{lists.confirmPeople}}</span>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="see-parent">
+                                <span>截至申请日期考勤情况</span>
+                                <span>奖励处罚情况</span>
+                                <span>转正后主项技能</span>
+                                <span>转正后主项技能等级</span>
+                                <span>转正后小项技能</span>
+                                <span>转正后小项技能等级</span>
+                                <span>是否符合人员编制</span>
+                                <span>收入与成本分析意见</span>
+                            </p>
+                            <p class="see-children">
+                                <span mod>{{lists.applyDateAtten}}</span>
+                                <span mod>{{lists.rewardPunOpinion}}</span>
+                                <span mod>{{lists.additionalSkill}}</span>
+                                <span mod>{{lists.additionalSkillGrade}}</span>
+                                <span mod>{{lists.eventsSkill}}</span>
+                                <span mod>{{lists.eventsSkillGrade}}</span>
+                                <span mod>{{lists.conformStaffing | follow}}</span>
+                                <span mod>{{lists.incomeCostOpinion}}</span>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="see-parent">
+                                <span>模块负责人</span>
+                                <span>模块负责人意见</span>
+                                <span>项目经理</span>
+                                <span>项目经理意见</span>
+                                <span>总经理</span>
+                                <span>总经理意见</span>
+                                <span>是否同意转正</span>
+                                <span>转正开始日期</span>
+                            </p>
+                            <p class="see-children">
+                                <span mod>{{lists.moduleLeader}}</span>
+                                <span mod>{{lists.moduleLeaderOpinion}}</span>
+                                <span mod>{{lists.proManage}}</span>
+                                <span mod>{{lists.proManageOpinion}}</span>
+                                <span mod>{{lists.generManage}}</span>
+                                <span mod>{{lists.generManageOpinion}}</span>
+                                <span mod>{{lists.consentPositive | follow}}</span>
+                                <span mod>{{lists.positiveStartDate}}</span>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="see-parent">
+                                <span>转正是否通过</span>
+                                <span>实际试用期时长</span>
+                                <span>转正情况面谈人</span>
+                                <span>面谈内容</span>
+                            </p>
+                            <p class="see-children">
+                                <span mod>{{lists.positiveThrough | follow}}</span>
+                                <span mod>{{lists.praProbationaryPer}}</span>
+                                <span mod>{{lists.interviewPeper}}</span>
+                                <span mod>{{lists.interviewContent}}</span>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </li>
+    </ul>
+    <div class="module">
+        <div class="see-module">
+            <p class="see-type">体现类型</p>
+            <p class="see-description"></p>
+            <button class="btn" modclose>关闭</button>
+        </div>
+    </div>
+    <footer class="footer">
+        <pagination count="custom.itemsCount" take="custom.take" activate="custom.activatePage"></pagination>
+    </footer>
+</div>
+<!-- <div ui-view="modal"></div> -->
+<div class="delete mod" ng-show="delShow">
+    <div class="del-head">
+        <h5>温馨提示</h5>
+    </div>
+    <div class="del-con">
+        <p>确定要删除这条数据？</p>
+        <div class="btn">
+            <button ng-click="delFn()">确定</button>
+            <button ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</div>
+<div id="modalbg" ng-show="delShow"></div>
+
+
+

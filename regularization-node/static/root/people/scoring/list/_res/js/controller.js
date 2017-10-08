@@ -40,6 +40,7 @@ app.controller('scoringListCtrl',function($scope,scoringSer,toastr,$stateParams,
         });
     };
     function activatePage(page) {
+        if($scope.scoringLists)return;
         var listData = {
             page:page || 1
         };

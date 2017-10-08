@@ -16,7 +16,7 @@
                 <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
                     <p mod>{{$index+1+num}}</p>
                     <p mod>{{lists.name}}</p>
-                    <p mod>{{lists.gender}}</p>
+                    <p mod>{{lists.gender | emp}}</p>
                     <p mod>{{lists.education}}</p>
                     <p mod>{{lists.profession}}</p>
                     <p mod>{{lists.hiredate}}</p>
@@ -30,8 +30,30 @@
                     <ul class="can-see" style="display: {{lists._moreList?'block':'none'}};">
                         <li>
                             <p class="see-parent">
-                                <span>项目组</span>
+                                <span>项目组/部门</span>
                                 <span>岗位</span>
+                                <span>岗位层级</span>
+                                <span>转正申请日期</span>
+                                <span>工作年限</span>
+                                <span>截止目前试用期时长</span>
+                                <span>确定事项是否确认</span>
+                                <span>确认人</span>
+                            </p>
+                            <p class="see-children">
+                                <span mod>{{lists.projectGroup}}</span>
+                                <span mod>{{lists.post}}</span>
+                                <span mod>{{lists.postHierarchy}}</span>
+                                <span mod>{{lists.regularDate}}</span>
+                                <span mod>{{lists.workingYear}}</span>
+                                <span mod>{{lists.asProbationLength}}</span>
+                                <span mod>{{lists.confirmEvent | emp}}</span>
+                                <span mod>{{lists.confirmPeople}}</span>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="see-parent">
+                                <span>转正是否通过</span>
+                                <span>转正开始日期</span>
                                 <span>试用期月份</span>
                                 <span>入职以来月平考勤扣分量</span>
                                 <span>奖励分数</span>
@@ -40,8 +62,8 @@
                                 <span>工作总结</span>
                             </p>
                             <p class="see-children">
-                                <span mod>{{lists.projectGroup}}</span>
-                                <span mod>{{lists.post}}</span>
+                                <span mod>{{lists.isPassed}}</span>
+                                <span mod>{{lists.positiveStartDate}}</span>
                                 <span mod>{{lists.probationPeriod}}</span>
                                 <span mod>{{lists.monthAverageDeductMark}}</span>
                                 <span mod>{{lists.awardSoce}}</span>
@@ -63,7 +85,7 @@
                             </p>
                             <p class="see-children">
                                 <span mod>{{lists.criteriaAttention}}</span>
-                                <span mod>{{lists.posCriteriaConfirmed}}</span>
+                                <span mod>{{lists.posCriteriaConfirmed | emp}}</span>
                                 <span mod>{{lists.managementAverage}}</span>
                                 <span mod>{{lists.decisionLevel}}</span>
                                 <span mod>{{lists.decisionLevelEvaluate}}</span>
@@ -98,12 +120,10 @@
                             <p class="see-parent">
                                 <span>转正时间</span>
                                 <span>转正面谈信息</span>
-                                
                             </p>
                             <p class="see-children">
                                 <span mod>{{lists.positiveDate}}</span>
                                 <span mod>{{lists.posFacialInfor}}</span>
-                                
                             </p>
                         </li>
 

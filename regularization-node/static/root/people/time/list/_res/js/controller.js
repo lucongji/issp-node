@@ -40,6 +40,7 @@ app.controller('timeListCtrl',function($scope,timeSer,toastr,$stateParams,$state
         });
     };
     function activatePage(page) {
+        if($scope.timeLists)return;
         var listData = {
             page:page || 1
         };

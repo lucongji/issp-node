@@ -503,7 +503,325 @@ module.exports = function(){
         };
         return request(options);
     };
+//---------------------转正人员信息---------------------------  
+    this.positList = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/transferinfo/v1/list?limit=10&page=${argvs.page}`,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //获取总条数
+    this.positCount = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/transferinfo/v1/count',
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //获取ID
+    this.positId = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/transferinfo/v1/transferInfo/${argvs.id}`,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    // 添加
+    this.positAdd = function(argvs){
+        var options = {
+            method : 'PUT',
+            timeout : 3000,
+            uri : config()['rurl'] + `/transferinfo/v1/saveTransfer?userToken=${argvs.userToken}`,
+            form:argvs,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //导航权限
+    this.positPermission = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/transferinfo/v1/guidePermission?guideAddrStatus=`+argvs.name,//2017-06-08
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    // 跟进
+    this.positFollow = function(argvs){
+        var options = {
+            method : 'PUT',
+            timeout : 3000,
+            uri : config()['rurl'] + `/transferinfo/v1/followUp?userToken=${argvs.userToken}`,
+            form:argvs,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    // 福利模块考察填写
+    this.positWelfare = function(argvs){
+        var options = {
+            method : 'PUT',
+            timeout : 3000,
+            uri : config()['rurl'] + `/transferinfo/v1/welfareAssess?userToken=${argvs.userToken}`,
+            form:argvs,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    // 规划模块考察填写
+    this.positPlanning = function(argvs){
+        var options = {
+            method : 'PUT',
+            timeout : 3000,
+            uri : config()['rurl'] + `/transferinfo/v1/planAssess?userToken=${argvs.userToken}`,
+            form:argvs,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    // 预算模块考察填写
+    this.positBudget = function(argvs){
+        var options = {
+            method : 'PUT',
+            timeout : 3000,
+            uri : config()['rurl'] + `/transferinfo/v1/budgetAssess?userToken=${argvs.userToken}`,
+            form:argvs,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    // 模块负责人审核
+    this.positModule = function(argvs){
+        var options = {
+            method : 'PUT',
+            timeout : 3000,
+            uri : config()['rurl'] + `/transferinfo/v1/moduleRespon?userToken=${argvs.userToken}`,
+            form:argvs,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    // 项目经理审核
+    this.positProjects = function(argvs){
+        var options = {
+            method : 'PUT',
+            timeout : 3000,
+            uri : config()['rurl'] + `/transferinfo/v1/projectManage?userToken=${argvs.userToken}`,
+            form:argvs,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    // 总经理审核
+    this.positManager = function(argvs){
+        var options = {
+            method : 'PUT',
+            timeout : 3000,
+            uri : config()['rurl'] + `/transferinfo/v1/genManage?userToken=${argvs.userToken}`,
+            form:argvs,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    // 面谈记录填写
+    this.positInterview = function(argvs){
+        var options = {
+            method : 'PUT',
+            timeout : 3000,
+            uri : config()['rurl'] + `/timecriteriaset/v1/edit?userToken=${argvs.userToken}`,
+            form:argvs,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+//---------------------各类交流沟通模块---------------------------  
+// 添加
+    this.communAdd = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['rurl'] + `/communicationformwork/v1/add?userToken=${argvs.userToken}`,
+            form:argvs,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    this.communList = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/communicationformwork/v1/list?limit=10&page=${argvs.page}`,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    
+    // 编辑
+    this.communEdit = function(argvs){
+        var options = {
+            method : 'PUT',
+            timeout : 3000,
+            uri : config()['rurl'] + `/communicationformwork/v1/edit?userToken=${argvs.userToken}`,
+            form:argvs,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
 
+    //删除
+    this.communDlete = function(argvs){
+        var options = {
+            method : 'DELETE',
+            timeout : 3000,
+            uri : config()['rurl'] + `/communicationformwork/v1/delete/${argvs.id}`,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //获取总条数
+    this.communCount = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/communicationformwork/v1/count',
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //获取ID
+    this.communId = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/communicationformwork/v1/communicatetion/${argvs.id}`,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //导航权限
+    this.communPermission = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/communicationformwork/v1/guidePermission?guideAddrStatus=`+argvs.name,//2017-06-08
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //----------------------操作日志及转正管理汇总-----------------------------------
+    // // 操作日志汇总
+    // this.collectOper = function(argvs){
+    //     var options = {
+    //         method : 'POST',
+    //         timeout : 3000,
+    //         uri : config()['rurl'] + `/communicationformwork/v1/edit?userToken=${argvs.userToken}`,
+    //         form:argvs,
+    //         headers:{
+    //             userToken:argvs.userToken
+    //         }
+    //     };
+    //     return request(options);
+    // };
+    // 转正管理日汇总
+    this.collectDay = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['rurl'] + `/transferinfo/v1/summarize/day?userToken=${argvs.userToken}`,
+            form:argvs,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    // 转正管理周汇总
+    this.collectWeek = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['rurl'] + `/transferinfo/v1/summarize/week?userToken=${argvs.userToken}`,
+            form:argvs,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    // 转正管理月汇总
+    this.collectMonth = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['rurl'] + `/transferinfo/v1/summarize/month?userToken=${argvs.userToken}`,
+            form:argvs,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    // 转正管理累计汇总
+    this.collectTotal = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['rurl'] + `/transferinfo/v1/summarize/total?userToken=${argvs.userToken}`,
+            form:argvs,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
     //-------------------------------------权限设置-------------------------------------
     this.listSetting = function(argvs){
         var options = {
@@ -573,41 +891,29 @@ module.exports = function(){
         };
         return request(options);
     };
-    // //获取所有项目名称
-    // this.getProjectName = function(argvs){
-    //     var options = {
-    //         method : 'GET',
-    //         timeout : 3000,
-    //         uri : config()['rurl'] + '/biddinginfo/v1/projectName',
-    //         headers:{
-    //             userToken:argvs.userToken
-    //         }
-    //     };
-    //     return request(options);
-    // };
-    // //获取所有编号
-    // this.biddingNumber = function(argvs){
-    //     var options = {
-    //         method : 'GET',
-    //         timeout : 3000,
-    //         uri : config()['rurl'] + '/biddinginfo/v1/biddingNumber',
-    //         headers:{
-    //             userToken:argvs.userToken
-    //         }
-    //     };
-    //     return request(options);
-    // };
-    // //编号查询
-    // this.getBiddingNum = function(argvs){
-    //     var options = {
-    //         method : 'GET',
-    //         timeout : 3000,
-    //         uri : config()['rurl'] + `/biddinginfo/v1/getBiddingNum${urlEncode(argvs,true)}`,
-    //         headers:{
-    //             userToken:argvs.userToken
-    //         }
-    //     };
-    //     return request(options);
-    // };
+   //获取联系方式
+    this.getNum = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/regularization/v1/allEntryNum`+urlEncode(argvs,true),
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //获取一堆
+    this.getAll = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/regularization/v1/addReturn`+urlEncode(argvs,true),
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
     return this;
 }

@@ -520,7 +520,328 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-
+//----------------------------转正人员信息-----------------------------------------
+    }).get('/positPermission/permission/:guideAddrStatus', function*(){ //导航权限
+        var $self = this;
+        var page = {name:$self.params.guideAddrStatus,userToken:$self.cookies.get('token')};
+        yield (server().positPermission(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+            }));
+    }).get('/positList/list', function*(){ //列表
+        var $self = this;
+        var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
+        yield (server().positList(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/positCount/count', function*(){//获取总条数
+        var $self = this;
+        var countToken = {userToken:$self.cookies.get('token')};
+        yield (server().positCount(countToken)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/positId/Id', function*(){//获取id
+        var $self = this;
+        var findIdData = $self.request.query;
+        findIdData.userToken = $self.cookies.get('token');
+        yield (server().positId(findIdData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/positAdd/add', function*(){//添加
+        var $self = this;
+        var addData = $self.request.body;
+        addData.userToken = $self.cookies.get('token');
+        yield (server().positAdd(addData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/positFollow/Follow', function*(){//跟进
+        var $self = this;
+        var editData = $self.request.body;
+        editData.userToken = $self.cookies.get('token');
+        yield (server().positFollow(editData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/positWelfare/Welfare', function*(){//福利模块考察填写
+        var $self = this;
+        var editData = $self.request.body;
+        editData.userToken = $self.cookies.get('token');
+        yield (server().positWelfare(editData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/positPlanning/Planning', function*(){//规划模块考察填写
+        var $self = this;
+        var editData = $self.request.body;
+        editData.userToken = $self.cookies.get('token');
+        yield (server().positPlanning(editData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/positBudget/Budget', function*(){//预算模块考察填写
+        var $self = this;
+        var editData = $self.request.body;
+        editData.userToken = $self.cookies.get('token');
+        yield (server().positBudget(editData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/positModule/Module', function*(){//模块负责人审核
+        var $self = this;
+        var editData = $self.request.body;
+        editData.userToken = $self.cookies.get('token');
+        yield (server().positModule(editData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/positProjects/Projects', function*(){//项目经理审核
+        var $self = this;
+        var editData = $self.request.body;
+        editData.userToken = $self.cookies.get('token');
+        yield (server().positProjects(editData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/positManager/Manager', function*(){//总经理审核
+        var $self = this;
+        var editData = $self.request.body;
+        editData.userToken = $self.cookies.get('token');
+        yield (server().positManager(editData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/positInterview/Interview', function*(){//面谈记录填写
+        var $self = this;
+        var editData = $self.request.body;
+        editData.userToken = $self.cookies.get('token');
+        yield (server().positInterview(editData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+//----------------------------各类交流沟通模块-----------------------------------------
+    }).get('/communPermission/permission/:guideAddrStatus', function*(){ //导航权限
+        var $self = this;
+        var page = {name:$self.params.guideAddrStatus,userToken:$self.cookies.get('token')};
+        yield (server().communPermission(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+            }));
+    }).get('/communList/list', function*(){ //列表
+        var $self = this;
+        var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
+        yield (server().communList(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/communAdd/add', function*(){//添加
+        var $self = this;
+        var addData = $self.request.body;
+        addData.userToken = $self.cookies.get('token');
+        yield (server().communAdd(addData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/communEdit/edit', function*(){//编辑
+        var $self = this;
+        var editData = $self.request.body;
+        editData.userToken = $self.cookies.get('token');
+        yield (server().communEdit(editData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/communDlete/delete', function*(){//删除
+        var $self = this;
+        var deleteData = $self.request.query;
+        deleteData.userToken = $self.cookies.get('token');
+        yield (server().communDlete(deleteData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));  
+    }).get('/communCount/count', function*(){//获取总条数
+        var $self = this;
+        var countToken = {userToken:$self.cookies.get('token')};
+        yield (server().communCount(countToken)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/communId/Id', function*(){//获取id
+        var $self = this;
+        var findIdData = $self.request.query;
+        findIdData.userToken = $self.cookies.get('token');
+        yield (server().communId(findIdData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    //----------------------操作日志及转正管理汇总-----------------------------------
+    // }).post('/collectOper/Oper', function*(){//操作日志汇总
+    //     var $self = this;
+    //     var editData = $self.request.body;
+    //     editData.userToken = $self.cookies.get('token');
+    //     yield (server().collectOper(editData)
+    //         .then((parsedBody) =>{
+    //             var responseText = JSON.parse(parsedBody);
+    //             $self.body = responseText;
+    //         }).catch((error) =>{
+    //             $self.set('Content-Type','application/json;charset=utf-8');
+    //             $self.body=error.error;
+    //             console.error(error.error);
+    //         }));
+    }).post('/collectDay/Day', function*(){//转正管理日汇总
+        var $self = this;
+        var editData = $self.request.body;
+        editData.userToken = $self.cookies.get('token');
+        yield (server().collectDay(editData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/collectWeek/Week', function*(){//转正管理周汇总
+        var $self = this;
+        var editData = $self.request.body;
+        editData.userToken = $self.cookies.get('token');
+        yield (server().collectWeek(editData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/collectMonth/Month', function*(){//转正管理月汇总
+        var $self = this;
+        var editData = $self.request.body;
+        editData.userToken = $self.cookies.get('token');
+        yield (server().collectMonth(editData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/collectTotal/Total', function*(){//转正管理累计汇总
+        var $self = this;
+        var editData = $self.request.body;
+        editData.userToken = $self.cookies.get('token');
+        yield (server().collectTotal(editData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
     //----------------------------------
     }).get('/user/logout', function*(next){ //登录退出
         var url = this.request.query;
@@ -613,56 +934,32 @@ module.exports = function(){
                 $self.set('Content-Type','application/json;charset=utf-8');
                 $self.body=error.error;
             }));
-    // }).get('/getProjectName/projectName', function*(){//获取所有项目名称
-    //     var $self = this;
-    //     var cityToken = {userToken:$self.cookies.get('token')};
-    //     yield (server().getProjectName(cityToken)
-    //         .then((parsedBody) =>{
-    //             var responseText = JSON.parse(parsedBody);
-    //             $self.body = responseText;
-    //         }).catch((error) =>{
-    //             $self.set('Content-Type','application/json;charset=utf-8');
-    //             $self.body=error.error;
-    //             console.error(error.error);
-    //         }));
-    // }).get('/biddingNumber/num', function*(){//获取所有编号
-    //     var $self = this;
-    //     var cityToken = {userToken:$self.cookies.get('token')};
-    //     yield (server().biddingNumber(cityToken)
-    //         .then((parsedBody) =>{
-    //             var responseText = JSON.parse(parsedBody);
-    //             $self.body = responseText;
-    //         }).catch((error) =>{
-    //             $self.set('Content-Type','application/json;charset=utf-8');
-    //             $self.body=error.error;
-    //             console.error(error.error);
-    //         }));
-    // }).get('/websiteUrl/url', function*(){ //编号查询
-    //     var $self = this;
-    //     var summaryData = $self.request.query;
-    //     summaryData.userToken = $self.cookies.get('token');
-    //     yield (server().websiteUrl(summaryData)
-    //         .then((parsedBody) =>{
-    //             var responseText = JSON.parse(parsedBody);
-    //             $self.body = responseText;
-    //         }).catch((error) =>{
-    //             $self.set('Content-Type','application/json;charset=utf-8');
-    //             $self.body=error.error;
-    //             console.error(error.error);
-    //         }));
-    // }).get('/getBiddingNum/num', function*(){ //编号查询
-    //     var $self = this;
-    //     var summaryData = $self.request.query;
-    //     summaryData.userToken = $self.cookies.get('token');
-    //     yield (server().getBiddingNum(summaryData)
-    //         .then((parsedBody) =>{
-    //             var responseText = JSON.parse(parsedBody);
-    //             $self.body = responseText;
-    //         }).catch((error) =>{
-    //             $self.set('Content-Type','application/json;charset=utf-8');
-    //             $self.body=error.error;
-    //             console.error(error.error);
-    //         }));
+    }).get('/getNum/num', function*(){ //获取联系方式
+        var $self = this;
+        var summaryData = $self.request.query;
+        summaryData.userToken = $self.cookies.get('token');
+        yield (server().getNum(summaryData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/getAll/all', function*(){ //获取一堆
+        var $self = this;
+        var summaryData = $self.request.query;
+        summaryData.userToken = $self.cookies.get('token');
+        yield (server().getAll(summaryData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
     })
     return router;
 };

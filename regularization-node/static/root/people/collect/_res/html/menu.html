@@ -1,0 +1,18 @@
+<ul class="list">
+    <li ng-click="summaryOperation()" ng-class="{'current':menuClass=='summaryOperationMenu'}" ui-sref=".summaryOperation[12]" ng-show="COLLECT" ng-init="menuCheck('COLLECT')">
+        <a href="javascript:void(0)" title="操作日志汇总（未开发）" class="same-three">操作日志汇总</a>
+    </li>
+    <li ng-click="summaryDay()" ng-class="{'current':menuClass=='summaryDayMenu'}" ui-sref=".summaryDay[12]" ng-show="COLLECT" ng-init="menuCheck('COLLECT')">
+        <a href="javascript:void(0)" title="转正管理日汇总" class="same-three">转正管理日汇总</a>
+    </li>
+    <li ng-click="summaryWeek()" ng-class="{'current':menuClass=='summaryWeekMenu'}" ui-sref=".summaryWeek[12]" ng-show="COLLECT" ng-init="menuCheck('COLLECT')">
+        <a href="javascript:void(0)" title="转正管理周汇总" class="same-three">转正管理周汇总</a>
+    </li>
+    <li ng-click="summaryMonth()" ng-class="{'current':menuClass=='summaryMonthMenu'}" ui-sref=".summaryMonth[12]" ng-show="COLLECT" ng-init="menuCheck('COLLECT')">
+        <a href="javascript:void(0)" title="转正管理月汇总" class="same-three">转正管理月汇总</a>
+    </li>
+    <li ng-click="summaryTotal()" ng-class="{'current':menuClass=='summaryTotalMenu'}" ui-sref=".summaryTotal[12]" ng-show="COLLECT" ng-init="menuCheck('COLLECT')">
+        <a href="javascript:void(0)" title="转正管理累计汇总" class="same-three">转正管理累计汇总</a>
+    </li>
+</ul>
+ <!-- ng-show="COLLECT" ng-init="menuCheck('COLLECT')" -->

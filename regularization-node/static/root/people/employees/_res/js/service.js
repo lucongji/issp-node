@@ -19,7 +19,9 @@ app.factory('employSer',function ($http) {
         employCount:employCount,
         employGitLeave:employGitLeave,
         employAddReturn:employAddReturn,
-        employList:employList
+        employList:employList,
+        getAll:getAll,
+        getNum:getNum
         
     };
     //编辑
@@ -115,6 +117,22 @@ app.factory('employSer',function ($http) {
     function employList(data) {
         return $http.get('/employList/list',{
             params: data
+        })
+    }
+    //获取员工编号
+    function getNum(data){
+
+        return $http.get('/getNum/num',{
+            params: data
+
+        })
+    }
+    //获取一堆
+    function getAll(data){
+
+        return $http.get('/getAll/all',{
+            params: data
+
         })
     }
 });

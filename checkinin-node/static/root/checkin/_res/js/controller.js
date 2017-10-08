@@ -56,6 +56,44 @@ app.controller('checkinCtrl', function ($scope,$state) {
     $scope.showsList = [
         {id:"1",item:"入住离宿登记",menuList:[{name1:"住宿申请",msg:'stayApply'},{name2:"离宿申请",msg:'departureRequest'},{name3:"员工住宿天数汇总",msg:'daySummary'},{name4:"宿舍信息管理",msg:'infoManage'},{name5:'设置',msg:'setting'}],showIs:false}
     ];
+    $scope.listUl = false
+    $scope.listShow = function () {
+        if ($scope.listUl) {
+            $scope.listUl = false
+            $scope.listLi = false;
+            $scope.seShow=false
+        } else {
+            $scope.listUl = true;
+        }
+    }
+    $scope.listLi = false;
+    $scope.listUlShow = function () {
+        if ($scope.listLi) {
+            $scope.listLi = false;
+        }else{
+            $scope.listLi = true;
+        }
+    }
+    $scope.seShow=false
+    $scope.listSeShow=function () {
+     if($scope.seShow) {
+         $scope.seShow=false
+     } else {
+         $scope.seShow=true;
+     }
+    }
+    console.log('222')
+    angular.element('.bagl li').click(function () {
+        angular.element('.bagl li').css('background',"#071a30")
+        angular.element(this).css('background',"#33658e")
+        console.log(111);
+    })
+
+    angular.element('.bagl').click(function () {
+        // angular.element('.bagl li').css('background',"#071a30")
+        // angular.element(this).css('background',"#33658e")
+        console.log(222);
+    })
     if(active){
         for(var i = 0; i < $scope.showsList.length; i++){
             var n = $scope.showsList[i].menuList;

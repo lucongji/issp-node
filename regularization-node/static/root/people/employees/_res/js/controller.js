@@ -121,3 +121,27 @@ app.controller('employCtrl',function ($scope,$state) {
     });*/
 });
 
+//自定义过滤
+app.filter('emp', function(){
+    return function (val) {
+        var result;
+        switch(val){
+            case true:
+                result = "是";
+                break;
+            case false:
+                result = "否";
+                break;
+            case "NONE":
+                result = "无";
+                break;
+            case "MAN":
+                result = "男";
+                break;
+            case "WOMAN":
+                result = "女";
+                break;
+        }
+        return result;
+    }
+});

@@ -28,7 +28,7 @@
             </i>
             <i class="list-text">公告通知</i>
         </a>
-        <ul style="display: block" class="inactive-line line-message">
+        <ul style="display: none" class="inactive-line line-message">
             <li><a>个人消息<i class="unread"></i></a></li>
             <li><a>活动公告<i class="unread"></i></a></li>
             <li><a>综合资源部<i class="unread"></i></a></li>
@@ -38,7 +38,7 @@
         </ul>
     </li>
     <li>
-        <a href="javascript:void(0)" class="inactive inactives">
+        <a href="javascript:void(0)" class="inactive inactives" ng-click="listShow()">
             <i class="list-icon">
                 <svg role="img" class="know">
                     <use xlink:href="#know"></use>
@@ -46,63 +46,24 @@
             </i>
             <i class="list-text">知此知彼</i>
         </a>
-        <ul style="display: block" class="inactive-line">
-            <li>
-                <a href="#" class="inactive active">战略蓝图</a>
-                <ul class="list-children">
-                    <li><a href="#">办公室</a></li>
-                    <li><a href="#">办公室2</a></li>
-                    <li><a href="#">办公室3</a></li>
-                    <li><a href="#">办公室4</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#" class="inactive active">资质库</a>
-                <ul class="list-children">
-                    <li><a href="#">办公室</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#" class="inactive active">简介管理</a>
-                <ul class="list-children">
-                    <li><a href="#">办公室</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#" class="inactive active">企业文化</a>
-                <ul class="list-children">
-                    <li><a href="#">办公室</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#" class="inactive active">组织结构</a>
-                <ul class="list-children">
-                    <li><a href="#">部门设置</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#" class="inactive active">人员编制</a>
-                <ul class="list-children">
-                    <li><a href="#">办公室</a></li>
-                </ul>
-            </li>
+        <ul style="display: block" class="inactive-line" ng-show="listUl">
             <li ng-repeat="list in showsList">
-                <a href="#" class="inactive active inactives">{{list.item}}</a>
-                <ul class="list-children" style="display: block" ng-repeat="menuInfo in list.menuList">
+                <a href="javascript:void (0)" class="inactive active inactives" ng-click="listUlShow()">{{list.item}}</a>
+                <ul class="list-children bagl" style="display: block" ng-repeat="menuInfo in list.menuList" ng-show="listLi">
                     <li ng-click="navClass(menuInfo.msg)" ui-sref="_root.checkin.stayApply.list[12]">
-                        <a href="#">{{menuInfo.name1}}</a>
+                        <a href="javascript:void (0)">{{menuInfo.name1}}</a>
                     </li>
                     <li ng-click="navClass(menuInfo.msg)" ui-sref="_root.checkin.departureRequest.list[12]">
-                        <a href="#">{{menuInfo.name2}}</a>
+                        <a href="javascript:void (0)">{{menuInfo.name2}}</a>
                     </li>
                     <li ng-click="navClass(menuInfo.msg)" ui-sref="_root.checkin.daySummary.list[12]">
-                        <a href="#">{{menuInfo.name3}}</a>
+                        <a href="javascript:void (0)">{{menuInfo.name3}}</a>
                     </li>
                     <li ng-click="navClass(menuInfo.msg)" ui-sref="_root.checkin.infoManage.list[12]">
-                        <a href="#">{{menuInfo.name4}}</a>
+                        <a href="javascript:void (0)">{{menuInfo.name4}}</a>
                     </li>
                     <li ng-click="navClass(menuInfo.msg)" ui-sref="_root.checkin.setting.list[12]">
-                        <a href="#">{{menuInfo.name5}}</a>
+                        <a href="javascript:void (0)">{{menuInfo.name5}}</a>
                     </li>
                 </ul>
             </li>
@@ -117,9 +78,6 @@
             </i>
             <i class="list-text">档案库</i>
         </a>
-        <ul style="display: block" class="inactive-line">
-            <li><a href="javascript:void(0)">办公室</a></li>
-        </ul>
     </li>
     <li>
         <a href="javascript:void(0)" class="inactive">
@@ -130,10 +88,5 @@
             </i>
             <i class="list-text">物资管理</i>
         </a>
-        <ul style="display:block" class="inactive-line line-message">
-            <li><a href="javascript:void(0)">物资分析</a></li>
-            <li><a href="javascript:void(0)">物资入库</a></li>
-            <li class="unreadbg"><a href="/pages/material/department.html">物资领用</a></li>
-        </ul>
     </li>
 </ul>

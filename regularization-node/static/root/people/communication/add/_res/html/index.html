@@ -1,0 +1,72 @@
+<div class="content-input add" verify-scope="tipStyle: 1">
+    <div class="input-list">
+        <section>
+            <ul>
+                <li class="required">
+                    <label><em>模板名称</em></label>
+                    <div class="sele ng-valid ng-not-empty ng-dirty ng-valid-parse ng-touched decisionLevel side">
+                        <select class="sele decisionLevel" ng-model="data.moduleName">
+                            <option value="转正面谈模板">转正面谈模板</option>
+                            <option value="转正面谈通知">转正面谈通知</option>
+                            <option value="转正通过告知函">转正通过告知函</option>
+                        </select>
+                        <input type="text"  class="inputDom ng-valid ng-not-empty ng-dirty ng-touched" ng-model="data.moduleName">
+                    </div>
+                </li>
+                <li class="required">
+                    <label><em>所属类型</em></label>
+                    <input type="text" ng-model="data.belongType">
+                </li>
+                <li class="required">
+                    <label><em>分类</em></label>
+                    <input type="text" ng-model="data.classifi">
+                </li>
+                <li class="required">
+                    <label><em>触发字段</em></label>
+                    <input type="text" ng-model="data.triggerField">
+                </li>
+                <li class="required">
+                    <label><em>标题</em></label>
+                    <input type="text" ng-model="data.title">
+                </li>
+                <li class="required">
+                    <label><em>邮件内容模板</em></label>
+                    <input type="text" ng-model="data.emailModule">
+                </li>
+                <li class="required">
+                    <label><em>例子</em></label>
+                    <input type="text" ng-model="data.example">
+                </li>
+                <li class="required">
+                    <label><em>附件</em></label>
+                    <input type="text" ng-model="data.attachment">
+                </li>
+                <li class="required">
+                    <label><em>主送对象</em></label>
+                    <input type="text" ng-model="data.lordSendObj">
+                </li>
+                <li class="required">
+                    <label><em>抄送对象</em></label>
+                    <input type="text" ng-model="data.ccObj">
+                </li>
+                <li class="required">
+                    <label><em>途径</em></label>
+                    <input type="text" ng-model="data.way">
+                </li>
+            </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="empAddFun()">提交</button>
+    </p>
+</div>
+
+<script type="text/javascript">
+
+    !function(){
+        laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    }();
+
+
+</script>

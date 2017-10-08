@@ -1,0 +1,77 @@
+<div class="content-tab list">
+    <ul class="table">
+        <li class="list-head">
+            <span></span>
+            <span>模板名称</span>
+            <span>所属类型</span>
+            <span>分类</span>
+            <span>触发字段</span>
+            <span>标题</span>
+            <span>邮件内容模板</span>
+            <span>例子</span>
+            <span></span>
+        </li>
+        <li class="list-all" ng-repeat="lists in communeess" style="display: {{lists._delete?'none':'block'}};">
+            <section>
+                <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
+                    <p mod>{{$index+1+num}}</p>
+                    <p mod>{{lists.moduleName | commun}}</p>
+                    <p mod>{{lists.belongType}}</p>
+                    <p mod>{{lists.classifi}}</p>
+                    <p mod>{{lists.triggerField}}</p>
+                    <p mod>{{lists.title}}</p>
+                    <p mod>{{lists.emailModule}}</p>
+                    <p mod>{{lists.example}}</p>
+                    <p>
+                        <a href="javascript:void(0)" class="more"  ng-click="moreList(lists)">更多详细</a>
+                    </p>
+                </div>
+                <div class="can">
+                    <ul class="can-see" style="display: {{lists._moreList?'block':'none'}};">
+                        <li>
+                            <p class="see-parent">
+                                <span>附件</span>
+                                <span>主送对象</span>
+                                <span>抄送对象</span>
+                                <span>途径</span>
+                            </p>
+                            <p class="see-children">
+                                <span mod>{{lists.attachment}}</span>
+                                <span mod>{{lists.lordSendObj}}</span>
+                                <span mod>{{lists.ccObj}}</span>
+                                <span mod>{{lists.way}}</span>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </li>
+    </ul>
+    <div class="module">
+        <div class="see-module">
+            <p class="see-type">体现类型</p>
+            <p class="see-description"></p>
+            <button class="btn" modclose>关闭</button>
+        </div>
+    </div>
+    <footer class="footer">
+        <pagination count="custom.itemsCount" take="custom.take" activate="custom.activatePage"></pagination>
+    </footer>
+</div>
+<!-- <div ui-view="modal"></div> -->
+<div class="delete mod" ng-show="delShow">
+    <div class="del-head">
+        <h5>温馨提示</h5>
+    </div>
+    <div class="del-con">
+        <p>确定要删除这条数据？</p>
+        <div class="btn">
+            <button ng-click="delFn()">确定</button>
+            <button ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</div>
+<div id="modalbg" ng-show="delShow"></div>
+
+
+

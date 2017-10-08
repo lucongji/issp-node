@@ -40,6 +40,7 @@ app.controller('scoreListCtrl',function($scope,scoreSer,toastr,$stateParams,$sta
         });
     };
     function activatePage(page) {
+        if($scope.scoreLists)return;
         var listData = {
             page:page || 1
         };

@@ -54,8 +54,8 @@ app.controller('biddingCtrl', function ($scope,$state) {
         }
     });
     $scope.showsList = [
-        {id:"1",item:"员工转正",menuList:[{name:'员工转正',msg:'employees'},{name2:'时间条件设置',msg:'time'},{name3:'工作表现计分方式设置',msg:'scoring'},{name4:'工作表现评分',msg:'score'}],showIs:false},
-        {id:"2",item:"设置",menuList:[{name5:'设置',msg:'setting'}],showIs:false}
+        {id:"1",item:"员工转正",menuList:[{name:'员工转正',msg:'employees'},{name2:'时间条件设置',msg:'time'},{name3:'工作表现计分方式设置',msg:'scoring'},{name4:'工作表现评分',msg:'score'},{name5:'转正人员信息',msg:'positive'},{name6:'各类交流沟通模块',msg:'communication'},{name7:'操作日志及转正管理汇总',msg:'collect'}],showIs:false},
+        {id:"2",item:"设置",menuList:[{name8:'设置',msg:'setting'}],showIs:false}
     ];
     if(active){
         for(var i=0;i<$scope.showsList.length;i++){
@@ -77,11 +77,11 @@ app.controller('biddingCtrl', function ($scope,$state) {
                 obj.showIs=event;
                 /* angular.forEach(function(item){ showSubAble sublist*/
                 this.showsList.forEach(function(item){
-                    //if(item.id!=obj.id){
-                        //item.showIs=!event;
-                    //}else{
-                        //item.showIs=event;
-                    //}
+                    if(item.id!=obj.id){
+                        item.showIs=!event;
+                    }else{
+                        item.showIs=event;
+                    }
                 });
             }
         }
