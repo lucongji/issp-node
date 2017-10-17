@@ -12,8 +12,100 @@ var urlEncode = require(path.resolve('plugins/urlEncode.js'));
 var fileType = require(path.resolve('plugins/fileType.js'));
 module.exports = function(){
     var router = new Router();
+        /*----------------招投标类型----------------------*/
+    router.get('/typePermission/permission/:guideAddrStatus', function*(){ //导航权限
+        var $self = this;
+        var page = {name:$self.params.guideAddrStatus,userToken:$self.cookies.get('token')};
+        yield (server().permissionType(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+            }));
 
-    router.get('/biddingwebinfo/list', function*(){ //招投标网站信息列表
+    }).get('/biddingtype/list', function*(){ //招投标类型列表
+            var $self = this;
+            var page = $self.request.query;
+            page.userToken = $self.cookies.get('token');
+            yield (server().TypeInfoList(page)
+                .then((parsedBody) =>{
+                    var responseText = JSON.parse(parsedBody);
+                    $self.body = responseText;
+                }).catch((error) =>{
+                    $self.set('Content-Type','application/json;charset=utf-8');
+                    $self.body=error.error;
+                    console.error(error.error);
+                }));
+        }).get('/biddingtype/count', function*(){//分页招投标类型
+        var $self = this;
+        var deleteData = $self.request.query;
+        deleteData.userToken = $self.cookies.get('token');
+        yield (server().typeCount(deleteData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/biddingtype/typeId', function*(){//招投标类型获取id
+        var $self = this;
+        var findIdData = $self.request.query;
+        findIdData.userToken = $self.cookies.get('token');
+        yield (server().findTypeId(findIdData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/biddingtype/add', function*(){//招投标类型添加
+        var $self = this;
+        var addData = $self.request.body;
+        addData.userToken = $self.cookies.get('token');
+        yield (server().TypeInfoAdd(addData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/biddingtype/edit', function*(){//编辑招投标类型
+        var $self = this;
+        var editData = $self.request.body;
+        editData.userToken = $self.cookies.get('token');
+        yield (server().TypeInfoEdit(editData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/biddingtype/delete', function*(){//删除招投标类型
+        var $self = this;
+        var deleteData = $self.request.query;
+        deleteData.userToken = $self.cookies.get('token');
+        yield (server().TypeInfoDelete(deleteData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    })
+    //----------------------招投标网站信息---------------------------
+        .get('/biddingwebinfo/list', function*(){ //招投标网站信息列表
         var $self = this;
         var page = $self.request.query;
         page.userToken = $self.cookies.get('token');
@@ -57,6 +149,32 @@ module.exports = function(){
         var deleteData = $self.request.query;
         deleteData.userToken = $self.cookies.get('token');
         yield (server().WebInfoDelete(deleteData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/biddingwebinfo/congeal', function*(){//冻结招投标网站信息
+        var $self = this;
+        var congealData = $self.request.query;
+        congealData.userToken = $self.cookies.get('token');
+        yield (server().WebInfoCongeal(congealData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/biddingwebinfo/thaw', function*(){//解冻招投标网站信息
+        var $self = this;
+        var thawData = $self.request.query;
+        thawData.userToken = $self.cookies.get('token');
+        yield (server().WebInfoThaw(thawData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -115,6 +233,34 @@ module.exports = function(){
                 console.error(error.error);
             }));
         //----------------------招标信息---------------------------
+        //获取招标类型
+    }).get('/biddinginfo/getType', function*(){
+        var $self = this;
+        var getTypeToken = $self.request.query;
+        getTypeToken.userToken = $self.cookies.get('token');
+        yield (server().getbiddingType(getTypeToken)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+        //获取年份
+    }).get('/biddinginfo/getYear', function*(){
+        var $self = this;
+        var getYearToken = $self.request.query;
+        getYearToken.userToken = $self.cookies.get('token');
+        yield (server().getYear(getYearToken)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
     //下载文件
         }).get('/infoDownload/download', function*(){
         var $self = this;
@@ -266,6 +412,137 @@ module.exports = function(){
         var $self = this;
         var cityToken = {userToken:$self.cookies.get('token')};
         yield (server().getAllArea(cityToken)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/biddinginfo/caigouInfo', function*(){//中国警务招标网获取信息
+        var $self = this;
+        var findIdData = $self.request.query;
+        findIdData.userToken = $self.cookies.get('token');
+        yield (server().getcaigouInfo(findIdData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/biddinginfo/caigouTotal', function*(){//中国警务招标网获取信息总条数
+        var $self = this;
+        var findIdData = $self.request.query;
+        findIdData.userToken = $self.cookies.get('token');
+        console.log(findIdData)
+        yield (server().getcaigouTotal(findIdData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/biddinginfo/yidonginfo', function*(){//中国移动采购与招标网获取网址内的信息
+        var $self = this;
+        var findIdData = $self.request.body;
+        findIdData.userToken = $self.cookies.get('token');
+        yield (server().getyidongInfo(findIdData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/biddinginfo/yidongTotal', function*(){//中国移动采购与招标网获取网址内的信息总条数
+        var $self = this;
+        var findIdData = $self.request.body;
+        findIdData.userToken = $self.cookies.get('token');
+        yield (server().getyidongTotal(findIdData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/biddinginfo/zycgInfo', function*(){//中央政府采购网获取信息
+        var $self = this;
+        var findIdData = $self.request.query;
+        findIdData.userToken = $self.cookies.get('token');
+        yield (server().getzycgInfo(findIdData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/biddinginfo/zycgTotal', function*(){//中央政府采购网获取信息总条数
+        var $self = this;
+        var findIdData = $self.request.query;
+        findIdData.userToken = $self.cookies.get('token');
+        yield (server().getzycgTotal(findIdData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/biddinginfo/txzbInfo', function*(){//工信部招标网获取信息
+        var $self = this;
+        var findIdData = $self.request.body;
+        findIdData.userToken = $self.cookies.get('token');
+        yield (server().gettxzbInfo(findIdData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/biddinginfo/txzbTotal', function*(){//工信部招标网获取信息总条数
+        var $self = this;
+        var findIdData = $self.request.body;
+        findIdData.userToken = $self.cookies.get('token');
+        yield (server().gettxzbTotal(findIdData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/biddinginfo/toobiaoInfo', function*(){//中国电力工程招标网获取信息
+        var $self = this;
+        var findIdData = $self.request.query;
+        findIdData.userToken = $self.cookies.get('token');
+        yield (server().gettoobiaoInfo(findIdData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/biddinginfo/toobiaoTotal', function*(){//中国电力工程招标网获取信息总条数
+        var $self = this;
+        var findIdData = $self.request.query;
+        findIdData.userToken = $self.cookies.get('token');
+        yield (server().gettoobiaoTotal(findIdData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -885,7 +1162,7 @@ module.exports = function(){
                 console.error(error.error);
             }));
 
-    //----------------------------------
+    //----------------------------------权限设置----------------------------
     }).get('/user/logout', function*(next){ //登录退出
         var url = this.request.query;
         this.cookies.set("absUrl",url.absurl);
@@ -1027,6 +1304,205 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
+        /*......................招标问题受理和处理..............................*/
+    }).get('/biddingaccept/biddingaccept/:guideAddrStatus', function*(){ //菜单权限
+        var $self = this;
+        var page = {name:$self.params.guideAddrStatus,userToken:$self.cookies.get('token')};
+        yield (server().acceptPermission(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+            }));
+    }).get('/biddingaccept/list', function*(){ //开标信息列表
+        var $self = this;
+        var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
+        yield (server().acceptList(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/biddingaccept/search', function*(){ //招标问题受理和处理列表搜索
+        var $self = this;
+        var page = $self.request.query;
+        page.userToken = $self.cookies.get('token');
+        yield (server().AcceptSearch(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/biddingaccept/add', function*(){//招标问题受理和处理添加
+        var $self = this;
+        var addData = $self.request.body;
+        addData.userToken = $self.cookies.get('token');
+        yield (server().AcceptAdd(addData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/biddingaccept/edit', function*(){//招标问题受理和处理编辑
+        var $self = this;
+        var editData = $self.request.body;
+        editData.userToken = $self.cookies.get('token');
+        yield (server().AcceptEdit(editData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/biddingaccept/notification', function*(){//招标问题受理和处理通报
+        var $self = this;
+        var notificationData = $self.request.body;
+        notificationData.userToken = $self.cookies.get('token');
+        yield (server().AcceptNotification(notificationData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/biddingaccept/delete', function*(){//删除招标问题受理和处理
+        var $self = this;
+        var deleteData = $self.request.query;
+        deleteData.userToken = $self.cookies.get('token');
+        yield (server().AcceptDelete(deleteData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/biddingaccept/count', function*(){//获取招标问题受理和处理总条数
+        var $self = this;
+        var countToken = $self.request.query;
+        countToken.userToken = $self.cookies.get('token');
+        yield (server().getAcceptTotal(countToken)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/biddingaccept/info', function*(){//获取id招标问题受理和处理
+        var $self = this;
+        var findIdData = $self.request.query;
+        findIdData.userToken = $self.cookies.get('token');
+        yield (server().getAcceptId(findIdData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    //获取问题提出人
+    }).get('/biddingaccept/getUser', function*(){
+        var $self = this;
+        var getUserToken = $self.request.query;
+        getUserToken.userToken = $self.cookies.get('token');
+        yield (server().getUser(getUserToken)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
     })
-    return router;
+    //----------------------招投标管理汇总-----------------------------------
+    // }).post('/collectOper/Oper', function*(){//操作日志汇总
+    //     var $self = this;
+    //     var editData = $self.request.body;
+    //     editData.userToken = $self.cookies.get('token');
+    //     yield (server().collectOper(editData)
+    //         .then((parsedBody) =>{
+    //             var responseText = JSON.parse(parsedBody);
+    //             $self.body = responseText;
+    //         }).catch((error) =>{
+    //             $self.set('Content-Type','application/json;charset=utf-8');
+    //             $self.body=error.error;
+    //             console.error(error.error);
+    //         }));
+.post('/collectDay/Day', function*(){//转正管理日汇总
+    var $self = this;
+    var editData = $self.request.body;
+    editData.userToken = $self.cookies.get('token');
+    yield (server().collectDay(editData)
+        .then((parsedBody) =>{
+            var responseText = JSON.parse(parsedBody);
+            $self.body = responseText;
+        }).catch((error) =>{
+            $self.set('Content-Type','application/json;charset=utf-8');
+            $self.body=error.error;
+            console.error(error.error);
+        }));
+}).post('/collectWeek/Week', function*(){//转正管理周汇总
+    var $self = this;
+    var editData = $self.request.body;
+    editData.userToken = $self.cookies.get('token');
+    yield (server().collectWeek(editData)
+        .then((parsedBody) =>{
+            var responseText = JSON.parse(parsedBody);
+            $self.body = responseText;
+        }).catch((error) =>{
+            $self.set('Content-Type','application/json;charset=utf-8');
+            $self.body=error.error;
+            console.error(error.error);
+        }));
+}).post('/collectMonth/Month', function*(){//转正管理月汇总
+    var $self = this;
+    var editData = $self.request.body;
+    editData.userToken = $self.cookies.get('token');
+    yield (server().collectMonth(editData)
+        .then((parsedBody) =>{
+            var responseText = JSON.parse(parsedBody);
+            $self.body = responseText;
+        }).catch((error) =>{
+            $self.set('Content-Type','application/json;charset=utf-8');
+            $self.body=error.error;
+            console.error(error.error);
+        }));
+}).post('/collectTotal/Total', function*(){//转正管理累计汇总
+    var $self = this;
+    var editData = $self.request.body;
+    editData.userToken = $self.cookies.get('token');
+    yield (server().collectTotal(editData)
+        .then((parsedBody) =>{
+            var responseText = JSON.parse(parsedBody);
+            $self.body = responseText;
+        }).catch((error) =>{
+            $self.set('Content-Type','application/json;charset=utf-8');
+            $self.body=error.error;
+            console.error(error.error);
+        }));
+    })
+        return router;
 };
+
+

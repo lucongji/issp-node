@@ -15,7 +15,20 @@ app.factory('infoSer',function ($http) {
         websiteName:websiteName,
         getProjectName:getProjectName,
         infoGuide:infoGuide,
-        infoFiles:infoFiles//文件附件列表
+        infoFiles:infoFiles,//文件附件列表
+        getbiddingType:getbiddingType,
+        getYear:getYear,
+        getcaigouInfo:getcaigouInfo,
+        getyidongInfo:getyidongInfo,
+        getzycgInfo:getzycgInfo,
+        gettxzbInfo:gettxzbInfo,
+        gettoobiaoInfo:gettoobiaoInfo,
+        getcaigouTotal:getcaigouTotal,
+        getyidongTotal:getyidongTotal,
+        getzycgTotal:getzycgTotal,
+        gettxzbTotal:gettxzbTotal,
+        gettoobiaoTotal:gettoobiaoTotal,
+
     };
     function infoList(data) {
         return $http.get('/biddinginfo/list',{
@@ -23,6 +36,59 @@ app.factory('infoSer',function ($http) {
 
         })
     }
+
+    function getcaigouInfo(data) {
+        return $http.get('/biddinginfo/caigouInfo',{
+            params: data
+
+        })
+    }
+    // 中国警务招标网总条数(每页20条)
+    function getcaigouTotal(data){
+        return $http.get('/biddinginfo/caigouTotal',{params:data})
+    }
+    function getyidongInfo(data) {
+        return $http.post('/biddinginfo/yidonginfo',{
+            params: data
+
+        })
+    }
+    中国移动采购与招标网总条数(每页20条)
+    function getyidongTotal(data){
+        return $http.post('/biddinginfo/yidongTotal',{params:data})
+    }
+    function getzycgInfo(data) {
+        return $http.get('/biddinginfo/zycgInfo',{
+            params: data
+
+        })
+    }
+    中央政府采购网总条数(每页20条)
+    function getzycgTotal(data){
+        return $http.get('/biddinginfo/zycgTotal',{params:data})
+    }
+    function gettxzbInfo(data) {
+        return $http.post('/biddinginfo/txzbInfo',{
+            params: data
+
+        })
+    }
+    工信部招标网总条数(每页11条)
+    function gettxzbTotal(data){
+        return $http.post('/biddinginfo/txzbTotal',{params:data})
+    }
+
+    function gettoobiaoInfo(data) {
+        return $http.get('/biddinginfo/toobiaoInfo',{
+            params: data
+
+        })
+    }
+    中国电力工程招标网总条数(每页23条)
+    function gettoobiaoTotal(data){
+        return $http.get('/biddinginfo/toobiaoTotal',{params:data})
+    }
+
     //搜索
     function searchList(data) {
         return $http.get('/biddinginfo/search',{
@@ -93,6 +159,22 @@ app.factory('infoSer',function ($http) {
     function websiteUrl(data){
 
         return $http.get('/websiteUrl/url',{
+            params: data
+
+        })
+    }
+    //获取招投标类型
+    function getbiddingType(data){
+
+        return $http.get('/biddinginfo/getType',{
+            params: data
+
+        })
+    }
+    //获取年份
+    function getYear(data){
+
+        return $http.get('/biddinginfo/getYear',{
             params: data
 
         })

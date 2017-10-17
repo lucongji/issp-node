@@ -1,0 +1,420 @@
+<div class="collect">
+    <p class="col-p">招投标流程进度管理汇总</p>
+    <div class="collect-select" style="margin:20px 20px 20px 15px">
+        <span class="sum">开始日期：<input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="inputter day" ng-model="date"></span>
+        <button ng-click="summary1()" style="margin-left:10px;" class="colbutton">操作汇总</button>
+    </div>
+    <ul class="sum-list">
+        <li class="sum-thead Tspan">
+            <span>招投标业务类型</span>
+            <span>年份</span>
+            <span>招标的信息数量</span>
+            <span>可项目测算数量</span>
+            <span>可投标规模数量</span>
+            <span>可投标项目数量</span>
+            <span>竞争对手</span>
+            <span>招标价格</span>
+            <span>标书制作数</span>
+            <span>中标数量</span>
+            <span>保证金金额</span>
+            <span>退回保证金金额</span>
+        </li>
+        <li class="sum-tbody">
+            <!-- 1 -->
+            <ul class="keng kleft">
+                <span title="{{Lists.businessType}}" ng-repeat="Lists in data1" style="height:{{(Lists.length3*25) + 'px'}};line-height:{{(Lists.length3*25) + 'px'}}" >{{Lists.businessType}}</span>
+            </ul>
+            <!-- 2 -->
+            <ul class="keng">
+                <span title="{{Lists.year}}" ng-repeat="Lists in data1" style="height:{{(Lists.length2*25) + 'px'}};line-height:{{(Lists.length2*25) + 'px'}}">{{Lists.year}}</span>
+            </ul>
+            <!-- 3 -->
+            <ul class="keng">
+                <li class="keng1">
+                    <span title="{{Lists.biddinginfoNum}}" ng-repeat="Lists in data1">{{Lists.biddinginfoNum}}</span>
+                </li>
+            </ul>
+            <ul class="keng">
+                <li class="keng1">
+                    <span title="{{Lists.projectEstimatesNum}}" ng-repeat="Lists in data1">{{Lists.projectEstimatesNum}}</span>
+                </li>
+            </ul>
+            <ul class="keng">
+                <li class="keng1">
+                    <span title="{{Lists.scaleNum}}" ng-repeat="Lists in data1">{{Lists.scaleNum}}</span>
+                </li>
+            </ul>
+            <ul class="keng">
+                <li class="keng1">
+                    <span title="{{Lists.biddingProjectNum}}" ng-repeat="Lists in data1">{{Lists.biddingProjectNum}}</span>
+                </li>
+            </ul>
+            <ul class="keng">
+                <li class="keng1">
+                    <span title="{{Lists.contendNum}}" ng-repeat="Lists in data1">{{Lists.contendNum}}</span>
+                </li>
+            </ul>
+            <ul class="keng">
+                <li class="keng1">
+                    <span title="{{Lists.biddingPrice}}" ng-repeat="Lists in data1">{{Lists.biddingPrice}}</span>
+                </li>
+            </ul>
+            <ul class="keng">
+                <li class="keng1">
+                    <span title="{{Lists.bidNum}}" ng-repeat="Lists in data1">{{Lists.bidNum}}</span>
+                </li>
+            </ul>
+            <ul class="keng">
+                <li class="keng1">
+                    <span title="{{Lists.winNum}}" ng-repeat="Lists in data1">{{Lists.winNum}}</span>
+                </li>
+            </ul>
+            <ul class="keng">
+                <li class="keng1">
+                    <span title="{{Lists.marginPrice}}" ng-repeat="Lists in data1">{{Lists.marginPrice}}</span>
+                </li>
+            </ul>
+            <ul class="keng">
+                <li class="keng1">
+                    <span title="{{Lists.returnMarginPrice}}" ng-repeat="Lists in data1">{{Lists.returnMarginPrice}}</span>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <p class="col-p">招投标流程进度管理日汇总</p>
+    <div class="collect-select" style="margin:20px 20px 20px 15px">
+        <span class="sum">开始日期：<input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="inputter Day" ng-model="date"></span>
+        <button ng-click="summary2()" style="margin-left:10px;" class="colbutton">日汇总</button>
+    </div>
+    <ul class="sum-list">
+        <li class="sum-thead Tspan">
+            <span>招投标业务类型</span>
+            <span>年份</span>
+            <span>招标的信息数量</span>
+            <span>可项目测算数量</span>
+            <span>可投标规模数量</span>
+            <span>可投标项目数量</span>
+            <span>竞争对手</span>
+            <span>招标价格</span>
+            <span>标书制作数</span>
+            <span>中标数量</span>
+            <span>保证金金额</span>
+            <span>退回保证金金额</span>
+        </li>
+        <li class="sum-tbody">
+            <ul class="keng kleft">
+                <span title="{{Lists.businessType}}" ng-repeat="Lists in data1" style="height:{{(Lists.length3*25) + 'px'}};line-height:{{(Lists.length3*25) + 'px'}}" >{{Lists.businessType}}</span>
+            </ul>
+            <!-- 2 -->
+            <ul class="keng">
+                <span title="{{Lists.year}}" ng-repeat="Lists in data1" style="height:{{(Lists.length2*25) + 'px'}};line-height:{{(Lists.length2*25) + 'px'}}">{{Lists.year}}</span>
+            </ul>
+            <!-- 3 -->
+            <ul class="keng">
+                <li class="keng1">
+                    <span title="{{Lists.biddinginfoNum}}" ng-repeat="Lists in data2">{{Lists.biddinginfoNum}}</span>
+                </li>
+            </ul>
+            <ul class="keng">
+                <li class="keng1">
+                    <span title="{{Lists.projectEstimatesNum}}" ng-repeat="Lists in data2">{{Lists.projectEstimatesNum}}</span>
+                </li>
+            </ul>
+            <ul class="keng">
+                <li class="keng1">
+                    <span title="{{Lists.scaleNum}}" ng-repeat="Lists in data2">{{Lists.scaleNum}}</span>
+                </li>
+            </ul>
+            <ul class="keng">
+                <li class="keng1">
+                    <span title="{{Lists.biddingProjectNum}}" ng-repeat="Lists in data2">{{Lists.biddingProjectNum}}</span>
+                </li>
+            </ul>
+            <ul class="keng">
+                <li class="keng1">
+                    <span title="{{Lists.contendNum}}" ng-repeat="Lists in data2">{{Lists.contendNum}}</span>
+                </li>
+            </ul>
+            <ul class="keng">
+                <li class="keng1">
+                    <span title="{{Lists.biddingPrice}}" ng-repeat="Lists in data2">{{Lists.biddingPrice}}</span>
+                </li>
+            </ul>
+            <ul class="keng">
+                <li class="keng1">
+                    <span title="{{Lists.bidNum}}" ng-repeat="Lists in data2">{{Lists.bidNum}}</span>
+                </li>
+            </ul>
+            <ul class="keng">
+                <li class="keng1">
+                    <span title="{{Lists.winNum}}" ng-repeat="Lists in data2">{{Lists.winNum}}</span>
+                </li>
+            </ul>
+            <ul class="keng">
+                <li class="keng1">
+                    <span title="{{Lists.marginPrice}}" ng-repeat="Lists in data2">{{Lists.marginPrice}}</span>
+                </li>
+            </ul>
+            <ul class="keng">
+                <li class="keng1">
+                    <span title="{{Lists.returnMarginPrice}}" ng-repeat="Lists in data2">{{Lists.returnMarginPrice}}</span>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <p class="col-p">招投标流程进度管理周汇总</p>
+    <div class="collect-select" style="margin:20px 20px 20px 15px">
+        <span class="sum"> 年份：<select class="sele col-sele year"><!--  ng-model="month" -->
+                <option ng-repeat="years in year" value="{{years}}">{{years}}</option>
+            </select></span>
+        <span class="sum mary">
+            月份：
+            <select class="sele col-sele month"><!--  ng-model="month" -->
+                <option ng-repeat="month in months" value="{{month}}">{{month}}</option>
+            </select>
+        </span>
+        <span class="sum mary">
+            周期：
+            <select class="sele col-sele week" style="text-align: center;"><!--  ng-model="week" -->
+                <option ng-repeat="week in weeks" value="{{week}}">{{week}}</option>
+            </select>
+        </span>
+        <button ng-click="summary3()" style="margin-left:10px;" class="colbutton">周汇总</button>
+    </div>
+    <ul class="sum-list">
+        <li class="sum-thead Tspan">
+            <span>招投标业务类型</span>
+            <span>年份</span>
+            <span>招标的信息数量</span>
+            <span>可项目测算数量</span>
+            <span>可投标规模数量</span>
+            <span>可投标项目数量</span>
+            <span>竞争对手</span>
+            <span>招标价格</span>
+            <span>标书制作数</span>
+            <span>中标数量</span>
+            <span>保证金金额</span>
+            <span>退回保证金金额</span>
+        </li>
+        <li class="sum-tbody">
+            <ul class="keng kleft">
+                <span title="{{Lists.businessType}}" ng-repeat="Lists in data1" style="height:{{(Lists.length3*25) + 'px'}};line-height:{{(Lists.length3*25) + 'px'}}" >{{Lists.businessType}}</span>
+            </ul>
+            <!-- 2 -->
+            <ul class="keng">
+                <span title="{{Lists.year}}" ng-repeat="Lists in data3" style="height:{{(Lists.length2*25) + 'px'}};line-height:{{(Lists.length2*25) + 'px'}}">{{Lists.year}}</span>
+            </ul>
+            <!-- 3 -->
+            <ul class="keng">
+                <li class="keng1">
+                    <span title="{{Lists.biddinginfoNum}}" ng-repeat="Lists in data3">{{Lists.biddinginfoNum}}</span>
+                </li>
+            </ul>
+            <ul class="keng">
+                <li class="keng1">
+                    <span title="{{Lists.projectEstimatesNum}}" ng-repeat="Lists in data3">{{Lists.projectEstimatesNum}}</span>
+                </li>
+            </ul>
+            <ul class="keng">
+                <li class="keng1">
+                    <span title="{{Lists.scaleNum}}" ng-repeat="Lists in data3">{{Lists.scaleNum}}</span>
+                </li>
+            </ul>
+            <ul class="keng">
+                <li class="keng1">
+                    <span title="{{Lists.biddingProjectNum}}" ng-repeat="Lists in data3">{{Lists.biddingProjectNum}}</span>
+                </li>
+            </ul>
+            <ul class="keng">
+                <li class="keng1">
+                    <span title="{{Lists.contendNum}}" ng-repeat="Lists in data3">{{Lists.contendNum}}</span>
+                </li>
+            </ul>
+            <ul class="keng">
+                <li class="keng1">
+                    <span title="{{Lists.biddingPrice}}" ng-repeat="Lists in data3">{{Lists.biddingPrice}}</span>
+                </li>
+            </ul>
+            <ul class="keng">
+                <li class="keng1">
+                    <span title="{{Lists.bidNum}}" ng-repeat="Lists in data3">{{Lists.bidNum}}</span>
+                </li>
+            </ul>
+            <ul class="keng">
+                <li class="keng1">
+                    <span title="{{Lists.winNum}}" ng-repeat="Lists in data3">{{Lists.winNum}}</span>
+                </li>
+            </ul>
+            <ul class="keng">
+                <li class="keng1">
+                    <span title="{{Lists.marginPrice}}" ng-repeat="Lists in data3">{{Lists.marginPrice}}</span>
+                </li>
+            </ul>
+            <ul class="keng">
+                <li class="keng1">
+                    <span title="{{Lists.returnMarginPrice}}" ng-repeat="Lists in data3">{{Lists.returnMarginPrice}}</span>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <p class="col-p">招投标流程进度管理月汇总</p>
+    <div class="collect-select" style="margin:20px 20px 20px 15px">
+        <span class="sum">
+            年份：<select class="sele col-sele Year"><!--  ng-model="month" -->
+                <option ng-repeat="years in year" value="{{years}}">{{years}}</option>
+            </select>
+        </span>
+        <span class="sum mary">
+            月份：
+            <select class="sele col-sele Month"><!--  ng-model="month" -->
+                <option ng-repeat="month in months" value="{{month}}">{{month}}</option>
+            </select>
+        </span>
+        <button ng-click="summary4()" style="margin-left:10px;" class="colbutton">月汇总</button>
+    </div>
+    <ul class="sum-list">
+        <li class="sum-thead Tspan">
+            <span>招投标业务类型</span>
+            <span>年份</span>
+            <span>招标的信息数量</span>
+            <span>可项目测算数量</span>
+            <span>可投标规模数量</span>
+            <span>可投标项目数量</span>
+            <span>竞争对手</span>
+            <span>招标价格</span>
+            <span>标书制作数</span>
+            <span>中标数量</span>
+            <span>保证金金额</span>
+            <span>退回保证金金额</span>
+        </li>
+        <li class="sum-tbody">
+            <ul class="keng kleft">
+                <span title="{{Lists.businessType}}" ng-repeat="Lists in data4" style="height:{{(Lists.length3*25) + 'px'}};line-height:{{(Lists.length3*25) + 'px'}}" >{{Lists.businessType}}</span>
+            </ul>
+            <!-- 2 -->
+            <ul class="keng">
+                <span title="{{Lists.year}}" ng-repeat="Lists in data4" style="height:{{(Lists.length2*25) + 'px'}};line-height:{{(Lists.length2*25) + 'px'}}">{{Lists.year}}</span>
+            </ul>
+            <!-- 3 -->
+            <ul class="keng">
+                <li class="keng1">
+                    <span title="{{Lists.biddinginfoNum}}" ng-repeat="Lists in data4">{{Lists.biddinginfoNum}}</span>
+                </li>
+            </ul>
+            <ul class="keng">
+                <li class="keng1">
+                    <span title="{{Lists.projectEstimatesNum}}" ng-repeat="Lists in data4">{{Lists.projectEstimatesNum}}</span>
+                </li>
+            </ul>
+            <ul class="keng">
+                <li class="keng1">
+                    <span title="{{Lists.scaleNum}}" ng-repeat="Lists in data4">{{Lists.scaleNum}}</span>
+                </li>
+            </ul>
+            <ul class="keng">
+                <li class="keng1">
+                    <span title="{{Lists.biddingProjectNum}}" ng-repeat="Lists in data4">{{Lists.biddingProjectNum}}</span>
+                </li>
+            </ul>
+            <ul class="keng">
+                <li class="keng1">
+                    <span title="{{Lists.contendNum}}" ng-repeat="Lists in data4">{{Lists.contendNum}}</span>
+                </li>
+            </ul>
+            <ul class="keng">
+                <li class="keng1">
+                    <span title="{{Lists.biddingPrice}}" ng-repeat="Lists in data4">{{Lists.biddingPrice}}</span>
+                </li>
+            </ul>
+            <ul class="keng">
+                <li class="keng1">
+                    <span title="{{Lists.bidNum}}" ng-repeat="Lists in data4">{{Lists.bidNum}}</span>
+                </li>
+            </ul>
+            <ul class="keng">
+                <li class="keng1">
+                    <span title="{{Lists.winNum}}" ng-repeat="Lists in data4">{{Lists.winNum}}</span>
+                </li>
+            </ul>
+            <ul class="keng">
+                <li class="keng1">
+                    <span title="{{Lists.marginPrice}}" ng-repeat="Lists in data4">{{Lists.marginPrice}}</span>
+                </li>
+            </ul>
+            <ul class="keng">
+                <li class="keng1">
+                    <span title="{{Lists.returnMarginPrice}}" ng-repeat="Lists in data4">{{Lists.returnMarginPrice}}</span>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <p class="col-p">招投标流程进度管理累计汇总</p>
+    <div class="collect-select" style="margin:20px 20px 20px 15px">
+        <span class="sum">开始日期：<input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="inputter day" ng-model="date"></span>
+        <button ng-click="summary5()" style="margin-left:10px;" class="colbutton">累计汇总</button>
+    </div>
+    <ul class="sum-list">
+        <li class="sum-thead Tspan">
+            <span>招投标业务类型</span>
+            <span>年份</span>
+            <span>招标的信息数量</span>
+            <span>可项目测算数量</span>
+            <span>可投标规模数量</span>
+            <span>可投标项目数量</span>
+            <span>竞争对手</span>
+            <span>招标价格</span>
+            <span>标书制作数</span>
+            <span>中标数量</span>
+            <span>保证金金额</span>
+            <span>退回保证金金额</span>
+        </li>
+        <li class="sum-tbody">
+            <ul class="keng kleft">
+                <span title="{{Lists.businessType}}" ng-repeat="Lists in data5"  >{{Lists.businessType}}</span>
+            </ul>
+            <!-- 2 -->
+            <ul class="keng">
+                <span title="{{Lists.year}}" ng-repeat="Lists in data5" >{{Lists.year}}</span>
+            </ul>
+            <!-- 3 -->
+            <ul class="keng">
+                    <span title="{{Lists.biddinginfoNum}}" ng-repeat="Lists in data5">{{Lists.biddinginfoNum}}</span>
+            </ul>
+            <ul class="keng">
+                    <span title="{{Lists.projectEstimatesNum}}" ng-repeat="Lists in data5">{{Lists.projectEstimatesNum}}</span>
+            </ul>
+            <ul class="keng">
+                    <span title="{{Lists.scaleNum}}" ng-repeat="Lists in data5">{{Lists.scaleNum}}</span>
+            </ul>
+            <ul class="keng">
+                    <span title="{{Lists.biddingProjectNum}}" ng-repeat="Lists in data5">{{Lists.biddingProjectNum}}</span>
+            </ul>
+            <ul class="keng">
+                    <span title="{{Lists.contendNum}}" ng-repeat="Lists in data5">{{Lists.contendNum}}</span>
+            </ul>
+            <ul class="keng">
+                    <span title="{{Lists.biddingPrice}}" ng-repeat="Lists in data5">{{Lists.biddingPrice}}</span>
+            </ul>
+            <ul class="keng">
+                    <span title="{{Lists.bidNum}}" ng-repeat="Lists in data5">{{Lists.bidNum}}</span>
+            </ul>
+            <ul class="keng">
+                    <span title="{{Lists.winNum}}" ng-repeat="Lists in data5">{{Lists.winNum}}</span>
+            </ul>
+            <ul class="keng">
+                    <span title="{{Lists.marginPrice}}" ng-repeat="Lists in data5">{{Lists.marginPrice}}</span>
+            </ul>
+            <ul class="keng">
+                    <span title="{{Lists.returnMarginPrice}}" ng-repeat="Lists in data5">{{Lists.returnMarginPrice}}</span>
+            </ul>
+        </li>
+    </ul>
+</div>
+<script type="text/javascript">
+
+    !function(){
+        laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    }();
+
+
+</script>

@@ -7,6 +7,8 @@ app.factory('websiteSer',function ($http) {
         findWebsiteId:findWebsiteId,
         countWebsite:countWebsite,
         deleteWebsite:deleteWebsite,
+        congealWebsiteinfo:congealWebsiteinfo,
+        thawWebsiteinfo:thawWebsiteinfo,
         websitePermission:websitePermission,
         websiteUrl:websiteUrl,
         websiteName:websiteName
@@ -40,6 +42,22 @@ app.factory('websiteSer',function ($http) {
     function deleteWebsite(data){
 
         return $http.get('/biddingwebinfo/delete',{
+            params: data
+
+        })
+    }
+    //冻结
+    function congealWebsiteinfo(data){
+
+        return $http.get('/biddingwebinfo/congeal',{
+            params: data
+
+        })
+    }
+    //解冻
+    function thawWebsiteinfo(data){
+
+        return $http.get('/biddingwebinfo/thaw',{
             params: data
 
         })

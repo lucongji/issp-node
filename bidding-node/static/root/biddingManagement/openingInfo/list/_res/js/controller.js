@@ -56,6 +56,7 @@ app.controller('openingListCtrl',function($scope,openingSer,toastr,$stateParams,
 
     }
     function activatePage(page) {
+        if($scope.openLists)return;
         var listData = {
             competitive:$scope.competitive || " ",
             page:page || 1

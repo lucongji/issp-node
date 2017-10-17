@@ -40,15 +40,65 @@
                                 <span>地市</span>
                                 <span>竞争公司报价</span>
                                 <span>比率(%)</span>
+                                <span>年份</span>
+                                <span>月份</span>
+                                <span>业务类型</span>
+                                <span>业务方向科目</span>
+                                <span>招标价格</span>
+
+
+
                             </p>
                             <p class="see-children">
                                 <span mod>{{lists.cities}}</span>
                                 <span mod>{{lists.competitivePrice}}</span>
                                 <span mod>{{lists.ratio}}%</span>
+                                <span mod>{{lists.year}}</span>
+                                <span mod>{{lists.month}}</span>
+                                <span mod>{{lists.businessType|cover}}</span>
+                                <span mod>{{lists.businessDirectionSubject}}</span>
+                                <span mod>{{lists.biddingPrice}}</span>
+
+
+
                             </p>
                         </li>
+                        <li>
+                            <p class="see-parent">
+                                <span>保证金金额</span>
+                                <span>保证金退回时间</span>
+                                <span>退回保证金金额</span>
+                                <span>是否转为商机</span>
+                                <span>是否进行项目测算</span>
+                                <span>项目测算是否通过</span>
+                                <span>招标书是否制作完成</span>
+                                <span>招标是否通过</span>
+
+
+                            </p>
+                            <p class="see-children">
+                                <span mod>{{lists.marginPrice}}</span>
+                                <span mod>{{lists.backTimeDeposit}}</span>
+                                <span mod>{{lists.returnMarginPrice}}</span>
+                                <span mod>{{lists.opportunity|cover}}</span>
+                                <span mod>{{lists.projectEstimates|cover}}</span>
+                                <span mod>{{lists.passProjectEstimates|cover}}</span>
+                                <span mod>{{lists.finish|cover}}</span>
+                                <span mod>{{lists.biddingPass|cover}}</span>
+
+
+                            </p>
+                        </li>
+                        <li>
+                            <p class="see-parent">
+                                <span>更新时间</span>
+                            </p>
+                            <p class="see-children">
+                                <span mod>{{lists.updateTime}}</span>
+                            </p>
+                        </li>
+
                     </ul>
-                    
                 </div>
             </section>
         </li>

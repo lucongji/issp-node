@@ -5,25 +5,31 @@
             <span>网站名称</span>
             <span>网址</span>
             <span>账号</span>
-            <!-- <span>密码</span> -->
+            <span>密码</span>
             <span>注册人</span>
             <span>注册信息</span>
             <span>状态</span>
+            <span></span>
         </li>
         <li class="list-all" ng-repeat="lists in websiteLists" style="display: {{lists._delete?'none':'block'}};">
-            <section>
+            <section  class="{{lists.status=='CONGEAL'?'congeal':''}}">
                 <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
                     <p mod>{{$index+1+num}}</p>
                     <p mod>{{lists.webName}}</p>
                     <p mod>{{lists.url}}</p>
                     <p mod>{{lists.account}}</p>
-                    <!-- <p mod>{{lists.password}}</p> -->
+                     <p mod>{{lists.password}}</p>
                     <p mod>{{lists.registrant}}</p>
                     <p mod>{{lists.registrationInfo}}</p>
                     <p mod>{{lists.status|cover}}</p>
+                    <p mod></p>
+                </div>
+                <div class="thaw-modal">
+                    <button ng-click="thaw(lists)">解冻</button>
                 </div>
             </section>
         </li>
+
     </ul>
     <div class="module">
         <div class="see-module">
@@ -32,6 +38,7 @@
             <button class="btn" modclose>关闭</button>
         </div>
     </div>
+
     <footer class="footer">
         <pagination count="custom.itemsCount" take="custom.take" activate="custom.activatePage"></pagination>
     </footer>
@@ -49,7 +56,19 @@
         </div>
     </div>
 </div>
-<div id="modalbg" ng-show="delShow"></div>
+<div class="delete mod" ng-show="congealShow">
+    <div class="del-head">
+        <h5>温馨提示</h5>
+    </div>
+    <div class="del-con">
+        <p>确定要冻结这条数据？</p>
+        <div class="btn">
+            <button ng-click="conFn()">确定</button>
+            <button ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</div>
+<div id="modalbg" ng-show="delShow||congealShow"></div>
 
 
 

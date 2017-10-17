@@ -72,3 +72,51 @@ app.controller('openingCtrl',function ($scope,$state) {
         $scope.menuClass = 'exportMenu'
     };
 });
+//自定义过滤
+app.filter('cover', function(){
+    return function (val) {
+        var result;
+        switch(val){
+            case "INVITEDTENDERING":
+                result = "邀请招标";
+                break;
+            case "OPENTENDERING":
+                result = "公开招标";
+                break;
+            case "MOBILECOMMUNICATION":
+                result = "移动通信";
+                break;
+            case "SOFTWAREDEVELOPMENT":
+                result = "软件开发";
+                break;
+            case "INTELLIGENTSYSTEMINTEGRATION":
+                result = "智能系统集成";
+                break;
+            case "PLANNINGMARKETINGSOLUTIONS":
+                result = "策划与营销方案";
+                break;
+            case "THAW":
+                result = "解冻";
+                break;
+            case "CONGEAL":
+                result = "冻结";
+                break;
+            case "DELETE":
+                result = "删除";
+                break;
+            case "NOACTIVE":
+                result = "未激活";
+                break;
+            case "UNREVIEW":
+                result = "未审核";
+                break;
+            case true:
+                result = "是";
+                break;
+            case false:
+                result = "否";
+                break;
+        }
+        return result;
+    }
+});

@@ -34,7 +34,6 @@ app.controller('emailListCtrl',function($scope,emailSer,toastr,$stateParams,$sta
                 }else{
                     $state.go('root.biddingManagement.email.list[12]',{id:null,name:null,page:$stateParams.page-1});
                 }
-                // $state.go('root.biddingManagement.email.list[12]',{id:null,name:null});
             }else{
                 toastr.error( response.data.msg, '温馨提示');
             }
@@ -57,7 +56,9 @@ app.controller('emailListCtrl',function($scope,emailSer,toastr,$stateParams,$sta
         })
     };
     function activatePage(page) {
+        if($scope.mailLists)return;
         var listData = {
+            
             page:page || 1
         };
         emailSer.emailList(listData).then(function(response){
