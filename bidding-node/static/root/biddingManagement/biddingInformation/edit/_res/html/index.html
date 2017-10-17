@@ -5,12 +5,12 @@
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>网站名称</em></label>
                     <select class="sele webName" ng-model="editInfo.webName" ng-change="changSelect()">
-                        <option ng-repeat="webName in webNames" value="{{webName}}">{{webName}}</option>
+                        <option ng-repeat="webName in webNames" value="{{webName}}" disabled>{{webName}}</option>
                     </select>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>网址</em></label>
-                    <input type="text" value="{{url.url}}" class="na" ng-model="editInfo.url">
+                    <input type="text" value="{{url.url}}" class="na" ng-model="editInfo.url" disabled>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>编号</em></label>
@@ -29,15 +29,26 @@
                     <input type="text" ng-verify="{}" ng-model="editInfo.cities">
                 </li>
                 <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>年份</em></label>
+                    <select class="sele year" ng-model="editInfo.year" >
+                        <option ng-repeat="years in year" ng-value="{{years}}"" >{{years}}</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>月份</em></label>
+                    <select class="sele month" ng-model="editInfo.month" >
+                        <option ng-repeat="months in monthOptions" ng-value="{{months}}" >{{months}}</option>
+                    </select>
+                </li>
+                <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>招投标类型</em></label>
-                    <select class="sele" ng-model="editInfo.biddingType" ng-init="editInfo.biddingType='INVITEDTENDERING'">
-                        <option value="INVITEDTENDERING">邀请招标</option>
-                        <option value="OPENTENDERING">公开招标</option>
+                    <select class="sele" >
+                        <option ng-repeat="biddingtype in biddingType" ng-value="{{biddingtype}}" ng-model="editInfo.biddingType">{{biddingtype}}</option>
                     </select>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>业务类型</em></label>
-                    <select class="sele" ng-model="editInfo.businessType" ng-init="editInfo.businessType='MOBILECOMMUNICATION'">
+                    <select class="sele businessType" ng-model="editInfo.businessType">
                         <option value="MOBILECOMMUNICATION">移动通信</option>
                         <option value="SOFTWAREDEVELOPMENT">软件开发</option>
                         <option value="INTELLIGENTSYSTEMINTEGRATION">智能系统集成</option>
@@ -47,7 +58,6 @@
                 <li class="required navigation"  ng-click="a=!a">
                     <label><i><img src="/images/mandatory.png"></i><em>业务方向科目</em></label>
                     <input type="text" ng-model="editInfo.businessDirectionSubject">
-                
                     <div class="select-click" ng-show="a">
                         <ul><i>通信</i>
                             <li ng-repeat="tag in tags1">
@@ -128,6 +138,53 @@
                     <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image buyTenderTime" ng-model="editInfo.buyTenderTime">
                 </li>
                 <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>标书价格</em></label>
+                    <input type="number" ng-model="editInfo.price">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>购买标书要求</em></label>
+                    <input type="text" ng-model="editInfo.buyTenderRequirements">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>保证金金额</em></label>
+                    <input type="number" ng-model="editInfo.marginPrice" class="add_image marginPrice">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>退回保证金金额</em></label>
+                    <input type="number" ng-model="editInfo.returnMarginPrice" class="add_image returnMarginPrice">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>竞争对手数量</em></label>
+                    <input type="number" ng-model="editInfo.contendNum" class="add_image contendNum">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>是否进行项目测算
+                    </em></label>
+                    <select class="sele" ng-model="editInfo.projectEstimates" >
+                        <option ng-value=true>是</option>
+                        <option ng-value=false>否</option>
+                    </select>
+                </li>
+
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>项目测算是否通过</em></label>
+                    <select class="sele passProjectEstimates" ng-model="editInfo.passProjectEstimates" >
+                        <option ng-value=true>是</option>
+                        <option ng-value=false>否</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>是否转为商机</em></label>
+                    <select class="sele opportunity" ng-model="editInfo.opportunity" >
+                        <option ng-value=true>是</option>
+                        <option ng-value=false>否</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>规模数量</em></label>
+                    <input type="number" ng-model="editInfo.scale">
+                </li>
+                <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>价格</em></label>
                     <input type="number" ng-model="editInfo.price">
                 </li>
@@ -149,6 +206,10 @@
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>保证金退回时间</em></label>
                     <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image backTimeDeposit" ng-model="editInfo.backTimeDeposit">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>更新时间</em></label>
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image updateTime" ng-model="editInfo.updateTime">
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>备注</em></label>

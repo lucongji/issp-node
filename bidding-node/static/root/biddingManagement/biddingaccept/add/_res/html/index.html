@@ -1,0 +1,80 @@
+<div class="content-input add" verify-scope="tipStyle: 1">
+    <div class="input-list">
+        <section>
+            <ul>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>受理问题编号(对外)</em></label>
+                    <input type="text"  ng-model="accept.problemNum">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>问题提出人</em></label>
+                    <select class="sele" ng-model="accept.problemExhibitor">
+                        <option ng-repeat="user in User" value="{{user.username}}">{{user.username}}</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>问题类型</em></label>
+                    <input type="text"  ng-model="accept.problemType">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>问题发现形式</em></label>
+                    <input type="text"  ng-model="accept.problemDiscoveryForm">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>时间(背景)描述</em></label>
+                    <input type="text"  ng-model="accept.eventDescription">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>问题描述</em></label>
+                    <input type="text"  ng-model="accept.problemDescription">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>是否通报</em></label>
+                    <select class="sele" ng-model="accept.notification" >
+                        <option ng-value=true>是</option>
+                        <option ng-value=false>否</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>问题提出时间</em></label>
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image getTime" ng-model="accept.getTime">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>期望处理时间</em></label>
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image expectDealTime" ng-model="accept.expectDealTime">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>协助部门</em></label>
+                    <input type="text"  ng-model="accept.assistDept">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>处理协商时间</em></label>
+                    <input type="text " onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image processTime" ng-model="accept.processTime">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>状态</em></label>
+                    <select class="sele" ng-model="accept.status" ng-init="accept.status='UNTREATED'">
+                        <option value="UNTREATED">未处理</option>
+                        <option value="TREATING">在处理</option>
+                        <option value="TREATED">已处理</option>
+                        <option value="TREATED-SOLVED">已处理,解决了问题</option>
+                        <option value="TREATED-UNSOLVED">已处理,但未解决问题</option>
+                    </select>
+                </li>
+            </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="acceptAddFun()">提交</button>
+    </p>
+</div>
+
+<script type="text/javascript">
+
+    !function(){
+        laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    }();
+
+
+</script>

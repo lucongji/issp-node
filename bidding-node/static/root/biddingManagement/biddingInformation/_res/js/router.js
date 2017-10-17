@@ -67,5 +67,13 @@ app.config(function($provide, $stateProvider){
                 controller:'summaryCtrl'
             }
         }
+    }).state("root.biddingManagement.biddingInformation.see[12]",{
+        url:"/see[12]",
+        views:{
+            "content@root.biddingManagement.biddingInformation":{
+                templateUrl : "root/biddingManagement/biddingInformation/see/_res/html/index.html",
+                controller:'seeinfoCtrl'
+            }
+        }
     })
 });

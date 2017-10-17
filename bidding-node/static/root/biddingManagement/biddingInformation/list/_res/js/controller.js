@@ -59,6 +59,7 @@ app.controller('infoListCtrl',function($scope,infoSer,toastr,$stateParams,$state
         $state.go('root.biddingManagement.biddingInformation.list[12]',{webName:$scope.webName,url:$scope.url,provinces:$scope.provinces,cities:$scope.cities,page:1});
     }
     function activatePage(page) {
+        if($scope.infoLists)return;
         var data = {
                 webName: $scope.webName || " ",
                 url: $scope.url || " ",
@@ -85,7 +86,7 @@ app.controller('infoListCtrl',function($scope,infoSer,toastr,$stateParams,$state
         infoSer.countInfo(data).then(function(response){
             if(response.data.code==0){
                 $scope.custom.itemsCount = response.data.data;
-                $scope.num = $location.search().page*10>10?($location.search().page-1)*10:null;
+                $scope.num = $location.search().page*10>10?($location.search().page-1)*13:null;
             }else{
                 toastr.error( response.data.msg, '温馨提示');
             }

@@ -41,6 +41,7 @@ app.controller('questionListCtrl',function($scope,questionSer,toastr,$stateParam
         });
     };
     function activatePage(page) {
+        if($scope.answerLists)return;
         var listData = {
             page:page || 1
         };

@@ -4,6 +4,7 @@ app.controller('infoEditCtrl', function($scope, infoSer,$stateParams,$state,toas
      $scope.tenderModule= [];
     $scope.stringSettings = {template : '{{option}}', smartButtonTextConverter(skip, option) { return option; }};
     $scope.workOptions=["商务标","技术标","经济标"]
+    $scope.monthOptions=["1","2","3","4","5","6","7","8","9","10","11","12"]
     $scope.getSummary ={onSelectionChanged(){
         $scope.tender = $scope.tenderModule.join(',');
     }};
@@ -19,6 +20,7 @@ app.controller('infoEditCtrl', function($scope, infoSer,$stateParams,$state,toas
     infoSer.findInfoId(infoData).then(function(response){
         if(response.data.code==0){
             $scope.editInfo = response.data.data;
+
         }else{
             toastr.error(response.data.msg, '温馨提示');
         }
@@ -28,6 +30,23 @@ app.controller('infoEditCtrl', function($scope, infoSer,$stateParams,$state,toas
     infoSer.websiteName().then(function(response){
         if(response.data.code==0){
             $scope.webNames = response.data.data;
+        }else{
+            toastr.error(response.data.msg, '温馨提示');
+        }
+    });
+    //获取招投标类型
+    infoSer.getbiddingType().then(function(response){
+        if(response.data.code==0){
+            $scope.biddingType = response.data.data;
+        }else{
+            toastr.error(response.data.msg, '温馨提示');
+        }
+    });
+    //获取年份
+    infoSer.getYear().then(function(response){
+
+        if(response.data.code==0){
+            $scope.year = response.data.data;
         }else{
             toastr.error(response.data.msg, '温馨提示');
         }
@@ -48,12 +67,16 @@ app.controller('infoEditCtrl', function($scope, infoSer,$stateParams,$state,toas
         vm.editInfo.webName = angular.element('.webName').val();
         vm.editInfo.url = angular.element('.na').val();
         vm.editInfo.tenderModule = angular.element('.tender').val();
+        // vm.editInfo.year = angular.element('.year').val();
+        // vm.editInfo.month = angular.element('.month').val();
 
         vm.editInfo.registrationTime = angular.element('.registrationTime').val();
         vm.editInfo.biddingTime = angular.element('.biddingTime').val();
         vm.editInfo.buyTenderTime = angular.element('.buyTenderTime').val();
         vm.editInfo.marginTime = angular.element('.marginTime').val();
         vm.editInfo.backTimeDeposit = angular.element('.backTimeDeposit').val();
+        vm.editInfo.updateTime = angular.element('.updateTime').val();
+
         infoSer.editInfo(vm.editInfo).then(function(response){
             if(response.data.code == 0){
                 $state.go('root.biddingManagement.biddingInformation.list[12]');

@@ -5,7 +5,92 @@ var form = require(path.resolve('plugins/form.js'));
 var urlEncode = require(path.resolve('plugins/urlEncode.js'));
 var uploadFile = require(path.resolve('plugins/uploadFile.js'));
 module.exports = function(){
+    // -------------------招投标类型-------------------------
+    this.permissionType = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddingtype/v1/guidePermission?guideAddrStatus=`+argvs.name,//2017-10-08
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
 
+    }
+    this.TypeInfoList = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddingtype/v1/list?limit=10&page=${argvs.page}`,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    this.findTypeId = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddingtype/v1/type/${argvs.id}`,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    this.typeCount = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddingtype/v1/count`,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    // 添加
+    this.TypeInfoAdd = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddingtype/v1/add?userToken=${argvs.userToken}`,
+            form:argvs,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    // 编辑
+    this.TypeInfoEdit = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddingtype/v1/edit?userToken=${argvs.userToken}`,
+            form:argvs,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+
+    //删除
+    this.TypeInfoDelete = function(argvs){
+        var options = {
+            method : 'DELETE',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddingtype/v1/delete/${argvs.id}`,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    // ------------------------------网站信息---------------------------------
     this.WebInfoList = function(argvs){
         var options = {
             method : 'GET',
@@ -50,6 +135,30 @@ module.exports = function(){
             method : 'DELETE',
             timeout : 3000,
             uri : config()['rurl'] + `/biddingwebinfo/v1/delete/${argvs.id}`,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //冻结
+    this.WebInfoCongeal = function(argvs){
+        var options = {
+            method : 'DELETE',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddingwebinfo/v1/congel/${argvs.id}`,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //解冻
+    this.WebInfoThaw = function(argvs){
+        var options = {
+            method : 'DELETE',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddingwebinfo/v1/thaw/${argvs.id}`,
             headers:{
                 userToken:argvs.userToken
             }
@@ -129,6 +238,30 @@ module.exports = function(){
         return request(options);
     };
     //-------------------------------招标信息----------------------------
+    //获取招投标类型
+    this.getbiddingType = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddingtype/v1/getType`,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //获取年份
+    this.getYear = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddinginfo/v1/year`,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
     //文件附件列表    
    this.infoFiles= function(argvs){
         var options = {
@@ -154,6 +287,129 @@ module.exports = function(){
         };
         return request(options);
     };
+    // 中国警务招标网获取信息
+    this.getcaigouInfo = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddinginfo/v1/caigouInfo${urlEncode(argvs,true)}`,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    // 中国警务招标网获取信息总条数
+    this.getcaigouTotal = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddinginfo/v1/caigouTotal`,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    // 中国移动采购与招标网获取网址内的信息
+    this.getyidongInfo = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddinginfo/v1/info${urlEncode(argvs,true)}`,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    // 中国移动采购与招标网获取网址内的信息总条数
+    this.getyidongTotal = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddinginfo/v1/infoTotal`,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    // 中央政府采购网获取信息
+    this.getzycgInfo = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddinginfo/v1/zycgInfo${urlEncode(argvs,true)}`,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    // 中央政府采购网获取信息总条数
+    this.getzycgTotal = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddinginfo/v1/zycyTotal`,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    // 工信部招标网获取信息
+    this.gettxzbInfo = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddinginfo/v1/txzbInfo${urlEncode(argvs,true)}`,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    // 工信部招标网获取信息总条数
+    this.gettxzbTotal = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddinginfo/v1/txzbTotal`,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    // 中国电力工程招标网获取信息
+    this.gettoobiaoInfo = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddinginfo/v1/toobiaoInfo${urlEncode(argvs,true)}`,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    // 中国电力工程招标网获取信息总条数
+    this.gettoobiaoTotal = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddinginfo/v1/toobiaoTotal`,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+
+
+
     //删除文件夹
     this.infoDelfile = function(argvs){
         var options = {
@@ -784,7 +1040,7 @@ module.exports = function(){
         };
         return request(options);
     };   
-    //权限设置
+    //--------------------------权限设置--------------------------
     this.listSetting = function(argvs){
         var options = {
             method : 'GET',
@@ -829,7 +1085,7 @@ module.exports = function(){
         };
         return request(options);
     };
-    //导航权限
+    //下拉导航权限
     this.siginNav = function(argvs){
         var options = {
             method : 'GET',
@@ -883,6 +1139,199 @@ module.exports = function(){
             method : 'GET',
             timeout : 3000,
             uri : config()['rurl'] + `/biddinginfo/v1/getBiddingNum${urlEncode(argvs,true)}`,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    // ----------------------招标问题受理和处理----------------------------------
+    //标书资料列表
+    this.acceptList = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddingaccept/v1/list`,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //标书资料列表
+    this.acceptPermission = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddingaccept/v1/guidePermission?guideAddrStatus=`+argvs.name,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //招标信息列表搜索
+    this.AcceptSearch = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddinginfo/v1/search${urlEncode(argvs,true)}`,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    // 添加
+    this.AcceptAdd = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddingaccept/v1/add`,
+            form:argvs,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    // 编辑
+    this.AcceptEdit = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddingaccept/v1/edit`,
+            form:argvs,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    // 通报
+    this.AcceptNotification = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddingaccept/v1/notification`,
+            form:argvs,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+
+    //删除
+    this.AcceptDelete = function(argvs){
+        var options = {
+            method : 'DELETE',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddingaccept/v1/delete/${argvs.id}`,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //获取总条数
+    this.getAcceptTotal = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddingaccept/v1/count${urlEncode(argvs,true)}`,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+
+        return request(options);
+    };
+    //获取问题提出人
+    this.getUser = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddingaccept/v1/user`,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+
+        return request(options);
+    };
+    //获取ID
+    this.getAcceptId = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddingaccept/v1/answer/${argvs.id}`,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //----------------------操作日志及转正管理汇总-----------------------------------
+    // // 操作日志汇总
+    // this.collectOper = function(argvs){
+    //     var options = {
+    //         method : 'POST',
+    //         timeout : 3000,
+    //         uri : config()['rurl'] + `/communicationformwork/v1/edit?userToken=${argvs.userToken}`,
+    //         form:argvs,
+    //         headers:{
+    //             userToken:argvs.userToken
+    //         }
+    //     };
+    //     return request(options);
+    // };
+    // 转正管理日汇总
+    this.collectDay = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddingcollect/v1/dayCollect?userToken=${argvs.userToken}`,
+            form:argvs,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    // 转正管理周汇总
+    this.collectWeek = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddingcollect/v1/weekCollect?userToken=${argvs.userToken}`,
+            form:argvs,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    // 转正管理月汇总
+    this.collectMonth = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddingcollect/v1/monthCollect?userToken=${argvs.userToken}`,
+            form:argvs,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    // 转正管理累计汇总
+    this.collectTotal = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddingcollect/v1/totalCollect?userToken=${argvs.userToken}`,
+            form:argvs,
             headers:{
                 userToken:argvs.userToken
             }

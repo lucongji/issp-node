@@ -13,7 +13,8 @@ app.factory('openingSer',function ($http) {
         getProjectName:getProjectName,
         getBiddingNum:getBiddingNum,
         biddingNumber:biddingNumber,
-        openingPermission:openingPermission
+        openingPermission:openingPermission,
+        getYear:getYear,
     };
     //菜单权限
     function openingPermission(data) {
@@ -66,6 +67,14 @@ app.factory('openingSer',function ($http) {
     //获取所有项目名称
     function getProjectName(){
         return $http.get('/getProjectName/projectName')
+    }
+    //获取年份
+    function getYear(data){
+
+        return $http.get('/biddinginfo/getYear',{
+            params: data
+
+        })
     }
     //编号查询
     function getBiddingNum(data){

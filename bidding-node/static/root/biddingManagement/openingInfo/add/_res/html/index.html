@@ -45,6 +45,112 @@
                     <label><i></i><em>比率(%)</em></label>
                     <input type="number" ng-model="opening.ratio">
                 </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>年份</em></label>
+                    <select class="sele year" ng-model="opening.year" >
+                        <option ng-repeat="years in year" value="{{years}}">{{years}}</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>月份</em></label>
+                    <select class="sele month" ng-model="opening.month" >
+                        <option ng-repeat="months in monthOptions" value="{{months}}">{{months}}</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>业务类型</em></label>
+                    <select class="sele" ng-model="opening.businessType" ng-init="opening.businessType='MOBILECOMMUNICATION'">
+                        <option value="MOBILECOMMUNICATION">移动通信</option>
+                        <option value="SOFTWAREDEVELOPMENT">软件开发</option>
+                        <option value="INTELLIGENTSYSTEMINTEGRATION">智能系统集成</option>
+                        <option value="PLANNINGMARKETINGSOLUTIONS">策划与营销方案</option>
+                    </select>
+                </li>
+                <li class="required navigation"  ng-click="a=!a">
+                    <label><i><img src="/images/mandatory.png"></i><em>业务方向科目</em></label>
+                    <input type="text" ng-model="opening.businessDirectionSubject">
+
+                    <div class="select-click" ng-show="a">
+                        <ul><i>通信</i>
+                            <li ng-repeat="tag in tags1">
+                                <span ng-click="onSelect(tag)">{{tag.name}}</span>
+                            </li>
+                        </ul>
+                        <ul><i>软件开发</i>
+                            <li ng-repeat="tag in tags2">
+                                <span ng-click="onSelect(tag)">{{tag.name}}</span>
+                            </li>
+                        </ul>
+                        <ul><i>智能系统集成</i>
+                            <li ng-repeat="tag in tags3">
+                                <span ng-click="onSelect(tag)">{{tag.name}}</span>
+                            </li>
+                        </ul>
+                        <ul><i>广告营销方案 </i>
+                            <li ng-repeat="tag in tags4">
+                                <span ng-click="onSelect(tag)">{{tag.name}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>招标价格</em></label>
+                    <input type="number" ng-model="opening.biddingPrice">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>保证金金额</em></label>
+                    <input type="number" ng-model="opening.marginPrice">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>保证金退回时间</em></label>
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image backTimeDeposit" ng-model="opening.backTimeDeposit">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>退回保证金金额</em></label>
+                    <input type="number" ng-model="opening.returnMarginPrice" class="add_image returnMarginPrice">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>是否转为商机
+                    </em></label>
+                    <select class="sele" ng-model="opening.opportunity" >
+                        <option ng-value=true>是</option>
+                        <option ng-value=false>否</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>是否进行项目测算
+                    </em></label>
+                    <select class="sele" ng-model="opening.projectEstimates" >
+                        <option ng-value=true>是</option>
+                        <option ng-value=false>否</option>
+                    </select>
+                </li>
+
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>项目测算是否通过</em></label>
+                    <select class="sele" ng-model="opening.passProjectEstimates" >
+                        <option ng-value=true>是</option>
+                        <option ng-value=false>否</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>招标书是否制作完成</em></label>
+                    <select class="sele" ng-model="opening.finish" >
+                        <option ng-value=true>是</option>
+                        <option ng-value=false>否</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>招标是否通过</em></label>
+                    <select class="sele" ng-model="opening.biddingPass" >
+                        <option ng-value=true>是</option>
+                        <option ng-value=false>否</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>更新时间</em></label>
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image updateTime" ng-model="opening.updateTime">
+                </li>
             </ul>
         </section>
     </div>

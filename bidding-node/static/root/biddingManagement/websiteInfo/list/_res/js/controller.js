@@ -9,10 +9,14 @@ app.controller('websiteListCtrl',function($scope,websiteSer,toastr,$stateParams,
             case 'delete':
                 $scope.delShow = true;
                 break;
+            case 'congeal':
+                $scope.congealShow = true;
+                break;
         }
     }
     $scope.cancel = function(){//取消删除
         $scope.delShow = false;
+        $scope.congealShow = false;
         $state.go('' +
             'root.biddingManagement.websiteInfo.list[12]',{id:null,name:null});
     };
@@ -39,7 +43,39 @@ app.controller('websiteListCtrl',function($scope,websiteSer,toastr,$stateParams,
             }
         });
     };
+    $scope.conFn = function(){//确认冻结
+        var data = {
+            id:$stateParams.id
+        };
+        websiteSer.congealWebsiteinfo(data).then(function(response){
+            if(response.data.code==0){
+                toastr.info( "信息已冻结", '温馨提示');
+                $scope.deledId = $stateParams.id;
+                // $scope.$emit('deletedId', $scope.deledId)
+                $scope.$emit('changeId', null);
+                $scope.delShow = false;
+                $state.go('root.biddingManagement.websiteInfo.list[12]',{id:null,name:null});
+            }else{
+                toastr.error( response.data.msg, '温馨提示');
+            }
+        })
+    };
+    //解冻
+    $scope.thaw = function(event){
+        var data = {
+            id :event.id
+        }
+        websiteSer.thawWebsiteinfo(data).then(function(response){
+            if(response.data.code==0){
+                event.status = "THAW"
+            }else{
+                toastr.error( response.data.msg, '温馨提示');
+            }
+
+        })
+    }
     function activatePage(page) {
+        // if($scope.websiteLists)return;
         var listData = {
             page:page || 1
         };

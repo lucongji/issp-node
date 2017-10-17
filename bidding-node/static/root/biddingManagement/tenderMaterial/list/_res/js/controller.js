@@ -41,6 +41,7 @@ app.controller('MaterialListCtrl',function($scope,MaterialSer,toastr,$stateParam
         });
     };
     function activatePage(page) {
+        if($scope.materialLists)return;
         var listData = {
             page:page || 1
         };

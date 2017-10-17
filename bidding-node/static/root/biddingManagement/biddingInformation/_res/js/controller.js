@@ -24,6 +24,18 @@ app.controller('informationCtrl',function ($scope,$state) {
         }
 
     }
+    //多导航折叠
+    $scope.flag=true;
+    $scope.noflag=false
+    $scope.flagtoggon=function () {
+       if($scope.flag){
+           $scope.flag=false;
+           $scope.noflag=true;
+       } else{
+           $scope.flag=true;
+           $scope.noflag=false;
+       }
+    }
     $scope.menuCheck = function (name) {
         var buttonName = name;
         $scope.buttonShow = true;
@@ -87,6 +99,9 @@ app.controller('informationCtrl',function ($scope,$state) {
     $scope.summary = function(){
         $scope.menuClass = 'summaryMenu'
     };
+    $scope.see = function(){
+        $scope.menuClass = 'seeMenu'
+    };
 });
 
 //自定义过滤
@@ -126,6 +141,12 @@ app.filter('cover', function(){
                 break;
             case "UNREVIEW":
                 result = "未审核";
+                break;
+            case true:
+                result = "是";
+                break;
+            case false:
+                result = "否";
                 break;
         }
         return result;
