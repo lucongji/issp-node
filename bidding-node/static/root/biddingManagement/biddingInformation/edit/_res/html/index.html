@@ -4,13 +4,13 @@
             <ul ng-init="a=false">
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>网站名称</em></label>
-                    <select class="sele webName" ng-model="editInfo.webName" ng-change="changSelect()">
-                        <option ng-repeat="webName in webNames" value="{{webName}}" disabled>{{webName}}</option>
+                    <select class="sele webName" ng-model="editInfo.webName" ng-change="changSelect()"  value="{{url.webName}}">
+                        <option ng-repeat="webName in webNames" value="{{webName}}" >{{webName}}</option>
                     </select>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>网址</em></label>
-                    <input type="text" value="{{url.url}}" class="na" ng-model="editInfo.url" disabled>
+                    <input type="text"  class="na" ng-model="editInfo.url" disabled>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>编号</em></label>
@@ -31,7 +31,7 @@
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>年份</em></label>
                     <select class="sele year" ng-model="editInfo.year" >
-                        <option ng-repeat="years in year" ng-value="{{years}}"" >{{years}}</option>
+                        <option ng-repeat="years in year" ng-value="{{years}}">{{years}}</option>
                     </select>
                 </li>
                 <li class="required">
@@ -109,23 +109,23 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>账号</em></label>
-                    <input type="text" ng-model="editInfo.account">
+                    <input type="text" ng-model="editInfo.account" disabled>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>密码</em></label>
-                    <input type="text" ng-model="editInfo.password">
+                    <input type="text" ng-model="editInfo.password" disabled>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>注册人</em></label>
-                    <input type="text" ng-model="editInfo.registrant">
+                    <input type="text" ng-model="editInfo.registrant" disabled>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>注册信息</em></label>
-                    <input type="text" ng-model="editInfo.registrationInfo">
+                    <input type="text" ng-model="editInfo.registrationInfo" disabled>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>状态</em></label>
-                    <select class="sele" ng-model="editInfo.status" ng-init="editInfo.status='THAW'">
+                    <select class="sele" ng-value="editInfo.status" ng-init="editInfo.status='THAW'" disabled>
                         <option value="THAW">解冻</option>
                         <option value="CONGEAL">冻结</option>
                         <option value="DELETE">删除</option>
@@ -169,13 +169,6 @@
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>项目测算是否通过</em></label>
                     <select class="sele passProjectEstimates" ng-model="editInfo.passProjectEstimates" >
-                        <option ng-value=true>是</option>
-                        <option ng-value=false>否</option>
-                    </select>
-                </li>
-                <li class="required">
-                    <label><i><img src="/images/mandatory.png"></i><em>是否转为商机</em></label>
-                    <select class="sele opportunity" ng-model="editInfo.opportunity" >
                         <option ng-value=true>是</option>
                         <option ng-value=false>否</option>
                     </select>

@@ -10,7 +10,7 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>网址</em></label>
-                    <input type="text" value="{{url.url}}" class="na">
+                    <input type="text" value="{{url.url}}" class="na" readonly>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>编号</em></label>
@@ -46,14 +46,17 @@
                         <option ng-repeat="biddingtype in biddingType" value="{{biddingtype}}">{{biddingtype}}</option>
                     </select>
                 </li>
-                <li class="required">
+                <li class="required seleInputParent">
                     <label><i><img src="/images/mandatory.png"></i><em>业务类型</em></label>
+
                     <select class="sele" ng-model="information.businessType">
-                        <option value="MOBILECOMMUNICATION">移动通信</option>
-                        <option value="SOFTWAREDEVELOPMENT">软件开发</option>
-                        <option value="INTELLIGENTSYSTEMINTEGRATION">智能系统集成</option>
-                        <option value="PLANNINGMARKETINGSOLUTIONS">策划与营销方案</option>
+                        <option value="移动通信">移动通信</option>
+                        <option value="软件开发">软件开发</option>
+                        <option value="智能系统集成">智能系统集成</option>
+                        <option value="策划与营销方案">策划与营销方案</option>
                     </select>
+                    <!--<input type="text" ng-model="information.businessType" class="tender">-->
+                    <input type="text" class="seleInput" ng-model="information.businessType">
                 </li>
                 <li class="required navigation"  ng-click="a=!a">
                     <label><i><img src="/images/mandatory.png"></i><em>业务方向科目</em></label>
@@ -110,23 +113,24 @@
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>账号</em></label>
-                    <input type="text" ng-model="information.account">
+                    <input type="text"  value="{{url.account}}" class="account" readonly>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>密码</em></label>
-                    <input type="text" ng-model="information.password">
+                    <input type="text" class="password" value="{{url.password}}" readonly>
                 </li>
-                <li class="required">
-                    <label><i><img src="/images/mandatory.png"></i><em>注册人</em></label>
-                    <input type="text" ng-model="information.registrant">
+                <li class='required'>
+                    <label><i><img src='images/mandatory.png'></i><em>注册人</em></label>
+                    <input type="text" class="registrant" value="{{url.registrant}}" readonly>
                 </li>
-                <li class="required">
+                <li class='required'>
                     <label><i><img src="/images/mandatory.png"></i><em>注册信息</em></label>
-                    <input type="text" ng-model="information.registrationInfo">
+                    <input type="text" class="registrationInfo" value="{{url.registrationInfo}}" readonly>
                 </li>
-                <li class="required">
+                <li class='required'>
                     <label><i><img src="/images/mandatory.png"></i><em>状态</em></label>
-                    <select class="sele" ng-model="information.status" >
+                    <select class="sele" class="status"   value="{{url.status}}" onfocus="this.defaultIndex=this.selectedIndex;"
+                            onchange="this.selectedIndex=this.defaultIndex;">
                         <option value="THAW">解冻</option>
                         <option value="CONGEAL">冻结</option>
                         <option value="DELETE">删除</option>
@@ -170,13 +174,6 @@
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>项目测算是否通过</em></label>
                     <select class="sele" ng-model="information.passProjectEstimates" >
-                        <option value="true">是</option>
-                        <option value="false">否</option>
-                    </select>
-                </li>
-                <li class="required">
-                    <label><i><img src="/images/mandatory.png"></i><em>是否转为商机</em></label>
-                    <select class="sele" ng-model="information.opportunity" >
                         <option value="true">是</option>
                         <option value="false">否</option>
                     </select>
