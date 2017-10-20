@@ -123,8 +123,11 @@ app.factory('infoSer',function ($http) {
         })
     }
     //汇总
+    // function summaryInfo(data) {
+    //     return $http.get('/biddinginfo/collect?cities='+data.join(','))
+    // }
     function summaryInfo(data) {
-        return $http.get('/biddinginfo/collect?cities='+data.join(','))
+        return $http.get('/biddinginfo/collect?cities='+data)
     }
     //获取所有地区
     function getCity(){

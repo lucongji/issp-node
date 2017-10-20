@@ -6,26 +6,27 @@
         <span ng-repeat="city in cities">{{city}}, </span>
        </p>
         <div class="mymultiselect" events="getSummary" ng-dropdown-multiselect="" options="workOptions" selected-model="cities" extra-settings="stringSettings"></div>
+       <!--<li class="getCity">-->
+           <!--<label><i><img src="/images/mandatory.png"></i><em>地市</em></label>-->
+           <!--<select class="sele"  ng-change ="getSummary(cities)" ng-model="cities">-->
+               <!--<option value="" disabled selected></option>-->
+               <!--<option ng-repeat="city in workOptions"  value="{{city}}">{{city}}</option>-->
+           <!--</select>-->
+       <!--</li>-->
+
        </div>
     </div>
-    <ul class="sum-list">
-        <li class="sum-thead">
+    <ul class="sum-list" ng-repeat="Lists in summaryLists">
+        <li class="sum-thead summary-thead" >
             <span>地市</span>
-            <span>邀请招标</span>
-            <span>公开招标</span>
-            <span>移动通信</span>
-            <span>软件开发</span>
-            <span>智能系统集成</span>
-            <span>策划与营销方案</span>
+            <span  ng-repeat="remarks in Lists.biddingMap">{{remarks.remark}}</span>
+            <span  ng-repeat="remarks1 in Lists.businessMap">{{remarks1.remark}}</span>
         </li>
-        <li class="sum-tbody" ng-repeat="Lists in summaryLists">
+        <li class="sum-tbody"   >
             <span>{{Lists.cities}}</span>
-            <span>{{Lists.invite}}</span>
-            <span>{{Lists.openly}}</span>
-            <span>{{Lists.mobile}}</span>
-            <span>{{Lists.soft}}</span>
-            <span>{{Lists.system}}</span>
-            <span>{{Lists.plan}}</span>
+            <span ng-repeat="counts in Lists.biddingMap">{{counts.counts}}</span>
+            <span ng-repeat="counts1 in Lists.businessMap">{{counts1.counts}}</span>
+
         </li>
     </ul>
 </div>

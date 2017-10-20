@@ -55,8 +55,12 @@ app.controller('infoAddCtrl', function ($scope, infoSer, $state, toastr) {
         var vm = $scope;
         vm.information.webName = angular.element('.webName').val();
         vm.information.url = angular.element('.na').val();
+        vm.information.account = angular.element('.account').val();
+        vm.information.password = angular.element('.password').val();
+        vm.information.registrant = angular.element('.registrant').val();
+        vm.information.registrationInfo = angular.element('.registrationInfo').val();
         vm.information.tenderModule = angular.element('.tender').val();
-
+        vm.information.status = $scope.url.status;
         vm.information.registrationStartTime = angular.element('.registrationStartTime').val();
         vm.information.registrationEndTime = angular.element('.registrationEndTime').val();
         vm.information.biddingTime = angular.element('.biddingTime').val();
@@ -73,7 +77,6 @@ app.controller('infoAddCtrl', function ($scope, infoSer, $state, toastr) {
                 toastr.error( response.data.msg, '温馨提示');
             }
         });
-        console.log(vm.information)
     };
 });
 

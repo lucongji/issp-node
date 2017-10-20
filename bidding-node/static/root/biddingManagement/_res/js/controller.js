@@ -58,7 +58,8 @@ app.controller('biddingCtrl', function ($scope,$state) {
             {name2:'招标信息',msg:'biddingInformation'},{name3:'开标信息',msg:'openingInfo'},{name4:'投标答疑问题记录',msg:'tenderQuestion'},
             {name5:'标书资料',msg:'tenderMaterial'},{name6:'招投标信息邮件发送',msg:'email'},{name8:'招标问题受理和处理',msg:'biddingaccept'},
             {name9:'招投标流程进度管理汇总',msg:'collect'}],showIs:false},
-        {id:"2",item:"设置",menuList:[{name10:'设置',msg:'setting'}],showIs:false}
+        {id:"2",item:"设置",menuList:[{name10:'设置',msg:'setting'}],showIs:false},
+        {id:"3",item:"版本信息",menuList:[{name11:'版本信息',msg:'version'},{name12:'帮助与解答',msg:'help'}],showIs:false}
     ];
     if(active){
         for(var i=0;i<$scope.showsList.length;i++){
