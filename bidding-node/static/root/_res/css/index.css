@@ -3396,6 +3396,289 @@ ul li .data-add{
   width: 40% !important;
   border: 0 black solid !important;
 }
+.right-section .top-content .content .content-wrap .content-input .input-list section ul li.required input,.right-section .top-content .content .content-wrap .content-input .input-list section ul li.required textarea {
+  border: 1px solid #1aafea;
+}
+.right-section .top-content .content .content-wrap .content-input .input-list section ul li.cycle input {
+  width: 22%;
+}
+
+.right-section .top-content .content .content-wrap .content-input .input-list section ul li.required input:hover {
+  box-shadow: 0 0 3px #1aafea;
+}
+
+.right-section .top-content .content .content-wrap .content-input .input-list section ul li.required select {
+  border: 1px solid #1aafea;
+}
+
+.right-section .top-content .content .content-wrap .content-input .input-list section ul li.required select:hover {
+  box-shadow: 0 0 3px #1aafea;
+}
+
+.right-section .top-content .content .content-wrap .content-input .input-list section ul li.width-10 label {
+  width: 196px;
+}
+
+.right-section .top-content .content .content-wrap .content-input .input-list section ul li.width-10 label em {
+  width: 163px;
+}
+
+.right-section .top-content .content .content-wrap .content-input .input-list section ul li label {
+  width: 147px;
+  display: inline-block;
+  text-align: right;
+}
+
+.right-section .top-content .content .content-wrap .content-input .input-list section ul li label em {
+  display: inline-block;
+  width: 112px;
+  text-align-last: justify;
+}
+
+.right-section .top-content .content .content-wrap .content-input .input-list section ul li label i {
+  display: inline-block;
+  margin-right: 10px;
+  vertical-align: -3px;
+}
+
+.right-section .top-content .content .content-wrap .content-input .input-list section ul li label:after {
+  content: '\FF1A';
+}
+
+.right-section .top-content .content .content-wrap .content-input .input-list section ul li input {
+  position: relative;
+  width: 50%;
+  padding-left: 15px;
+  padding-right: 15px;
+  height: 36px;
+  border: 1px solid #999999;
+  border-radius: 5px;
+  margin-left: 14px;
+}
+.right-section .top-content .content .content-wrap .content-input .input-list section ul li textarea {
+  position: relative;
+  width: 50%;
+  padding-left: 15px;
+  padding-right: 15px;
+  height: 80px;
+  border: 1px solid #999999;
+  border-radius: 5px;
+  margin-left: 14px;
+  resize:none;
+}
+.right-section .top-content .content .content-wrap .content-input .input-list section ul li input.date-icon {
+  background: url("/images/date.png") no-repeat right 10px center;
+}
+
+/*多選下拉*/
+.side{
+  padding:0 !important;
+  border:0px solid #1aafea !important;
+  position: relative;
+}
+.side select{
+  height:100% !important;
+  width:100% !important;
+  margin:0 !important;
+}
+.side input{
+  width:70% !important;
+  height:90% !important;
+  position:absolute !important;
+  top:2px !important;
+  left:0px !important;
+}
+.right-section .top-content .content .content-wrap .content-input .input-list section ul li .sele {
+  width: 55%;
+  height: 36px;
+  border: 1px solid #999999;
+  background: url("/images/down_b.png") no-repeat right 10px center;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 5px;
+  margin-left: 14px;
+}
+ul li .one-select{
+  width: 20% !important;
+}
+ul li .select{
+  width: 37%;
+}
+ul li .two-select{
+  width: 27%;
+  height: 35px;
+  
+}
+ul li .two-select .mymultiselect .btn{
+  height: 35px;
+}
+ul li .data-add{
+  width: 50px;
+  height: 35px;
+  background-color: #54CBA1;
+  color: #fff;
+  font-size: 15px;
+  border-radius: 5px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+.right-section .top-content .content .content-wrap .content-input .input-list section ul li .sele option {
+  background: #f6f6f6;
+}
+/*下载模板样式*/
+.module-btn{
+  display: flex;
+  position: fixed;
+  bottom: 20px;
+  left:45%;
+  margin: 25px auto;
+}
+.module-btn .module-upload{
+  display: inline-block;
+  width: 200px;
+  height: 40px;
+  background: #00b7ff;
+  line-height: 40px;
+  font-size: 16px;
+  text-align: center;
+  margin-right: 20px;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.module-btn .import-no {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  border: 1px solid #cecece;
+  border-radius: 5px;
+  background-color: #fff;
+}
+.module-btn .import-no .sure-btn {
+  display: inline-block;
+  padding: 12px 0;
+}
+.module-btn .import-no .sure-btn .sure-pic {
+  display: inline-block;
+  width: 15px;
+  height: 13px;
+  margin-right: 10px;
+  background: url("/images/sure-no.png") no-repeat center;
+}
+.module-btn .import-yes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  background-color: #05a9e9;
+  cursor: pointer;
+}
+.module-btn .import-yes .sure-btn {
+  display: inline-block;
+  padding: 12px 0;
+  color: white;
+  cursor: pointer;
+}
+.module-btn .import-yes .sure-btn .sure-pic {
+  display: inline-block;
+  width: 15px;
+  height: 13px;
+  margin-right: 10px;
+  background: url("/images/sure-yes.png") no-repeat center;
+}
+/*文件夹样式*/
+.folder {
+  padding: 20px 5px;
+}
+.folder h3 {
+  text-align: center;
+}
+.folder ul {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px 20px;
+}
+.folder ul li{
+  display: flex;
+  webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  flex:0 0 100%;
+}
+.folder ul li>span{
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  cursor: pointer;
+  flex: 1;
+}
+.folder ul li>span:first-child{
+  justify-content:flex-start;
+}
+.folder ul li>span:last-child{
+  text-align: center;
+}
+.folder ul li .selectFile{
+  background: skyblue;
+  border-radius: 5px;
+  text-align: center;
+  line-height: 30px;
+  color: white;
+}
+.folder ul li .submit{
+  width: 50px;
+  height: 30px;
+  border-radius: 5px;
+  background: #05a9e9;
+  color: white;
+  cursor: pointer;
+}
+.hasSel{
+  margin-left: 10px;
+  color: blueviolet;
+}
+.return {
+  padding: 5px 0 0 20px;
+}
+.return a{
+  display: block;
+  width: 30px;
+  height: 30px;
+  background: url(/images/return.png) no-repeat center;
+}
+/*详情样式*/
+.v-detail {
+  margin-top: 20px;
+  margin-left:20px;
+}
+.v-detail h3{
+  text-align: center;
+}
+.v-detail ul {
+  width:720px;
+  margin:0 auto;
+}
+.v-detail ul li{
+  width:720px;
+  margin-bottom: 10px;
+}
 
 
 

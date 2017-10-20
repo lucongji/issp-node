@@ -50,10 +50,10 @@
                     <label><i><img src="/images/mandatory.png"></i><em>业务类型</em></label>
 
                     <select class="sele" ng-model="information.businessType">
-                        <option value="移动通信">移动通信</option>
-                        <option value="软件开发">软件开发</option>
-                        <option value="智能系统集成">智能系统集成</option>
-                        <option value="策划与营销方案">策划与营销方案</option>
+                        <option value="MOBILECOMMUNICATION">移动通信</option>
+                        <option value="SOFTWAREDEVELOPMENT">软件开发</option>
+                        <option value="INTELLIGENTSYSTEMINTEGRATION">智能系统集成</option>
+                        <option value="PLANNINGMARKETINGSOLUTIONS">策划与营销方案</option>
                     </select>
                     <!--<input type="text" ng-model="information.businessType" class="tender">-->
                     <input type="text" class="seleInput" ng-model="information.businessType">
@@ -86,7 +86,7 @@
                     </div>
                 </li>
                 <li class="required">
-                    <label class="choice1"><i><img src="/images/mandatory.png"></i><em>标书类型</em></label>
+                    <label class="choice1"><i><img src="/images/mandatory.png"></i><em>标书模块</em></label>
                     <div class="select choice">
                         <p class="select-text">
                             <span ng-repeat="work in tenderModule">{{work}}, </span>
