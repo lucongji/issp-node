@@ -5,42 +5,45 @@
         {{list.item}}</h3>
     <ul class="menu" ng-if="list.menuList.length"  ng-show="list.showIs" ng-repeat="menuInfo in list.menuList">
         <li ng-click="navClass(menuInfo.msg)" ng-show="biddingwebinfo" ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.biddingManagement.websiteInfo.list[12]">
-            <a href="javascript:void(0)">{{menuInfo.name1}}</a>
+            <a href="javascript:void(0)" title="{{menuInfo.name1}}">{{menuInfo.name1}}</a>
         </li>
         <li ng-click="navClass(menuInfo.msg)" ng-show="biddinginfo" ng-class="{'active':navCla== menuInfo.msg}" ui-sref="_root.biddingManagement.biddingInformation.list[12]">
-            <a href="javascript:void(0)">{{menuInfo.name2}}</a>
+            <a href="javascript:void(0)" title="{{menuInfo.name2}}">{{menuInfo.name2}}</a>
         </li>
         <li ng-click="navClass(menuInfo.msg)" ng-show="bidopeninginfo" ng-class="{'active':navCla==menuInfo.msg}" ui-sref="_root.biddingManagement.openingInfo.list[12]">
-            <a href="javascript:void(0)">{{menuInfo.name3}}</a>
+            <a href="javascript:void(0)" title="{{menuInfo.name3}}">{{menuInfo.name3}}</a>
         </li>
         <li ng-click="navClass(menuInfo.msg)" ng-show="biddinganswerquestions" ng-class="{'active':navCla==menuInfo.msg}" ui-sref="_root.biddingManagement.tenderQuestion.list[12]">
-            <a href="javascript:void(0)">{{menuInfo.name4}}</a>
+            <a href="javascript:void(0)" title="{{menuInfo.name4}}">{{menuInfo.name4}}</a>
         </li>
         <li ng-click="navClass(menuInfo.msg)" ng-show="collectemail" ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.biddingManagement.tenderMaterial.list[12]">
-            <a href="javascript:void(0)">{{menuInfo.name5}}</a>
+            <a href="javascript:void(0)" title="{{menuInfo.name5}}">{{menuInfo.name5}}</a>
         </li>
         <li ng-click="navClass(menuInfo.msg)" ng-show="collectemail" ng-class="{'active':navCla==menuInfo.msg}" ui-sref="_root.biddingManagement.email.list[12]">
-            <a href="javascript:void(0)">{{menuInfo.name6}}</a>
+            <a href="javascript:void(0)" title="{{menuInfo.name6}}">{{menuInfo.name6}}</a>
         </li>
 
         <li ng-click="navClass(menuInfo.msg)" ng-show='biddingtype' ng-class="{'active':navCla==menuInfo.msg}" ui-sref="_root.biddingManagement.biddingaccept.list[12]">
-            <a href="javascript:void(0)">{{menuInfo.name8}}</a>
+            <a href="javascript:void(0)" title="{{menuInfo.name8}}">{{menuInfo.name8}}</a>
         </li>
-        <li ng-click="navClass(menuInfo.msg)" ng-show="biddingtype" ng-class="{'active':navCla==menuInfo.msg}" ui-sref="_root.biddingManagement.collect.summaryOperation[12]">
-            <a href="javascript:void(0)">{{menuInfo.name9}}</a>
+        <li ng-click="navClass(menuInfo.msg)" ng-show="biddingtype" ng-class="{'active':navCla==menuInfo.msg}" ui-sref="_root.biddingManagement.collect.summaryOperation[12]" >
+            <a href="javascript:void(0)" title="{{menuInfo.name9}}">{{menuInfo.name9}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)"  ng-class="{'active':navCla==menuInfo.msg}" ui-sref="_root.biddingManagement.figure.summaryOperation[12]" >
+            <a href="javascript:void(0)" title="{{menuInfo.name10}}">{{menuInfo.name10}}</a>
         </li>
         <li ng-click="navClass(menuInfo.msg)" ng-show="biddingtype" ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.biddingManagement.biddingType.list[12]">
-            <a href="javascript:void(0)">{{menuInfo.name7}}</a>
+            <a href="javascript:void(0)" title="{{menuInfo.name7}}">{{menuInfo.name7}}</a>
         </li>
 
         <li ng-click="navClass(menuInfo.msg)" ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.biddingManagement.setting.list[12]" ng-show="cuspermission">
-            <a href="javascript:void(0)">{{menuInfo.name10}}</a>
+            <a href="javascript:void(0)" title="{{menuInfo.name11}}">{{menuInfo.name11}}</a>
         </li>
         <li ng-click="navClass(menuInfo.msg)" ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.biddingManagement.versionInfo.version.list[12]" >
-            <a href="javascript:void(0)">{{menuInfo.name11}}</a>
+            <a href="javascript:void(0)" title="{{menuInfo.name12}}">{{menuInfo.name12}}</a>
         </li>
         <li ng-click="navClass(menuInfo.msg)" ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.biddingManagement.versionInfo.help.list[12]" >
-            <a href="javascript:void(0)">{{menuInfo.name12}}</a>
+            <a href="javascript:void(0)" title="{{menuInfo.name13}}">{{menuInfo.name13}}</a>
         </li>
     </ul>
 </div>

@@ -1,6 +1,6 @@
 <div class="content-tab list">
-    <div class="search-big" style="display :{{ isView?'none':'block'}}">
-        <select class="salc" ng-model="checkedName" ng-init="checkedName='标题'">
+    <div class="search-big" style="display :{{ isView?'block':'none'}}">
+        <select class="salc" ng-model="checkedName" ng-init="checkedName='标题'" style="border-bottom: none;">
             <option ng-repeat="item in titles">{{item}}</option>
         </select>
         <input type="text" ng-model="title" ng-show="checkedName=='标题'">
@@ -13,11 +13,11 @@
             <label><em>获取信息</em></label>
             <select class="sele" ng-change="seeInfo(getInfo)" ng-model="getInfo">
                 <option value="" disabled selected></option>
-                <option value="ZGJW">中国警务招标网获取信息</option>
-                <option value="ZGYD" >中国移动采购与招标网获取网址内的信息</option>
-                <option value="ZYZF">中央政府采购网获取信息</option>
-                <option value="GXB">工信部招标网获取信息</option>
-                <option value="ZGDL">中国电力工程招标网获取信息</option>
+                <option value="ZGJW">中国警务招标网</option>
+                <option value="ZGYD" >中国移动采购与招标网</option>
+                <option value="ZYZF">中央政府采购网</option>
+                <option value="GXB">工信部招标网</option>
+                <option value="ZGDL">中国电力工程招标网</option>
             </select>
         </li>
     </ul>

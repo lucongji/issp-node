@@ -1,6 +1,7 @@
 var app = angular.module('collectOper', ['toastr']);
 app.controller('collectOperCtrl', function($scope, collectSer,toastr){
     $scope.showed=true;
+    $scope.figureshow = false;
     collectSer.getYear().then(function(response){
 
         if(response.data.code==0){
@@ -10,7 +11,46 @@ app.controller('collectOperCtrl', function($scope, collectSer,toastr){
         }
     });
     $scope.months=['1','2','3','4','5','6','7','8','9','10','11','12'];
-    $scope.weeks=['1','2','3','4'];
+    var getMonthWeek = function (a, b, c) {
+
+        var date = new Date(a, parseInt(b) - 1, c), w = date.getDay(), d = date.getDate();
+        return Math.ceil(
+            (d + 6 - w) / 7
+        );
+    };
+    today=new Date();//获取当前时间
+    var nowyear = today.getFullYear();
+    var y = today.getYear();
+    var m = today.getMonth()+1;
+    var d = today.getDate();
+    getMonthWeek(y, m, d)
+    var w = getMonthWeek(y, m, d)
+    $scope.vm2 = {
+        year: nowyear,
+        month: m,
+        week: w,
+    }
+    $scope.vm3 = {
+        year: nowyear,
+        month: m,
+
+    }
+    $scope.getweek = function(){
+        $scope.getweek2 = function(){
+            $scope.sumweek = {
+                year : $scope.weekYear,
+                month : $scope.weekMonth,
+            };
+            collectSer.findweek($scope.sumweek).then(function(response){
+                if(response.data.code == 0){
+                    $scope.weeks = response.data.data;
+                } else {
+                    toastr.error(response.data.msg, '温馨提示');
+                }
+            });
+        }
+    }
+
     function show(){
        var mydate = new Date();
        var str = "" + mydate.getFullYear() + "-";
@@ -25,120 +65,8 @@ app.controller('collectOperCtrl', function($scope, collectSer,toastr){
     $scope.vm={
         date:show()
     }
-// 操作日志汇总
-        collectSer.collectDay($scope.vm).then(function(response){
-            if(response.data.code == 0){
-                $scope.data1 = response.data.data;
-                //----------------------主要的----------------------
-                $scope.arr = [];
-                var index = 0;
-                var before = '';
-                for(var i = 0;i < $scope.data1.length;i++){
-                    if (i == 0){
-                        $scope.arr[index] = {};
-                        $scope.arr[index].name = $scope.data1[i].area;
-                        $scope.arr[index].length = 1;
-                    }
-                    if(i !== 0){
-                        if($scope.data1[i].area == before){
-                            $scope.arr[index].length +=1;
-                        }else if($scope.data1[i].area == '合计'){
-                            $scope.data1[i].projectGroup=' ';
-                            index +=1;
-                            $scope.arr[index] = {};
-                            $scope.arr[index].name = '合计';
-                            $scope.arr[index].length = 1;
-                        }else if($scope.data1[i].area != before){
-                            index +=1;
-                            $scope.arr[index] = {};
-                            $scope.arr[index].name = $scope.data1[i].area;
-                            $scope.arr[index].length = 1;
-                        }else{
-                            index +=1;
-                            $scope.arr[index] = {};
-                            $scope.arr[index].name = 1;
-                            $scope.arr[index].length = 1;
-                        }
-                    }
-                    before = $scope.data1[i].area;
-                }
-                for(var i=0;i<$scope.arr.length;i++){
-                     //删除空白条件并把空白条件占用高度赋给它前一个值
-                    if($scope.arr[i].name=='' || typeof($scope.arr[i].name)=='undefined'){
-                        $scope.arr[i-1].length+=$scope.arr[i].length;
-                        $scope.arr.splice(i,1);
-                        i=i-1;
-                    }
-                }
-                //再次合并type
-                $scope.arr13 = [];
-                var index3 = 0;
-                var before3 = '';
-                for(var i = 0;i < $scope.arr.length;i++){
-                    if (i == 0){
-                        $scope.arr13[index3] = {};
-                        $scope.arr13[index3].name3 = $scope.arr[i].name;
-                        $scope.arr13[index3].length3 = $scope.arr[i].length;
-                    }
-                    if(i !== 0){
-                        if($scope.arr[i].name == before3){
-                            $scope.arr13[index3].length3 +=$scope.arr[i].length;;
-                        }else if($scope.arr[i].name != before3){
-                            index3 +=1;
-                            $scope.arr13[index3] = {};
-                            $scope.arr13[index3].name3 = $scope.arr[i].name;
-                            $scope.arr13[index3].length3 = $scope.arr[i].length;;
-                        }else{
-                            index3 +=1;
-                            $scope.arr13[index3] = {};
-                            $scope.arr13[index3].name3 = 1;
-                            $scope.arr13[index3].length3 = $scope.arr[i].length;;
-                        }
-                    }
-                    before3 = $scope.arr[i].name;
-                }
-            //第二层
-                $scope.arr12 = [];
-                var index2 = 0;
-                var before2 = '';
-                for(var i = 0;i < $scope.data1.length;i++){
-                    if (i == 0){
-                        $scope.arr12[index2] = {};
-                        $scope.arr12[index2].name2 = $scope.data1[i].department;
-                        $scope.arr12[index2].length2 = 1;
-                    }
-                    if(i !== 0){
-                        if($scope.data1[i].department == before2){
-                            $scope.arr12[index2].length2 +=1;
-                        }else if($scope.data1[i].department != before2){
-                            index2 +=1;
-                            $scope.arr12[index2] = {};
-                            $scope.arr12[index2].name2 = $scope.data1[i].department;
-                            $scope.arr12[index2].length2 = 1;
-                        }else{
-                            index2 +=1;
-                            $scope.arr12[index2] = {};
-                            $scope.arr12[index2].name2 = 1;
-                            $scope.arr12[index2].length2 = 1;
-                        }
-                    }
-                    before2 = $scope.data1[i].department;
-                    // console.log(before2)
-                }
-                for(var i=0;i<$scope.arr12.length;i++){
-                     //删除空白条件并把空白条件占用高度赋给它前一个值
-                    if($scope.arr12[i].name2=='' || typeof($scope.arr12[i].name2)=='undefined'){
-                        $scope.arr12[i-1].length2+=$scope.arr12[i].length2;
-                        $scope.arr12.splice(i,1);
-                        i=i-1;
-                    }
-                }
-                // console.log($scope.arr2);
-            }else{
-                toastr.error(response.data.msg,'温馨提示');
-            }
-        })
-// 按照天数汇总
+
+// 按照当前日期汇总
         collectSer.collectDay($scope.vm).then(function(response){
             if(response.data.code == 0){
                 $scope.data2 = response.data.data;
@@ -252,7 +180,7 @@ app.controller('collectOperCtrl', function($scope, collectSer,toastr){
             }
         })
 // 按照周数汇总
-        collectSer.collectWeek($scope.vm).then(function(response){
+        collectSer.collectWeek($scope.vm2).then(function(response){
             if(response.data.code == 0){
                 $scope.data3 = response.data.data;
                 //----------------------主要的----------------------
@@ -365,7 +293,7 @@ app.controller('collectOperCtrl', function($scope, collectSer,toastr){
             }
         })
 // 按照月数汇总
-        collectSer.collectMonth($scope.vm).then(function(response){
+        collectSer.collectMonth($scope.vm3).then(function(response){
             if(response.data.code == 0){
                 $scope.data4 = response.data.data;
                 //----------------------主要的----------------------
@@ -601,133 +529,11 @@ app.controller('collectOperCtrl', function($scope, collectSer,toastr){
 
 
 
-    $scope.summary1 = function(){
-        var vm = $scope;
-        vm.sum={
-            date:angular.element('.day').val(),
-            // year:angular.element('.year').val(),
-            // // year:vm.year,
-            // month:angular.element('.month').val(),
-            // week:angular.element('.week').val()
-        };
-        // 操作日志汇总
-        collectSer.collectDay(vm.sum).then(function(response){
-            if(response.data.code == 0){
-                $scope.data1 = response.data.data;
-                //----------------------主要的----------------------
-                $scope.arr = [];
-                var index = 0;
-                var before = '';
-                for(var i = 0;i < $scope.data1.length;i++){
-                    if (i == 0){
-                        $scope.arr[index] = {};
-                        $scope.arr[index].name = $scope.data1[i].area;
-                        $scope.arr[index].length = 1;
-                    }
-                    if(i !== 0){
-                        if($scope.data1[i].area == before){
-                            $scope.arr[index].length +=1;
-                        }else if($scope.data1[i].area == '合计'){
-                            $scope.data1[i].projectGroup=' ';
-                            index +=1;
-                            $scope.arr[index] = {};
-                            $scope.arr[index].name = '合计';
-                            $scope.arr[index].length = 1;
-                        }else if($scope.data1[i].area != before){
-                            index +=1;
-                            $scope.arr[index] = {};
-                            $scope.arr[index].name = $scope.data1[i].area;
-                            $scope.arr[index].length = 1;
-                        }else{
-                            index +=1;
-                            $scope.arr[index] = {};
-                            $scope.arr[index].name = 1;
-                            $scope.arr[index].length = 1;
-                        }
-                    }
-                    before = $scope.data1[i].area;
-                }
-                for(var i=0;i<$scope.arr.length;i++){
-                     //删除空白条件并把空白条件占用高度赋给它前一个值
-                    if($scope.arr[i].name=='' || typeof($scope.arr[i].name)=='undefined'){
-                        $scope.arr[i-1].length+=$scope.arr[i].length;
-                        $scope.arr.splice(i,1);
-                        i=i-1;
-                    }
-                }
-                //再次合并type
-                $scope.arr13 = [];
-                var index3 = 0;
-                var before3 = '';
-                for(var i = 0;i < $scope.arr.length;i++){
-                    if (i == 0){
-                        $scope.arr13[index3] = {};
-                        $scope.arr13[index3].name3 = $scope.arr[i].name;
-                        $scope.arr13[index3].length3 = $scope.arr[i].length;
-                    }
-                    if(i !== 0){
-                        if($scope.arr[i].name == before3){
-                            $scope.arr13[index3].length3 +=$scope.arr[i].length;;
-                        }else if($scope.arr[i].name != before3){
-                            index3 +=1;
-                            $scope.arr13[index3] = {};
-                            $scope.arr13[index3].name3 = $scope.arr[i].name;
-                            $scope.arr13[index3].length3 = $scope.arr[i].length;;
-                        }else{
-                            index3 +=1;
-                            $scope.arr13[index3] = {};
-                            $scope.arr13[index3].name3 = 1;
-                            $scope.arr13[index3].length3 = $scope.arr[i].length;;
-                        }
-                    }
-                    before3 = $scope.arr[i].name;
-                }
-            //第二层
-                $scope.arr12 = [];
-                var index2 = 0;
-                var before2 = '';
-                for(var i = 0;i < $scope.data1.length;i++){
-                    if (i == 0){
-                        $scope.arr12[index2] = {};
-                        $scope.arr12[index2].name2 = $scope.data1[i].department;
-                        $scope.arr12[index2].length2 = 1;
-                    }
-                    if(i !== 0){
-                        if($scope.data1[i].department == before2){
-                            $scope.arr12[index2].length2 +=1;
-                        }else if($scope.data1[i].department != before2){
-                            index2 +=1;
-                            $scope.arr12[index2] = {};
-                            $scope.arr12[index2].name2 = $scope.data1[i].department;
-                            $scope.arr12[index2].length2 = 1;
-                        }else{
-                            index2 +=1;
-                            $scope.arr12[index2] = {};
-                            $scope.arr12[index2].name2 = 1;
-                            $scope.arr12[index2].length2 = 1;
-                        }
-                    }
-                    before2 = $scope.data1[i].department;
-                    // console.log(before2)
-                }
-                for(var i=0;i<$scope.arr12.length;i++){
-                     //删除空白条件并把空白条件占用高度赋给它前一个值
-                    if($scope.arr12[i].name2=='' || typeof($scope.arr12[i].name2)=='undefined'){
-                        $scope.arr12[i-1].length2+=$scope.arr12[i].length2;
-                        $scope.arr12.splice(i,1);
-                        i=i-1;
-                    }
-                }
-                // console.log($scope.arr2);
-            }else{
-                toastr.error(response.data.msg,'温馨提示');
-            }
-        })
-    };
+
     $scope.summary2 = function(){
         var vm = $scope;
         vm.sum={
-            date:angular.element('.Day').val(),
+            time:angular.element('.dayDay').val(),
             // year:vm.year,
             // month:angular.element('.month').val(),
             // week:angular.element('.week').val()
@@ -844,16 +650,17 @@ app.controller('collectOperCtrl', function($scope, collectSer,toastr){
             }else{
                 toastr.error(response.data.msg,'温馨提示');
             }
-        })
+        });
+
     };
     $scope.summary3 = function(){
         var vm = $scope;
         vm.sum={
             // date:angular.element('.day').val(),
-            year:angular.element('.year').val(),
+            year:angular.element('.weekYear').val(),
             // year:vm.year,
-            month:angular.element('.month').val(),
-            week:angular.element('.week').val()
+            month:angular.element('.weekMonth').val(),
+            week:angular.element('.weekWeek').val()
         };
         // 按照周数汇总
         collectSer.collectWeek(vm.sum).then(function(response){
@@ -974,8 +781,8 @@ app.controller('collectOperCtrl', function($scope, collectSer,toastr){
         vm.sum={
             // date:angular.element('.day').val(),
             // year:vm.year,
-            year:angular.element('.Year').val(),
-            month:angular.element('.Month').val(),
+            year:angular.element('.monthYear').val(),
+            month:angular.element('.monthMonth').val(),
             // week:angular.element('.week').val()
         };
         // 按照月数汇总
@@ -1093,9 +900,9 @@ app.controller('collectOperCtrl', function($scope, collectSer,toastr){
         })
     };
     $scope.summary5 = function(){
-        var vm = $scope;
+        var vm = $scope
         vm.sum={
-            date:$scope.vm,
+            time:angular.element('.totalDay').val(),
             // year:vm.year,
             // month:angular.element('.month').val(),
             // week:angular.element('.week').val()
@@ -1214,6 +1021,7 @@ app.controller('collectOperCtrl', function($scope, collectSer,toastr){
                 toastr.error(response.data.msg,'温馨提示');
             }
         })
+
     };
 });
 

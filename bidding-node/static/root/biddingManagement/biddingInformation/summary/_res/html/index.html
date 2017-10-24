@@ -16,13 +16,13 @@
 
        </div>
     </div>
-    <ul class="sum-list" ng-repeat="Lists in summaryLists">
+    <ul class="sum-list" >
         <li class="sum-thead summary-thead" >
             <span>地市</span>
-            <span  ng-repeat="remarks in Lists.biddingMap">{{remarks.remark}}</span>
-            <span  ng-repeat="remarks1 in Lists.businessMap">{{remarks1.remark}}</span>
+            <span  ng-repeat="remarks in summaryLists[summaryLists.length-1].biddingMap">{{remarks.remark}}</span>
+            <span  ng-repeat="remarks1 in summaryLists[summaryLists.length-1].businessMap">{{remarks1.remark}}</span>
         </li>
-        <li class="sum-tbody"   >
+        <li class="sum-tbody" ng-repeat="Lists in summaryLists">
             <span>{{Lists.cities}}</span>
             <span ng-repeat="counts in Lists.biddingMap">{{counts.counts}}</span>
             <span ng-repeat="counts1 in Lists.businessMap">{{counts1.counts}}</span>

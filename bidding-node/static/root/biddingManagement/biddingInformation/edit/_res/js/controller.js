@@ -6,7 +6,7 @@ app.controller('infoEditCtrl', function($scope, infoSer,$stateParams,$state,toas
     $scope.workOptions=["商务标","技术标","经济标"]
     $scope.monthOptions=["1","2","3","4","5","6","7","8","9","10","11","12"]
     $scope.getSummary ={onSelectionChanged(){
-        $scope.tender = $scope.tenderModule.join(',');
+        $scope.editInfo.tenderModule = $scope.tenderModule.join(',');
     }};
     $scope.tags1=[{name:'1.1无线、有线工程督导'},{name:'1.2工程网优、日常网优'},{name:'1.3工程设计、规划'},{name:'1.4通信工程监理'},{name:'1.5无线优化专项'},{name:'1.6无线工程、无线网优日常代维'}];
     $scope.tags2=[{name:'2.1产品开发'},{name:'2.2产品定制'},{name:'2.3大数据、云处理'},{name:'2.4软件测试'}];
@@ -53,10 +53,15 @@ app.controller('infoEditCtrl', function($scope, infoSer,$stateParams,$state,toas
     });
         //获取网址
     $scope.changSelect = function(){
-        var obj={webName:$scope.webName};
+        var obj={webName:$scope.editInfo.webName};
         infoSer.websiteUrl(obj).then(function(response){
             if(response.data.code == 0){
-                $scope.url= response.data.data;
+                $scope.editInfo.url= response.data.data.url;
+                $scope.editInfo.account= response.data.data.account;
+                $scope.editInfo.password= response.data.data.password;
+                $scope.editInfo.registrant= response.data.data.registrant;
+                $scope.editInfo.registrationInfo= response.data.data.registrationInfo;
+                $scope.editInfo.status= response.data.data.url;
             }
         });
     };

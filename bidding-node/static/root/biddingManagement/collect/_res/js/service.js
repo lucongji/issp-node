@@ -8,6 +8,8 @@ app.factory('collectSer',function ($http) {
         collectPermission:collectPermission,
         collectTotal : collectTotal,
         getYear:getYear,
+        biddingcollectfigure:biddingcollectfigure,
+        findweek:findweek,
     };
     //获取年份
     function getYear(data){
@@ -40,4 +42,11 @@ app.factory('collectSer',function ($http) {
     function collectPermission(data){
         return $http.get('/positPermission/permission/'+data);
     }
+    function biddingcollectfigure(data){
+        return $http.get('/biddingcollectfigure/dayCollect',{params: data})
+    }
+    function findweek(data){
+        return $http.get('/biddingcollect/findweek',{params: data})
+    }
+
 });

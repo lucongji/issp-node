@@ -1429,6 +1429,7 @@ body {
 
 .right-section .top-content .content .content-wrap .content-tab .table .list-all .can .can-see li, .right-section .top-content .content .content-wrap .summary .table .list-all .can .can-see li, .right-section .top-content .content .content-wrap .total .table .list-all .can .can-see li, .right-section .top-content .content .content-wrap .sign-summary .table .list-all .can .can-see li {
   margin-bottom: 5px;
+  width: 95%;
 }
 
 .right-section .top-content .content .content-wrap .content-tab .table .list-all .can .can-see li .see-parent, .right-section .top-content .content .content-wrap .summary .table .list-all .can .can-see li .see-parent, .right-section .top-content .content .content-wrap .total .table .list-all .can .can-see li .see-parent, .right-section .top-content .content .content-wrap .sign-summary .table .list-all .can .can-see li .see-parent {
@@ -1447,7 +1448,7 @@ body {
   -ms-flex: 0 0 11%;
   flex: 0 0 11%;
   font-size: 12px;
-  margin: 0 10px;
+  margin-right: 10px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -1473,7 +1474,7 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  margin: 0 10px;
+  margin-right:10px;
 }
 
 .modac{
@@ -2950,6 +2951,10 @@ ul li .data-add{
   line-height: 46px;
   font-size: 12px;
   float: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  
 }
 .collect .sum-select .select .mymultiselect .dropdown-menu li{
   text-indent:0;
@@ -3057,7 +3062,7 @@ ul li .data-add{
 }
 .choice input{
   position: absolute !important;
-  left:0;
+  left:-5px;
   top: 1px;
   height: 90% !important;
   width: 60% !important;
@@ -3258,6 +3263,10 @@ ul li .data-add{
   width: 100%;
   box-sizing:border-box;
   border-left:0px solid red;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  
 }
 .collect .sum-list li .keng .keng1{
   width: 100%;
@@ -3265,19 +3274,21 @@ ul li .data-add{
   flex-direction: column;
 }
 .collect .sum-list li .keng .keng1 span{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   width: 100%;
-  height: 25px;
-  line-height: 25px;
+  height: 46px;
+  line-height: 46px;
 }
 .col-sele{
-  width: 66px;
+  width: 80px;
   height:26px;
   border-radius: 8px;
   border:1px solid #1aaeea;
   padding-left:16px;
   background: url(/images/down_b.png) no-repeat right 10px center;
   position: relative;
-  z-index: 99999;
 }
 .year,.Year{
   width:90px;
@@ -3301,7 +3312,6 @@ ul li .data-add{
   flex: 0 0 50%;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
-  justify-content: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
@@ -3318,7 +3328,7 @@ ul li .data-add{
   text-align-last: justify;
 }
 .getInfo .sele{
-  width: 20%;
+  width: 290px;
   height: 36px;
   border: 1px solid #1aafea;
   background: url(/images/down_b.png) no-repeat right 10px center;
@@ -3379,7 +3389,7 @@ ul li .data-add{
   min-height: 1.2em;
   padding: 0px 2px 1px;
 }
-.summary-thead span{
+.summary-thead span,.keng1 span,.keng span{
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -3390,8 +3400,8 @@ ul li .data-add{
 }
 .seleInputParent .seleInput{
   position: absolute !important;
-  left: 190px;
-  top: 1px;
+  left: 197px;
+  top: 2px;
   height: 90% !important;
   width: 40% !important;
   border: 0 black solid !important;
@@ -3678,6 +3688,30 @@ ul li .data-add{
 .v-detail ul li{
   width:720px;
   margin-bottom: 10px;
+}
+.whitespace{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  
+}
+/*手填下拉*/
+.posiRale{
+  position: relative;
+}
+.posiRale .posiAbso{
+  position: absolute !important;
+  top: 2px !important;
+  left:36% !important;
+  padding-left: 0px !important;
+  height: 90% !important;
+  width: 42% !important;
+}
+.posiRale select{
+  padding-left: 50px !important;
+}
+select.ng-not-empty{
+  border-bottom: 1px solid #1aaeea;
 }
 
 

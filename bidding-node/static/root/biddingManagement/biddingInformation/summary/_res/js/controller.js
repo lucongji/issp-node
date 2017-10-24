@@ -24,7 +24,6 @@ app.controller('summaryCtrl', function($scope, infoSer,toastr){
         infoSer.summaryInfo($scope.cities).then(function(response){
             if(response.data.code == 0){
                 $scope.summaryLists = response.data.data;
-                console.log($scope.summaryLists[0].biddingMap)
             }else{
                 toastr.error( response.data.msg, '温馨提示');
             }

@@ -54,12 +54,12 @@ app.controller('biddingCtrl', function ($scope,$state) {
         }
     });
     $scope.showsList = [
-        {id:"1",item:"招投标管理",menuList:[{name7:'招投标类型',msg:'biddingType'},{name1:'招投标网站信息',msg:'websiteInfo'},
-            {name2:'招标信息',msg:'biddingInformation'},{name3:'开标信息',msg:'openingInfo'},{name4:'投标答疑问题记录',msg:'tenderQuestion'},
-            {name5:'标书资料',msg:'tenderMaterial'},{name6:'招投标信息邮件发送',msg:'email'},{name8:'招标问题受理和处理',msg:'biddingaccept'},
-            {name9:'招投标流程进度管理汇总',msg:'collect'}],showIs:false},
-        {id:"2",item:"设置",menuList:[{name10:'设置',msg:'setting'}],showIs:false},
-        {id:"3",item:"版本信息",menuList:[{name11:'版本信息',msg:'version'},{name12:'帮助与解答',msg:'help'}],showIs:false}
+        {id:"1",item:"招投标管理",menuList:[{name7:'1.招投标类型',msg:'biddingType'},{name1:'2.招投标网站信息',msg:'websiteInfo'},
+            {name2:'3.招标信息',msg:'biddingInformation'},{name3:'4.开标信息',msg:'openingInfo'},{name4:'5.投标答疑问题记录',msg:'tenderQuestion'},
+            {name5:'6.标书资料',msg:'tenderMaterial'},{name6:'7.招投标信息邮件发送',msg:'email'},{name8:'8.招标问题受理和处理',msg:'biddingaccept'},
+            {name9:'9.招投标流程进度管理汇总',msg:'collect'},{name10:'10.图形展示数据',msg:'figure'}],showIs:false},
+        {id:"2",item:"设置",menuList:[{name11:'1.设置',msg:'setting'}],showIs:false},
+        {id:"3",item:"版本信息",menuList:[{name12:'1.版本信息',msg:'version'},{name13:'2.帮助与解答',msg:'help'}],showIs:false}
     ];
     if(active){
         for(var i=0;i<$scope.showsList.length;i++){

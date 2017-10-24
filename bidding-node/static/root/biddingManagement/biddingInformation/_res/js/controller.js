@@ -148,6 +148,9 @@ app.filter('cover', function(){
             case false:
                 result = "否";
                 break;
+            default:
+                result = val;
+                break;
         }
         return result;
     }

@@ -1286,12 +1286,12 @@ module.exports = function(){
     //     };
     //     return request(options);
     // };
-    // 转正管理日汇总
+    // 招投标管理日汇总
     this.collectDay = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/biddingcollect/v1/dayCollect?userToken=${argvs.userToken}`,
+            uri : config()['rurl'] + `/biddingcollect/v1/dayCollect${urlEncode(argvs,true)}`,
             form:argvs,
             headers:{
                 userToken:argvs.userToken
@@ -1299,12 +1299,12 @@ module.exports = function(){
         };
         return request(options);
     };
-    // 转正管理周汇总
+    // 招投标管理周汇总
     this.collectWeek = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/biddingcollect/v1/weekCollect?userToken=${argvs.userToken}`,
+            uri : config()['rurl'] + `/biddingcollect/v1/weekCollect${urlEncode(argvs,true)}`,
             form:argvs,
             headers:{
                 userToken:argvs.userToken
@@ -1312,12 +1312,12 @@ module.exports = function(){
         };
         return request(options);
     };
-    // 转正管理月汇总
+    // 招投标管理月汇总
     this.collectMonth = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/biddingcollect/v1/monthCollect?userToken=${argvs.userToken}`,
+            uri : config()['rurl'] + `/biddingcollect/v1/monthCollect${urlEncode(argvs,true)}`,
             form:argvs,
             headers:{
                 userToken:argvs.userToken
@@ -1325,18 +1325,167 @@ module.exports = function(){
         };
         return request(options);
     };
-    // 转正管理累计汇总
+    // 招投标管理累计汇总
     this.collectTotal = function(argvs){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/biddingcollect/v1/totalCollect?userToken=${argvs.userToken}`,
+            uri : config()['rurl'] + `/biddingcollect/v1/totalCollect${urlEncode(argvs,true)}`,
             form:argvs,
             headers:{
                 userToken:argvs.userToken
             }
         };
         return request(options);
+    };
+    // 招投标管理日汇总
+    this.figureDay = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddingcollect/v1/dayCollect${urlEncode(argvs,true)}`,
+            form:argvs,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    // 招投标管理周汇总
+    this.figureWeek = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddingcollect/v1/weekCollect${urlEncode(argvs,true)}`,
+            form:argvs,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    // 招投标管理月汇总
+    this.figureMonth = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddingcollect/v1/monthCollect${urlEncode(argvs,true)}`,
+            form:argvs,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    // 招投标管理累计汇总
+    this.figureTotal = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddingcollect/v1/totalCollect${urlEncode(argvs,true)}`,
+            form:argvs,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //招投标图形展示日汇总
+    this.biddingdayfigure = function(argvs){
+
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddingcollectfigure/v1/dayCollect${urlEncode(argvs,true)}`,
+            form:argvs,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        // console.log(options.uri);
+        return request(options);
+
+    };
+    //招投标图形展示周汇总
+    this.biddingweekfigure = function(argvs){
+
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddingcollectfigure/v1/weekFigureCollect${urlEncode(argvs,true)}`,
+            form:argvs,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+
+        return request(options);
+
+    };
+    //招投标图形展示月汇总
+    this.biddingmonthfigure = function(argvs){
+
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddingcollectfigure/v1/monthFigureCollect${urlEncode(argvs,true)}`,
+            form:argvs,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+
+        return request(options);
+
+    };
+    //招投标图形展示累计汇总
+    this.biddingtotalfigure = function(argvs){
+
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddingcollectfigure/v1/totalFigureCollect${urlEncode(argvs,true)}`,
+            form:argvs,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+
+        return request(options);
+
+    };
+    //获取当前月的周数
+    this.findweek = function(argvs){
+
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddingcollect/v1/findWeek${urlEncode(argvs,true)}`,
+            form:argvs,
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+
+        return request(options);
+
+    };
+    //获取当前月的周数
+    this.findfigureweek = function(argvs){
+
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/biddingcollect/v1/findWeek${urlEncode(argvs,true)}`,
+            form:argvs,
+            headers:{
+                userToken:argvs.userToken
+            }
+
+        };
+        // console.log(options.uri)
+        return request(options);
+
     };
     return this;
 }

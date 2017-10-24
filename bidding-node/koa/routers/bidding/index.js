@@ -437,7 +437,6 @@ module.exports = function(){
         var $self = this;
         var findIdData = $self.request.query;
         findIdData.userToken = $self.cookies.get('token');
-        console.log(findIdData)
         yield (server().getcaigouTotal(findIdData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -1436,20 +1435,8 @@ module.exports = function(){
             }));
     })
     //----------------------招投标管理汇总-----------------------------------
-    // }).post('/collectOper/Oper', function*(){//操作日志汇总
-    //     var $self = this;
-    //     var editData = $self.request.body;
-    //     editData.userToken = $self.cookies.get('token');
-    //     yield (server().collectOper(editData)
-    //         .then((parsedBody) =>{
-    //             var responseText = JSON.parse(parsedBody);
-    //             $self.body = responseText;
-    //         }).catch((error) =>{
-    //             $self.set('Content-Type','application/json;charset=utf-8');
-    //             $self.body=error.error;
-    //             console.error(error.error);
-    //         }));
-.post('/collectDay/Day', function*(){//转正管理日汇总
+
+.post('/collectDay/Day', function*(){//招投标管理日汇总
     var $self = this;
     var editData = $self.request.body;
     editData.userToken = $self.cookies.get('token');
@@ -1462,7 +1449,7 @@ module.exports = function(){
             $self.body=error.error;
             console.error(error.error);
         }));
-}).post('/collectWeek/Week', function*(){//转正管理周汇总
+}).post('/collectWeek/Week', function*(){//招投标管理周汇总
     var $self = this;
     var editData = $self.request.body;
     editData.userToken = $self.cookies.get('token');
@@ -1475,7 +1462,7 @@ module.exports = function(){
             $self.body=error.error;
             console.error(error.error);
         }));
-}).post('/collectMonth/Month', function*(){//转正管理月汇总
+}).post('/collectMonth/Month', function*(){//招投标管理月汇总
     var $self = this;
     var editData = $self.request.body;
     editData.userToken = $self.cookies.get('token');
@@ -1488,7 +1475,7 @@ module.exports = function(){
             $self.body=error.error;
             console.error(error.error);
         }));
-}).post('/collectTotal/Total', function*(){//转正管理累计汇总
+}).post('/collectTotal/Total', function*(){//招投标管理累计汇总
     var $self = this;
     var editData = $self.request.body;
     editData.userToken = $self.cookies.get('token');
@@ -1501,6 +1488,136 @@ module.exports = function(){
             $self.body=error.error;
             console.error(error.error);
         }));
+    }).post('/figureDay/Day', function*(){//招投标管理日汇总
+        var $self = this;
+        var editData = $self.request.body;
+        editData.userToken = $self.cookies.get('token');
+        yield (server().figureDay(editData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/figureWeek/Week', function*(){//招投标管理周汇总
+        var $self = this;
+        var editData = $self.request.body;
+        editData.userToken = $self.cookies.get('token');
+        yield (server().figureWeek(editData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/figureMonth/Month', function*(){//招投标管理月汇总
+        var $self = this;
+        var editData = $self.request.body;
+        editData.userToken = $self.cookies.get('token');
+        yield (server().figureMonth(editData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/figureTotal/Total', function*(){//招投标管理累计汇总
+        var $self = this;
+        var editData = $self.request.body;
+        editData.userToken = $self.cookies.get('token');
+        yield (server().figureTotal(editData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/biddingcollectfigure/dayCollect', function*(){//招投标图形展示日汇总
+        var $self = this;
+        var findIdData = $self.request.query;
+        findIdData.userToken = $self.cookies.get('token');
+        yield (server().biddingdayfigure(findIdData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/biddingcollectfigure/weekCollect', function*(){//招投标图形展示周汇总
+        var $self = this;
+        var findIdData = $self.request.query;
+        findIdData.userToken = $self.cookies.get('token');
+        yield (server().biddingweekfigure(findIdData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/biddingcollectfigure/monthCollect', function*(){//招投标图形展示月汇总
+        var $self = this;
+        var findIdData = $self.request.query;
+        findIdData.userToken = $self.cookies.get('token');
+        yield (server().biddingmonthfigure(findIdData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/biddingcollectfigure/totalCollect', function*(){//招投标图形展示累计汇总
+        var $self = this;
+        var findIdData = $self.request.query;
+        findIdData.userToken = $self.cookies.get('token');
+        yield (server().biddingtotalfigure(findIdData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/biddingcollect/findweek', function*(){//获取当前月的周数
+        var $self = this;
+        var findIdData = $self.request.query;
+        findIdData.userToken = $self.cookies.get('token');
+        yield (server().findweek(findIdData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/biddingfigurecollect/findfigureweek', function*(){//获取当前月的周数
+        var $self = this;
+        var findIdData = $self.request.query;
+        findIdData.userToken = $self.cookies.get('token');
+        yield (server().findfigureweek(findIdData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
     })
         return router;
 };

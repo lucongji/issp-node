@@ -83,12 +83,12 @@ app.controller('MaterialViewCtrl', function($scope,MaterialSer,$stateParams,toas
 
     $scope.fn = function(){//下载
         for(var i=0,len=$scope.encloMaterial.length;i<len;i++){
-            if($scope.encloMaterial[i].checked){
+            if($scope.encloMaterial[i].checked && !$scope.encloSigning[i].delel
+            ){
                 var obj = {
                 path:$scope.encloMaterial[i].path,
                 fileType:$scope.encloMaterial[i].fileType
             };
-            console.log(obj)
             var iframe = document.createElement('iframe');
 
             iframe.src=`/materialDownload/download${encode(obj,true)}`;
@@ -125,7 +125,6 @@ app.controller('MaterialViewCtrl', function($scope,MaterialSer,$stateParams,toas
         var fd = new FormData();
         for(let i=0,len=$scope.encloMaterial.length;i<len;i++){
             if($scope.encloMaterial[i].checked){
-                console.log($scope.encloMaterial[i].path)
                 fd.append('paths', $scope.encloMaterial[i].path);
                 delNum.push(i);
             }

@@ -57,14 +57,16 @@
                         <option ng-repeat="months in monthOptions" value="{{months}}">{{months}}</option>
                     </select>
                 </li>
-                <li class="required">
+                <li class="required posiRale">
                     <label><i><img src="/images/mandatory.png"></i><em>业务类型</em></label>
-                    <select class="sele" ng-model="opening.businessType" ng-init="opening.businessType='MOBILECOMMUNICATION'">
-                        <option value="MOBILECOMMUNICATION">移动通信</option>
-                        <option value="SOFTWAREDEVELOPMENT">软件开发</option>
-                        <option value="INTELLIGENTSYSTEMINTEGRATION">智能系统集成</option>
-                        <option value="PLANNINGMARKETINGSOLUTIONS">策划与营销方案</option>
+                    <select class="sele" ng-model="opening.businessType">
+                        <option disabled value="">请选择</option>
+                        <option value="移动通信">移动通信</option>
+                        <option value="软件开发">软件开发</option>
+                        <option value="智能系统集成">智能系统集成</option>
+                        <option value="策划与营销方案">策划与营销方案</option>
                     </select>
+                    <input type="text" ng-verify="{}" class="inputDom posiAbso" ng-model="opening.businessType">
                 </li>
                 <li class="required navigation"  ng-click="a=!a">
                     <label><i><img src="/images/mandatory.png"></i><em>业务方向科目</em></label>

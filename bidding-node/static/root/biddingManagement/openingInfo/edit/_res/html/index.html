@@ -5,13 +5,13 @@
                 <li class="required">
                     <label><i></i><em>编号</em></label>
                     <select class="sele num" ng-model="editOpening.biddingNumber" ng-change="changSelect()">
-                        <option ng-repeat="biddingNumber in biddingNumbers" value="{{biddingNumber}}" disabled>{{biddingNumber}}</option>
+                        <option ng-repeat="biddingNumber in biddingNumbers" value="{{biddingNumber}}" >{{biddingNumber}}</option>
                     </select>
                 </li>
 
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>项目名称</em></label>
-                    <input type="text" value="{{projectNames.projectName}}" class="na" ng-model="editOpening.projectName" disabled>
+                    <input type="text" class="na" ng-model="editOpening.projectName" readonly>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>竞争公司</em></label>
@@ -57,14 +57,16 @@
                         <option ng-repeat="months in monthOptions" ng-value="{{months}}" >{{months}}</option>
                     </select>
                 </li>
-                <li class="required">
+                <li class="required posiRale">
                     <label><i><img src="/images/mandatory.png"></i><em>业务类型</em></label>
-                    <select class="sele" ng-model="editOpening.businessType" ng-init="editOpening.businessType='MOBILECOMMUNICATION'">
-                        <option value="MOBILECOMMUNICATION">移动通信</option>
-                        <option value="SOFTWAREDEVELOPMENT">软件开发</option>
-                        <option value="INTELLIGENTSYSTEMINTEGRATION">智能系统集成</option>
-                        <option value="PLANNINGMARKETINGSOLUTIONS">策划与营销方案</option>
+                    <select class="sele" ng-model="editOpening.businessType">
+                        <option disabled value="">请选择</option>
+                        <option value="移动通信">移动通信</option>
+                        <option value="软件开发">软件开发</option>
+                        <option value="智能系统集成">智能系统集成</option>
+                        <option value="策划与营销方案">策划与营销方案</option>
                     </select>
+                    <input type="text" ng-verify="{}" class="inputDom posiAbso" ng-model="editOpening.businessType">
                 </li>
                 <li class="required navigation"  ng-click="a=!a">
                     <label><i><img src="/images/mandatory.png"></i><em>业务方向科目</em></label>
