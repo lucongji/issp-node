@@ -5,7 +5,8 @@
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>编号</em></label>
                     <select class="sele num" ng-model="editTender.biddingNumber" ng-change="changSelect()">
-                        <option ng-repeat="biddingNumber in biddingNumbers" value="{{biddingNumber}}" disabled>{{biddingNumber}}</option>
+                        <option ng-repeat="biddingNumber in biddingNumbers" value="{{biddingNumber}}" onfocus="this.defaultIndex=this.selectedIndex;"
+                                onchange="this.selectedIndex=this.defaultIndex;">{{biddingNumber}}</option>
                     </select>
                 </li>
 

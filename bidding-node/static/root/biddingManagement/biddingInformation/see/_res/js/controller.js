@@ -4,6 +4,7 @@ app.controller('seeinfoCtrl',function($scope,infoSer,toastr,$stateParams,$state,
     $scope.seeInfo = function(val){
         $scope.custom.activatePage(1,val);
     };
+    // $scope.isView = true;
     //监听切换搜索是否出现
     $scope.$on('iSsearch',function(event,newIs){
         $scope.isView = newIs;

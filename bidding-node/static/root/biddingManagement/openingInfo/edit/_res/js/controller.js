@@ -18,7 +18,7 @@ $scope.showed=true
         var obj={biddingNumber:$scope.editOpening.biddingNumber};
         openingSer.getBiddingNum(obj).then(function(response){
             if(response.data.code == 0){
-                $scope.projectNames = response.data.data;
+                $scope.editOpening.projectName = response.data.data.projectName;
             }
         });
     };

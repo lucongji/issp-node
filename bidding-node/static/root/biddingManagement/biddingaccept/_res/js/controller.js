@@ -116,6 +116,22 @@ app.filter('cover', function(){
             case false:
                 result = "否";
                 break;
+            case "UNTREATED":
+                result = "未处理";
+                break;
+            case "TREATING":
+                result = "在处理";
+                break;
+            case "TREATED":
+                result = "已处理";
+                break;
+            case "TREATED-SOLVED":
+                result = "已处理,解决了问题";
+                break;
+            case "TREATED-UNSOLVED":
+                result = "已处理,但未解决问题";
+                break;
+
         }
         return result;
     }

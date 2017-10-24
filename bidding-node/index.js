@@ -8,7 +8,7 @@ const staticCache = require('koa-static-cache');
 const routersPath = '/koa/routers/';
 const sendfile = require('koa-sendfile');
 var configsCache = {};
-const port = 5552;
+const port = process.env.PORT || 5555;
 
 const config = require(path.resolve('plugins/read-config.js'));
 
@@ -59,17 +59,15 @@ router.get(/^\/module\/_config(?:\/.|$)/, function *(next) {
 });
 
 //============路由===========
-
 app.use(require(path.join(__dirname,routersPath,'/bidding/index.js'))().routes());//项目中问题受理和处理路由
-app.use(require(path.join(__dirname,routersPath,'/versionInfo/index.js'))().routes());//项目中问题受理和处理路由
-
+app.use(require(path.join(__dirname,routersPath,'/versionInfo/index.js'))().routes());//项目版本信息路由
 
 app.use(router.routes());
 
 
 //============静态文件资源===========
 app.use(staticCache(path.join(__dirname, '/static'), {
-    // maxAge: 365 * 24 * 60 * 60
+    // maxAge: 10 * 60 * 60
 }));
 
 

@@ -23,7 +23,7 @@
             </li>
             <li class="required ">
                 <label><i><img src="/images/mandatory.png"></i><em>选择对象</em></label>
-                <select class="sele one-select" ng-model="checkedEmail" ng-init="checkedEmail='自由录入'">
+                <select class="sele " ng-model="checkedEmail" ng-init="checkedEmail='自由录入'" style="width: 28%">
                     <option ng-repeat="one in emails">{{one}}</option>
                 </select>
                 <input type="text" style=" width:22%;right: 102px; background-color: #fff;" ng-model="sendObjectList" ng-show="checkedEmail=='自由录入'">

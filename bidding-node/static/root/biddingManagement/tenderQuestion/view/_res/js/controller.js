@@ -83,12 +83,12 @@ app.controller('questionViewCtrl', function($scope,questionSer,$stateParams,toas
 
     $scope.fn = function(){//下载
         for(var i=0,len=$scope.encloQuestion.length;i<len;i++){
-            if($scope.encloQuestion[i].checked){
+            if($scope.encloQuestion[i].checked && !$scope.encloSigning[i].delel
+            ){
                 var obj = {
                 path:$scope.encloQuestion[i].path,
                 fileType:$scope.encloQuestion[i].fileType
             };
-            console.log(obj)
             var iframe = document.createElement('iframe');
 
             iframe.src=`/questionDownload/download${encode(obj,true)}`;
@@ -125,7 +125,6 @@ app.controller('questionViewCtrl', function($scope,questionSer,$stateParams,toas
         var fd = new FormData();
         for(let i=0,len=$scope.encloQuestion.length;i<len;i++){
             if($scope.encloQuestion[i].checked){
-                console.log($scope.encloQuestion[i].path)
                 fd.append('paths', $scope.encloQuestion[i].path);
                 delNum.push(i);
             }

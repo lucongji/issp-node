@@ -119,7 +119,6 @@ module.exports = function(){
     }).post('/versionInfo/upload', koaBody({multipart:true}),function *(next) {//上传文件
         var $self = this;
         var uploadData = $self.request.body;
-        console.log(uploadData)
         uploadData.userToken = $self.cookies.get("token");
         yield (server().UploadFile(uploadData)
             .then((parsedBody) =>{

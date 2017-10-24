@@ -83,12 +83,12 @@ app.controller('infoViewCtrl', function($scope,infoSer,$stateParams,toastr,$http
 
     $scope.fn = function(){//下载
         for(var i=0,len=$scope.encloInfo.length;i<len;i++){
-            if($scope.encloInfo[i].checked){
+            if($scope.encloInfo[i].checked && !$scope.encloSigning[i].delel
+            ){
                 var obj = {
                 path:$scope.encloInfo[i].path,
                 fileType:$scope.encloInfo[i].fileType
             };
-            console.log(obj)
             var iframe = document.createElement('iframe');
 
             iframe.src=`/infoDownload/download${encode(obj,true)}`;
@@ -125,7 +125,6 @@ app.controller('infoViewCtrl', function($scope,infoSer,$stateParams,toastr,$http
         var fd = new FormData();
         for(let i=0,len=$scope.encloInfo.length;i<len;i++){
             if($scope.encloInfo[i].checked){
-                console.log($scope.encloInfo[i].path)
                 fd.append('paths', $scope.encloInfo[i].path);
                 delNum.push(i);
             }

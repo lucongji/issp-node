@@ -221,7 +221,7 @@ function HttpInterceptor($q,toastr,$location){
                 toastr.error(res.data.msg, '温馨提示');
             }
             return res;
-        },
+        },            
         responseError : function(err){
             if(-1 === err.status){
                 // 远程服务器无响应
