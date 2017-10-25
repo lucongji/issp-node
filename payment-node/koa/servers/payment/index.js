@@ -9,7 +9,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + `/receivablesubsidiary/v1/list?limit=10&page=${argvs.page}`,
+            uri : config()['rurl'] + `/receivablesubsidiary/v1/list${urlEncode(argvs,true)}`,
             headers : {
                 userToken:argvs.token
             }
@@ -32,7 +32,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['rurl'] + '/receivablesubsidiary/v1/count',
+            uri : config()['rurl'] + `/receivablesubsidiary/v1/count${urlEncode(argvs,true)}`,
             headers : {
                 userToken:argvs.token
             }
@@ -76,7 +76,18 @@ module.exports = function(){
         };
         return request(options);
     };
-
+    this.editTimeEdit = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['rurl'] + `/receivablesubsidiary/v1/editTime`,
+            form:argvs,
+            headers : {
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
     //删除
     this.detailDelete = function(argvs){
         var options = {
@@ -396,6 +407,39 @@ module.exports = function(){
         };
         return request(options);
     };
+    this.auditTimeId2 = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/receivablesubsidiary/v1/planTime?planTime=${encodeURIComponent(argvs.planTime)}`,
+            headers:{
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    this.auditTimeId3 = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/receivablesubsidiary/v1/countTime?countTime=${encodeURIComponent(argvs.countTime)}`,
+            headers:{
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    this.auditTimeId4 = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/receivablesubsidiary/v1/billTime?billTime=${encodeURIComponent(argvs.billTime)}`,
+            headers:{
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
     this.detailImport = function(argvs){
         var options = {
             url: config()['rurl']+'/receivablesubsidiary/v1/importExcel',
@@ -441,6 +485,310 @@ module.exports = function(){
             headers : {
                 userToken : argvs.token
             },
+        };
+        return request(options);
+    };
+    this.targetArea = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/receivablesubsidiary/v1/findArea`,
+            headers : {
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    //---------------------------回款进度---------------------------
+    //菜单权限
+    this.progPermission = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/backprogress/v1/guidePermission?guideAddrStatus=`+argvs.name,
+            headers:{
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    //条件汇总
+    this.progSummary = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/backprogress/v1/backCollect'+urlEncode(argvs,true),
+            headers : {
+                userToken : argvs.token
+            },
+        };
+        return request(options);
+    };
+    this.progList = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/backprogress/v1/list?limit=10&page=${argvs.page}`,
+            headers : {
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    this.progCount = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/backprogress/v1/count',
+            headers : {
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    //导入
+    this.progAdd = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['rurl'] + `/backprogress/v1/importExcel`,
+            form:argvs,
+            headers : {
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    this.progEdit = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['rurl'] + `/backprogress/v1/edit`,
+            form:argvs,
+            headers : {
+                userToken:argvs.token
+            }
+        };
+        console.log(argvs)
+        return request(options);
+    };
+    //获取ID
+    this.progId = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/backprogress/v1/back/${argvs.id}`,
+            headers : {
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    this.progDelete = function(argvs){
+        var options = {
+            method : 'DELETE',
+            timeout : 3000,
+            uri : config()['rurl'] + `/backprogress/v1/delete/${argvs.id}`,
+            headers : {
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    //导入
+    this.progLead = function(argvs){
+        console.log(argvs.files)
+        var options = {
+            url: config()['rurl']+'/backprogress/v1/importExcel',
+            method: 'POST',
+            formData: {
+                files: uploadFile(argvs.files.files)
+            },
+            headers:{
+                userToken:argvs.userToken
+            }
+        };
+        return request(options);
+    };
+    //------------------主营业务收入--------------------
+    //菜单权限
+    this.revenPermission = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/mainincome/v1/guidePermission?guideAddrStatus=`+argvs.name,
+            headers:{
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    //条件汇总
+    this.revenSummary = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/backprogress/v1/collect'+urlEncode(argvs,true),
+            headers : {
+                userToken : argvs.token
+            },
+        };
+        return request(options);
+    };
+    this.revenList = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/mainincome/v1/list?limit=10&page=${argvs.page}`,
+            headers : {
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    this.revenCount = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + '/mainincome/v1/count',
+            headers : {
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    this.revenEdit = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['rurl'] + `/mainincome/v1/edit`,
+            // uri : config()['rurl'] + `/mainincome/v1/edit`+urlEncode(argvs,true),
+            form:argvs,
+            headers : {
+                userToken:argvs.token
+            }
+        };
+        // console.log(argvs)
+        return request(options);
+    };
+    //获取ID
+    this.revenId = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['rurl'] + `/mainincome/v1/main/${argvs.id}`,
+            headers : {
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    this.revenDelete = function(argvs){
+        var options = {
+            method : 'DELETE',
+            timeout : 3000,
+            uri : config()['rurl'] + `/mainincome/v1/delete/${argvs.id}`,
+            headers : {
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    //添加
+    this.revenAdd = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['rurl'] + `/mainincome/v1/add`,
+            form:argvs,
+            headers : {
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    //-------------------------------------------------
+    //外包单位
+    this.getUnit = function (argvs) {
+        var options = {
+            method: 'GET',
+            timeout: 3000,
+            uri: config()['rurl'] + '/backprogress/v1/contractors',
+            headers : {
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    //地区
+    this.getArea = function (argvs) {
+        var options = {
+            method: 'GET',
+            timeout: 3000,
+            uri: config()['rurl'] + '/backprogress/v1/areas',
+            headers : {
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    //类型
+    this.getType = function (argvs) {
+        var options = {
+            method: 'GET',
+            timeout: 3000,
+            uri: config()['rurl'] + '/backprogress/v1/types',
+            headers : {
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    //专业
+    this.getMajors = function (argvs) {
+        var options = {
+            method: 'GET',
+            timeout: 3000,
+            uri: config()['rurl'] + '/backprogress/v1/majors',
+            headers : {
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    //运营商名称
+    this.getOperator = function (argvs) {
+        var options = {
+            method: 'GET',
+            timeout: 3000,
+            uri: config()['rurl'] + '/backprogress/v1/operatorNames',
+            headers : {
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    //派工情况
+    this.getTasking = function (argvs) {
+        var options = {
+            method: 'GET',
+            timeout: 3000,
+            uri: config()['rurl'] + '/backprogress/v1/taskCases',
+            headers : {
+                userToken:argvs.token
+            }
+        };
+        return request(options);
+    };
+    //实际完工状态
+    this.getState = function (argvs) {
+        var options = {
+            method: 'GET',
+            timeout: 3000,
+            uri: config()['rurl'] + '/backprogress/v1/completeStatus',
+            headers : {
+                userToken:argvs.token
+            }
         };
         return request(options);
     };

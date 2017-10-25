@@ -7,7 +7,7 @@ app.controller('detailCtrl',function ($scope,$state) {
     if ($state.current.url == '/detail') {//默认加载列表
         $state.go('root.payment.detail.list[12]')
     }
-
+    $scope.$emit('isVi',true);//判断是否出现搜索按钮
 }).controller('detailMenuCtrl',function($scope,$state,$rootScope,$location,detailSer){
     var urlName = $state.current.url.split('/')[1].split('[')[0];
     $scope.menuClass = urlName.split('?')[0] + "Menu";
@@ -22,6 +22,17 @@ app.controller('detailCtrl',function ($scope,$state) {
             $scope.menuClass = $location.search().name + 'Menu';
         }
     }
+    $scope.flag=true;
+    $scope.noflag=false;
+    $scope.flagtoggon=function () {
+        if($scope.flag){
+            $scope.flag=false;
+            $scope.noflag=true;
+        } else{
+            $scope.flag=true;
+            $scope.noflag=false;
+        }
+    };
     $scope.menuCheck = function (name) {
         var buttonName = name;
         $scope.buttonShow = true;

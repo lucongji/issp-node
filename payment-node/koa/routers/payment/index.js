@@ -40,8 +40,9 @@ module.exports = function(){
             }));
     }).get('/countDetail/count', function*(){//总条数
         var $self = this;
-        var token={token:$self.cookies.get('token')};
-        yield (server().getDetailTotal(token)
+        var count = $self.request.query;
+        count.token = $self.cookies.get('token');
+        yield (server().getDetailTotal(count)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -307,7 +308,7 @@ module.exports = function(){
             }));
     }).get('/user/logout', function*(next){
         var url = this.request.query;
-        this.cookies.set("absUrl",url.absurl);
+        this.cookies.set("absUrl",url.absurl,{maxAge : 1000 * 60 * 5,domain:".issp.bjike.com"});
         this.body = {
             code:0,
             msg:"重定向"
@@ -340,7 +341,8 @@ module.exports = function(){
             }));
     }).get('/countSetting', function*(){
         var $self = this;
-        yield (server().countSetting()
+        var token={token:$self.cookies.get('token')};
+        yield (server().countSetting(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -352,6 +354,7 @@ module.exports = function(){
     }).get('/getpermit', function*(){
         var $self = this;
         var getId = $self.request.query;
+        getId.token = $self.cookies.get('token');
         yield (server().getpermit(getId)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -364,6 +367,7 @@ module.exports = function(){
     }).get('/getListpermit', function*(){
         var $self = this;
         var listPermit = $self.request.query;
+        listPermit.token = $self.cookies.get('token');
         yield (server().getListpermit(listPermit)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -386,9 +390,7 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
-    })
-
-        .get('/payment/setButtonPermission', function*(){ //设置导航权限
+    }).get('/payment/setButtonPermission', function*(){ //设置导航权限
         var $self = this;
         var navToken = {token:$self.cookies.get('token')};
         yield (server().settingNav(navToken)
@@ -426,6 +428,45 @@ module.exports = function(){
         var timeData = $self.request.query;
         timeData.token = $self.cookies.get('token');
         yield (server().auditTimeId(timeData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/planTime/time', function*(){
+        var $self = this;
+        var timeData = $self.request.query;
+        timeData.token = $self.cookies.get('token');
+        yield (server().auditTimeId2(timeData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/allERPTime/time', function*(){
+        var $self = this;
+        var timeData = $self.request.query;
+        timeData.token = $self.cookies.get('token');
+        yield (server().auditTimeId3(timeData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/allBillTime/time', function*(){
+        var $self = this;
+        var timeData = $self.request.query;
+        timeData.token = $self.cookies.get('token');
+        yield (server().auditTimeId4(timeData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;
@@ -474,7 +515,7 @@ module.exports = function(){
     }).get('/detail/exportFile', function*(){//回款明细导出
         var $self = this;
         var count = $self.request.query;
-        var fileName = count.area+'.xlsx';
+        var fileName = '回款明细'+'.xlsx';
         yield (fetch(config()['rurl']+`/receivablesubsidiary/v1/export${urlEncode(count,true)}`, {
             method : 'GET',
             headers : {'userToken' : $self.cookies.get('token')}
@@ -501,6 +542,347 @@ module.exports = function(){
         var summaryData = $self.request.body;
         summaryData.token = $self.cookies.get('token');
         yield (server().contrastSummary(summaryData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/editTime/edit', function*(){//编辑
+        var $self = this;
+        var editData = $self.request.body;
+        editData.token = $self.cookies.get('token');
+        yield (server().editTimeEdit(editData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/areaTarget/id', function*(){
+        var $self = this;
+        var getId = $self.request.query;
+        getId.token = $self.cookies.get('token');
+        yield (server().targetArea(getId)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+        //---------------------------回款进度---------------------------
+    }).get('/progPermission/guidePermission/:guideAddrStatus', function*(){ //菜单权限
+        var $self = this;
+        var page = {name:$self.params.guideAddrStatus,token:$self.cookies.get('token')};
+        yield (server().progPermission(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+            }));
+    }).post('/progSummary/summary', function*(){
+        var $self = this;
+        var summaryData = $self.request.body;
+        summaryData.token = $self.cookies.get('token');
+        yield (server().progSummary(summaryData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/progEdit/edit', function*(){//编辑
+        var $self = this;
+        var editData = $self.request.body;
+        editData.token = $self.cookies.get('token');
+        yield (server().progEdit(editData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/progId/id', function*(){
+        var $self = this;
+        var getId = $self.request.query;
+        getId.token = $self.cookies.get('token');
+        yield (server().progId(getId)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/progList/list', function*(){ //列表
+            var $self = this;
+            var page = $self.request.query;
+        page.token = this.cookies.get('token');
+            yield (server().progList(page)
+                .then((parsedBody) =>{
+                    var responseText = JSON.parse(parsedBody);
+                    $self.body = responseText;
+                }).catch((error) =>{
+                    $self.set('Content-Type','application/json;charset=utf-8');
+                    $self.body=error.error;
+                    console.error(error.error);
+                }));
+        }).get('/progCount/count', function*(){//总条数
+        var $self = this;
+        var token={token:$self.cookies.get('token')};
+        yield (server().progCount(token)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/progAdd/add', function*(){//添加
+        var $self = this;
+        var addData = $self.request.body;
+        addData.token = $self.cookies.get('token');
+        yield (server().progAdd(addData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/progDelete/delete', function*(){//删除
+        var $self = this;
+        var deleteData = $self.request.query;
+        deleteData.token = $self.cookies.get('token');
+        yield (server().progDelete(deleteData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    //导入模板下载
+    }).get('/progImport/templateExport', function*(){
+        var $self = this;
+        var fileName = '回款进度.xlsx';
+        yield (fetch(config()['rurl']+`/backprogress/v1/templateExcel`, {
+            method : 'GET',
+        }).then(function(res){
+            $self.set('content-type', 'application/vnd.ms-excel;charset=utf-8');
+            $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
+            return res.buffer();
+        }).then(function(data){
+            $self.body = data;
+        }));
+    //导入
+    }).post('/progLead/lead', koaBody({multipart:true}),function *(next) {
+        var $self = this;
+        var fileData = $self.request.body;
+        fileData.userToken = $self.cookies.get("token");
+        yield (server().progLead(fileData)
+            .then((parsedBody) =>{
+                $self.body = parsedBody;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    //------------------主营业务收入--------------------
+    }).get('/revenue/guidePermission/:guideAddrStatus', function*(){ //菜单权限
+        var $self = this;
+        var page = {name:$self.params.guideAddrStatus,token:$self.cookies.get('token')};
+        yield (server().revenPermission(page)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+            }));
+    }).post('/revenSummary/summary', function*(){
+        var $self = this;
+        var summaryData = $self.request.body;
+        summaryData.token = $self.cookies.get('token');
+        yield (server().revenSummary(summaryData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/revenEdit/edit', function*(){//编辑
+        var $self = this;
+        var editData = $self.request.body;
+        editData.token = $self.cookies.get('token');
+        yield (server().revenEdit(editData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/revenId/id', function*(){
+        var $self = this;
+        var getId = $self.request.query;
+        getId.token = $self.cookies.get('token');
+        yield (server().revenId(getId)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/revenList/list', function*(){ //列表
+            var $self = this;
+            var page = $self.request.query;
+        page.token = this.cookies.get('token');
+            yield (server().revenList(page)
+                .then((parsedBody) =>{
+                    var responseText = JSON.parse(parsedBody);
+                    $self.body = responseText;
+                }).catch((error) =>{
+                    $self.set('Content-Type','application/json;charset=utf-8');
+                    $self.body=error.error;
+                    console.error(error.error);
+                }));
+        }).get('/revenCount/count', function*(){//总条数
+        var $self = this;
+        var token={token:$self.cookies.get('token')};
+        yield (server().revenCount(token)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).post('/revenAdd/add', function*(){//添加
+        var $self = this;
+        var addData = $self.request.body;
+        addData.token = $self.cookies.get('token');
+        yield (server().revenAdd(addData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/revenDelete/delete', function*(){//删除
+        var $self = this;
+        var deleteData = $self.request.query;
+        deleteData.token = $self.cookies.get('token');
+        yield (server().revenDelete(deleteData)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));   
+        //-------------------------------------
+    }).get('/getUnit/unit', function*(){//外包单位
+        var $self = this;
+        var token={token:$self.cookies.get('token')};
+        yield (server().getUnit(token)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/getArea/area', function*(){//地区
+        var $self = this;
+        var token={token:$self.cookies.get('token')};
+        yield (server().getArea(token)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/getType/type', function*(){//类型
+        var $self = this;
+        var token={token:$self.cookies.get('token')};
+        yield (server().getType(token)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/getMajors/majors', function*(){//专业
+        var $self = this;
+        var token={token:$self.cookies.get('token')};
+        yield (server().getMajors(token)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/getOperator/operator', function*(){//运营商名称
+        var $self = this;
+        var token={token:$self.cookies.get('token')};
+        yield (server().getOperator(token)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/getTasking/tasking', function*(){//派工情况
+        var $self = this;
+        var token={token:$self.cookies.get('token')};
+        yield (server().getTasking(token)
+            .then((parsedBody) =>{
+                var responseText = JSON.parse(parsedBody);
+                $self.body = responseText;
+            }).catch((error) =>{
+                $self.set('Content-Type','application/json;charset=utf-8');
+                $self.body=error.error;
+                console.error(error.error);
+            }));
+    }).get('/getState/state', function*(){//实际完工状态
+        var $self = this;
+        var token={token:$self.cookies.get('token')};
+        yield (server().getState(token)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
                 $self.body = responseText;

@@ -14,19 +14,15 @@
                     <div class="sele side">
                     <select class="sele" ng-model="add.area">
                         <option value="" disabled>请选择</option>
+                        <option ng-repeat="pros in proData">{{pros.area}}</option>
                     </select>
                     <input type="text"  ng-verify="{}" class="inputDom" ng-model="add.area">
-                        </div>
+                    </div>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>项目内部名称</em></label>
-                    <div class="sele side">
-                    <select class="sele" ng-model="add.innerName">
-                        <option value="" disabled>请选择</option>
-                    </select>
-                    <input type="text"  ng-verify="{}" class="inputDom" ng-model="add.innerName">
-                        </div>
-                </li>
+                    <input type="text"  ng-verify="{}" ng-model="add.innerName">
+                   </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>派工单价</em></label>
                     <input type="number" ng-verify="{}"  ng-model="add.taskPrice">
@@ -110,6 +106,14 @@
                 <li>
                     <label><em>派工单编号</em></label>
                     <input type="text"  ng-model="add.taskNum">
+                </li>
+                <li>
+                    <label><em>派工合同号</em></label>
+                    <input type="text"  ng-model="add.contractNum">
+                </li>
+                <li>
+                    <label><em>外包合同号</em></label>
+                    <input type="text"  ng-model="add.outsourcingNum">
                 </li>
             </ul>
         </section>

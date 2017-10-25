@@ -1,5 +1,10 @@
 var app = angular.module('detailAdd', ['toastr']);
 app.controller('detailAddCtrl', function ($scope, detailSer, $state, toastr) {
+    detailSer.areaTarget().then(function(response){
+        if(response.data.code == 0){
+            $scope.proData = response.data.data;
+        }
+    });
     detailSer.idByDetail().then(function(response){
         if(response.data.code == 0){
             $scope.idData = response.data.data;

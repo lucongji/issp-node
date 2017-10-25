@@ -1,0 +1,115 @@
+<div class="collect">
+    <div class="sum-select">
+        <span>
+            外包单位：
+            <select class="summary-sele"  ng-model="vm.contractor">
+                <option value="{{unit}}" ng-repeat="unit in units">{{unit}}</option>
+            </select>
+        </span>
+        <span>
+            地区：
+            <select class="summary-sele"  ng-model="vm.area">
+                <option value="{{area}}" ng-repeat="area in areas">{{area}}</option>
+            </select>
+        </span>
+        <span>
+            类型：
+            <select class="summary-sele"  ng-model="vm.type">
+                <option value="{{type}}" ng-repeat="type in types">{{type}}</option>
+            </select>
+        </span>
+        <span>
+            专业：
+            <select class="summary-sele"  ng-model="vm.major">
+                <option value="{{majors}}" ng-repeat="majors in majorss">{{majors}}</option>
+            </select>
+        </span>
+        <span class="com-search2">
+            <label>开发票:</label>
+            <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="summary-in invoiceStartTime"  placeholder="开始时间">-
+            <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="summary-in invoiceEndTime"  placeholder="结束时间">
+        </span>
+        <span class="com-search2">
+            <label>预收帐款时间:</label>
+            <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="summary-in advanceAccountStartTime"  placeholder="开始时间">-
+            <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="summary-in advanceAccountEndTime"  placeholder="结束时间">
+        </span>
+        <span>
+            运营商名称：
+            <select class="summary-sele"  ng-model="vm.operatorName">
+                <option value="{{operator}}" ng-repeat="operator in operators">{{operator}}</option>
+            </select>
+        </span>
+        <span>
+            派工情况：
+            <select class="summary-sele"  ng-model="vm.taskCase">
+                <option value="{{tasking}}" ng-repeat="tasking in taskings">{{tasking}}</option>
+            </select>
+        </span>
+        <span>
+            实际完工状态：
+            <select class="summary-sele"  ng-model="vm.completeStatus">
+                <option value="{{state}}" ng-repeat="state in states">{{state}}</option>
+            </select>
+        </span>
+
+
+
+
+
+
+
+        
+       <!-- <span class="com-search2">
+            <label>结束日期 : </label>
+            <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="endTime">
+       </span> -->
+        <button class="summary-btn" ng-click="collectFun()">汇总</button>
+    </div>
+    <ul class="sum-list">
+        <li class="sum-thead">
+            <span title="运营商名称">运营商名称</span>
+            <span title="地区">地区</span>
+            <span title="外包单位">外包单位</span>
+            <span title="类型">类型</span>
+            <span title="专业">专业</span>
+            <span title="派工名称">派工名称</span>
+            <span title="厂家">厂家</span>
+            <span title="销售合同号">销售合同号</span>
+            <span title="外包合同号">外包合同号</span>
+            <span title="派工情况">派工情况</span>
+            <span title="派工金额">派工金额</span>
+            <span title="实际完工状态">实际完工状态</span>
+            <span title="可结算金额">可结算金额</span>
+            <span title="已到账金额">已到账金额</span>
+            <span title="总规模数">总规模数</span>
+            <span title="是否可制作申请结算">是否可制作申请结算</span>
+            <span title="是否影响结算">是否影响结算</span>
+            <span title="结算计划">结算计划</span>
+            <span title="正在执行项目">正在执行项目</span>
+            <span title="归属">归属</span>
+        </li>
+        <li class="sum-tbody" ng-repeat="summaryList in summaryLists">
+            <span title="{{summaryList.operatorName}}">{{summaryList.operatorName}}</span>
+            <span title="{{summaryList.area}}">{{summaryList.area}}</span>
+            <span title="{{summaryList.contractor}}">{{summaryList.contractor}}</span>
+            <span title="{{summaryList.type}}">{{summaryList.type}}</span>
+            <span title="{{summaryList.major}}">{{summaryList.major}}</span>
+            <span title="{{summaryList.taskName}}">{{summaryList.taskName}}</span>
+            <span title="{{summaryList.factory}}">{{summaryList.factory}}</span>
+            <span title="{{summaryList.salesContractNum}}">{{summaryList.salesContractNum}}</span>
+            <span title="{{summaryList.outsourceContractNum}}">{{summaryList.outsourceContractNum}}</span>
+            <span title="{{summaryList.taskCase}}">{{summaryList.taskCase}}</span>
+            <span title="{{summaryList.taskMoney}}">{{summaryList.taskMoney}}</span>
+            <span title="{{summaryList.completeStatus}}">{{summaryList.completeStatus}}</span>
+            <span title="{{summaryList.clearingMoney}}">{{summaryList.clearingMoney}}</span>
+            <span title="{{summaryList.accountMoney}}">{{summaryList.accountMoney}}</span>
+            <span title="{{summaryList.scaleNum}}">{{summaryList.scaleNum}}</span>
+            <span title="{{summaryList.applyClearing}}">{{summaryList.applyClearing}}</span>
+            <span title="{{summaryList.influenceClearing}}">{{summaryList.influenceClearing}}</span>
+            <span title="{{summaryList.clearingPlan}}">{{summaryList.clearingPlan}}</span>
+            <span title="{{summaryList.performProject}}">{{summaryList.performProject}}</span>
+            <span title="{{summaryList.ascription}}">{{summaryList.ascription}}</span>
+        </li>
+    </ul>
+</div>

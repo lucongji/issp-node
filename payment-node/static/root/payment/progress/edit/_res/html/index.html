@@ -1,0 +1,249 @@
+<div class="content-input edit" verify-scope="tipStyle: 1">
+    <div class="input-list">
+        <section>
+            <ul>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>运营商名称</em></label>
+                    <input type="text" ng-verify="{}" ng-model="prog.operatorName">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>地区</em></label>
+                    <input type="text" ng-verify="{}" ng-model="prog.area">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>外包单位</em></label>
+                    <input type="text" ng-verify="{}" ng-model="prog.contractor">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>类型</em></label>
+                    <input type="text" ng-verify="{}" ng-model="prog.type">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>专业</em></label>
+                    <input type="text" ng-verify="{}" ng-model="prog.major">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>派工名称</em></label>
+                    <input type="text" ng-verify="{}" ng-model="prog.taskName">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>厂家</em></label>
+                    <input type="text" ng-verify="{}" ng-model="prog.factory">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>销售合同号</em></label>
+                    <input type="text" ng-verify="{}" ng-model="prog.salesContractNum">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>外包合同号</em></label>
+                    <input type="text" ng-verify="{}" ng-model="prog.outsourceContractNum">
+                </li>
+                <li>
+                    <label><em>派工情况</em></label>
+                    <select class="sele" ng-model="prog.taskCase">
+                        <option value="已派工">已派工</option>
+                        <option value="未派工">未派工</option>
+                        <option value="派工中">派工中</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>派工金额</em></label>
+                    <input type="text" ng-verify="{}" ng-model="prog.taskMoney">
+                </li>
+                <li>
+                    <label><em>实际完工状态</em></label>
+                    <select class="sele" ng-model="prog.completeStatus">
+                        <option value="完工">完工</option>
+                        <option value="未完工">未完工</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>完工时间</em></label>
+                    <input type="text" ng-verify="{}" ng-model="prog.completeTime" class="completeTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>可结算金额</em></label>
+                    <input type="text" ng-verify="{}" ng-model="prog.clearingMoney">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>已到账金额</em></label>
+                    <input type="text" ng-verify="{}" ng-model="prog.accountMoney">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>制作结算资料</em></label>
+                    <input type="text" ng-verify="{}" ng-model="prog.clearingData" class="clearingData" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>软调报告</em></label>
+                    <input type="text" ng-verify="{}" ng-model="prog.softCoreReport" class="softCoreReport" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>签字</em></label>
+                    <input type="text" ng-verify="{}" ng-model="prog.signature" class="signature" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>结算进度B</em></label>
+                    <input type="text" ng-verify="{}" ng-model="prog.progressB">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>资料上传ERP系统</em></label>
+                    <input type="text" ng-verify="{}" ng-model="prog.dataUploadSystem" class="dataUploadSystem" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>群主（项目经理）审核</em></label>
+                    <input type="text" ng-verify="{}" ng-model="prog.managerAudit" class="managerAudit" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>预接收申请</em></label>
+                    <input type="text" ng-verify="{}" ng-model="prog.acceptApply" class="acceptApply" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>外包经理审核</em></label>
+                    <input type="text" ng-verify="{}" ng-model="prog.outsourceAudit" class="outsourceAudit" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>办事处副总审批</em></label>
+                    <input type="text" ng-verify="{}" ng-model="prog.officeAudit" class="officeAudit" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>结算进度C</em></label>
+                    <input type="text" ng-verify="{}" ng-model="prog.progressC">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>ERP系统开发票</em></label>
+                    <input type="text" ng-verify="{}" ng-model="prog.systemInvoice" class="systemInvoice" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>电子版发票审核</em></label>
+                    <input type="text" ng-verify="{}" ng-model="prog.electronicInvoice" class="electronicInvoice" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>实物发票邮寄</em></label>
+                    <input type="text" ng-verify="{}" ng-model="prog.physicalInvoice" class="physicalInvoice" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>填写发票查询快递</em></label>
+                    <input type="text" ng-verify="{}" ng-model="prog.fillInvoice" class="fillInvoice" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>实物发票审核完成</em></label>
+                    <input type="text" ng-verify="{}" ng-model="prog.physicalInvoiceComplete" class="physicalInvoiceComplete" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>显示支付时间</em></label>
+                    <input type="text" ng-verify="{}" ng-model="prog.payTime" class="payTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>开发票</em></label>
+                    <input type="text" ng-verify="{}" ng-model="prog.invoice" class="invoice" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>预收帐款时间</em></label>
+                    <input type="text" ng-verify="{}" ng-model="prog.advanceAccountTime" class="advanceAccountTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>进度</em></label>
+                    <input type="text" ng-verify="{}" ng-model="prog.progress">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>到货时间</em></label>
+                    <input type="text" ng-verify="{}" ng-model="prog.arrivalTime" class="arrivalTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>KPI</em></label>
+                    <input type="text" ng-verify="{}" ng-model="prog.kpi">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>现场实际情况（KPI）</em></label>
+                    <input type="text" ng-verify="{}" ng-model="prog.actualSituation">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em设备型号></em></label>
+                    <input type="text" ng-verify="{}" ng-model="prog.unitType">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>大概描述项目派工的情况备注</em></label>
+                    <input type="text" ng-verify="{}" ng-model="prog.taskCaseRemark">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>总规模数</em></label>
+                    <input type="text" ng-verify="{}" ng-model="prog.scaleNum">
+                </li>
+                <li>
+                    <label><em>是否可制作申请结算</em></label>
+                    <select class="sele" ng-model="prog.applyClearing">
+                        <option ng-value="true">是</option>
+                        <option ng-value="false">否</option>
+                    </select>
+                </li>
+                <li>
+                    <label><em>是否影响结算</em></label>
+                    <select class="sele" ng-model="prog.influenceClearing">
+                        <option ng-value="true">是</option>
+                        <option ng-value="false">否</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>结算计划</em></label>
+                    <input type="text" ng-verify="{}" ng-model="prog.clearingPlan">
+                </li>
+                <li>
+                    <label><em>正在执行项目</em></label>
+                    <select class="sele" ng-model="prog.performProject">
+                        <option value="" disabled>请选择</option>
+                        <option>正常</option>
+                        <option>不正常</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>归属</em></label>
+                    <input type="text" ng-verify="{}" ng-model="prog.ascription">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>备注</em></label>
+                    <input type="text" ng-verify="{}" ng-model="prog.remark">
+                </li>
+
+
+
+
+
+
+
+
+
+
+                <!-- <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>百分比(管理费)</em></label>
+                    <input type="number" ng-verify="{}" ng-model="prog.percent" placeholder="不能超过100">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>名1称</em></label>
+                    <input type="text" ng-verify="{}" ng-model="prog." class="" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})">
+                </li>
+                <li>
+                    <label><em>备注</em></label>
+                    <input type="text" ng-model="prog.remark">
+                </li>
+                <li>
+                    <label><em>状1态</em></label>
+                    <select class="sele" ng-model="prog.">
+                        <option value="" disabled>请选择</option>
+                        <option>正常</option>
+                        <option>不正常</option>
+                    </select>
+                </li> -->
+            </ul>
+        </section>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="progressEditFun()">提交</button>
+    </p>
+</div>
+
+<script type="text/javascript">
+    !function(){
+        laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    }();
+</script>

@@ -7,11 +7,17 @@ app.controller('detailEditCtrl', function($scope, detailSer,$stateParams,$state,
             toastr.error(response.data.msg,'温馨提示')
         }
     });
+    detailSer.areaTarget().then(function(response){
+        if(response.data.code == 0){
+            $scope.proData = response.data.data;
+        }
+    });
     var basicData ={id: $stateParams.id};
     //获取ID
     detailSer.findDetailId(basicData).then(function(response){
         if(response.data.code=='0'){
             $scope.editInfo = response.data.data;
+            $scope.editInfo.contractorId = $scope.editInfo.contractorBO.id;
         }else{
             toastr.error(response.data.msg,'温馨提示')
         }

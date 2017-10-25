@@ -3,7 +3,6 @@ app.controller('contractorAddCtrl', function ($scope, contractorSer, $state, toa
     //添加
     $scope.detailAddFun = function () {
         var vm = $scope;
-        vm.add.creationTime=angular.element('.creationTime').val();
         contractorSer.addContractor(vm.add).then(function (response) {
             if (response.data.code == 0) {
                 $state.go('root.payment.contractor.list[12]');

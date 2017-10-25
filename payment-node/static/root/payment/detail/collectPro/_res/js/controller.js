@@ -23,6 +23,9 @@ app.controller('detailCollectProCtrl', function($scope,toastr,detailSer,$state){
     });
     $scope.getSummary ={onSelectionChanged(){
         detailSer.summaryProDetails($scope.innerNames).then(function(response){
+            if($scope.innerNames.length == 0){
+                $scope.summaryLists = {}
+            }else
             if(response.data.code == 0){
                 $scope.summaryListDetails = response.data.data;
             }else{
@@ -33,8 +36,6 @@ app.controller('detailCollectProCtrl', function($scope,toastr,detailSer,$state){
     $scope.collectProMore = function(response){
         if($scope.idSocialList){
             $state.go('root.payment.detail.collectPro.collectProMore[12]',{suId:$scope.idSocialList});
-        }else{
-            toastr.error(response.data.msg,'温馨提示')
         }
     };
 });

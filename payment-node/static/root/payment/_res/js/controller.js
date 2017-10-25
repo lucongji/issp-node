@@ -22,6 +22,7 @@ app.controller('paymentCtrl', function ($scope,$state) {
     $scope.navCla=active?active:'detail';
     $scope.navClass = function(name){
         $scope.navCla = name;
+        $scope.$emit('isId',true);//每次切换页面更新搜索值
     }
     // 前面下拉导航权限
     paymentSer.navPermission().then(function(response){
@@ -58,8 +59,8 @@ app.controller('paymentCtrl', function ($scope,$state) {
         }
     });
     $scope.showsList = [
-        {id:"1",item:"回款管理",menuList:[{name:'回款明细'},{name2:"承包商"}],showIs:true},
-        {id:"2",item:"设置",menuList:[{name3:'设置'}],showIs:true},
+        {id:"1",item:"回款管理",menuList:[{name:'承包商'},{name2:"回款明细"},{name3:"回款进度"},{name4:"主营业务收入"}],showIs:false},
+        {id:"2",item:"设置",menuList:[{name5:'设置'}],showIs:false},
     ];
     $scope.showMenu = function(obj,event) {
         if(event){

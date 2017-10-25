@@ -10,78 +10,6 @@ app.controller('settlementCtrl', function($scope, detailSer,$stateParams,$state,
         }
     });
         $scope.groups = [
-           /* {
-                name: 'A1',
-                progress: '工程督导和网优单位站点准备'
-            },
-            {
-                name: 'A2',
-                progress: '结算站点核对会审'
-            },
-            {
-                name: 'A3',
-                progress: '输出会审报告签字'
-            },
-            {
-                name: 'B1',
-                progress: '资料制作'
-            },
-            {
-                name: 'B2',
-                progress: '资料员签字'
-            },
-            {
-                name: 'B3',
-                progress: '工程经理签字'
-            },
-            {
-                name: 'B4',
-                progress: '外包主管签字'
-            },
-            {
-                name: 'C1',
-                progress: '工作量确认申请'
-            },
-            {
-                name: 'C2',
-                progress: '中兴质量经理审批'
-            },
-            {
-                name: 'C3',
-                progress: '中兴工程经理审批'
-            },
-            {
-                name: 'C4',
-                progress: '预接收提交'
-            },
-            {
-                name: 'C5',
-                progress: '中兴工程经理审批，提交扫描件'
-            },
-            {
-                name: 'C6',
-                progress: '中兴外包经理审批'
-            },
-            {
-                name: 'C7',
-                progress: '中兴办事处副经理审批'
-            },
-            {
-                name: 'D1',
-                progress: '开具增值税发票'
-            },
-            {
-                name: 'D2',
-                progress: 'ERP系统提交电子版发票审核'
-            },
-            {
-                name: 'D3',
-                progress: '邮寄实物发票'
-            },
-            {
-                name: 'D4',
-                progress: '电子发票审核完成，显示预计支付时间'
-            },*/
               { name: 'A1', progress:[{name: '工程督导和网优单位站点准备'}]},
               { name: 'A2', progress: [{name: '结算站点核对会审'}]},
               { name: 'A3', progress: [{name: '输出会审报告签字'}]},
@@ -112,7 +40,7 @@ app.controller('settlementCtrl', function($scope, detailSer,$stateParams,$state,
         var data ={
             id:vm.settleInfo.id,
             group:vm.group,
-            progress:vm.progress,
+            progress:vm.progress.name,
         };
         detailSer.listNameGroup(data).then(function(response){
             if(response.data.code == 0){

@@ -12,7 +12,9 @@ app.controller('detailProSummaryCtrl', function($scope, detailSer){
     });
     $scope.getSummary ={onSelectionChanged(){
         detailSer.summaryGeneralDetail($scope.contractors).then(function(response){
-            if(response.data.code == 0){
+            if($scope.contractors.length == 0){
+                $scope.summaryLists = {}
+            }else if(response.data.code == 0){
                 $scope.summaryLists = response.data.data;
             }else{
                 toastr.error(response.data.msg,'温馨提示')

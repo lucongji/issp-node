@@ -7,7 +7,7 @@ app.controller('contractorCtrl',function ($scope,$state) {
     if ($state.current.url == '/contractor') {//默认加载列表
         $state.go('root.payment.contractor.list[12]')
     }
-
+     $scope.$emit('isVi',false);//判断是否出现搜索按钮
 }).controller('contractorMenuCtrl',function($scope,$state,$rootScope,$location,contractorSer){
     var urlName = $state.current.url.split('/')[1].split('[')[0];
     $scope.menuClass = urlName.split('?')[0] + "Menu";

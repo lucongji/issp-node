@@ -8,6 +8,11 @@ app.controller('root', function ($rootScope, $urlRouter, $ocLazyLoad, $location)
                 $location.path('/root');
             }
         }
+        if($location.path().split('/').slice(-1) =='list[12]' || $location.path().split('/').slice(-1) =='list'){
+            searchShow();
+        }else {
+            searchHide();
+        }
         var moduleName = $location.path();
         var modules = moduleName.substring(1).split('/');
         var prefixModules = [];
@@ -192,7 +197,7 @@ app.config(function ($provide, $urlRouterProvider) {
 
 app.factory('HttpInterceptor', ['$q', HttpInterceptor]);
 
-function HttpInterceptor($q,toastr){
+function HttpInterceptor($q,toastr,$location){
 
     return {
         request : function(config){
@@ -204,8 +209,12 @@ function HttpInterceptor($q,toastr){
         response : function(res){
             if(res.data.code==403){
                 toastr.info( "请登录用户", '温馨提示');
+                // var absurl = $location.absUrl();
+                // window.location.href='http://user.issp.bjike.com/login?url='+absurl;
             }else if(res.data.code == 401){
-                toastr.info('登录已过期', '温馨提示');
+                toastr.info( "请登录用户", '温馨提示');
+                // var absurl = $location.absUrl();
+                // window.location.href='http://user.issp.bjike.com/login?url='+absurl;
             }else if(res.data.code == 'ETIMEDOUT'){
                 toastr.warning('连接超时，请稍后重试！','温馨提示')
             }else if(res.data.code==1){

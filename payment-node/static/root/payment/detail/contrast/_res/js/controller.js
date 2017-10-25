@@ -27,6 +27,9 @@ app.controller('detailContrastCtrl', function($scope, detailSer,$state,toastr){
              }
          }
         detailSer.summaryContrast(data).then(function (response) {
+            if(data.length == 0){
+                $scope.summaryLists = {}
+            }else
             if (response.data.code == 0) {
                 $scope.summaryLists = response.data.data;
             } else {

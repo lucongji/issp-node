@@ -1,0 +1,45 @@
+<div class="collect">
+    <div class="sum-select">
+        <span>
+            年份：
+            <select class="summary-sele"  ng-model="vm.year">
+                <option value="{{year}}" ng-repeat="year in years">{{year}}</option>
+            </select>
+        </span>
+        <button class="summary-btn" ng-click="collectFun()">汇总</button>
+    </div>
+    <ul class="sum-list">
+        <li class="sum-thead">
+            <span style="flex:2">科目</span>
+            <span>合计</span>
+            <span>一月</span>
+            <span>二月</span>
+            <span>三月</span>
+            <span>四月</span>
+            <span>五月</span>
+            <span>六月</span>
+            <span>七月</span>
+            <span>八月</span>
+            <span>九月</span>
+            <span>十月</span>
+            <span>十一月</span>
+            <span>十二月</span>
+        </li>
+        <li class="sum-tbody" ng-repeat="summaryList in summaryLists">
+            <span title="{{summaryList.subject}}" style="flex:2">{{summaryList.subject}}</span>
+            <span title="{{summaryList.total}}">{{summaryList.total}}</span>
+            <span title="{{summaryList.january}}">{{summaryList.january}}</span>
+            <span title="{{summaryList.february}}">{{summaryList.february}}</span>
+            <span title="{{summaryList.march}}">{{summaryList.march}}</span>
+            <span title="{{summaryList.april}}">{{summaryList.april}}</span>
+            <span title="{{summaryList.may}}">{{summaryList.may}}</span>
+            <span title="{{summaryList.june}}">{{summaryList.june}}</span>
+            <span title="{{summaryList.july}}">{{summaryList.july}}</span>
+            <span title="{{summaryList.august}}">{{summaryList.august}}</span>
+            <span title="{{summaryList.september}}">{{summaryList.september}}</span>
+            <span title="{{summaryList.october}}">{{summaryList.october}}</span>
+            <span title="{{summaryList.november}}">{{summaryList.november}}</span>
+            <span title="{{summaryList.december}}">{{summaryList.december}}</span>
+        </li>
+    </ul>
+</div>

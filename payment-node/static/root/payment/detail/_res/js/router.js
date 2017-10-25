@@ -60,7 +60,7 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.payment.detail.list[12]",{
-        url:"/list[12]?id=&name=&page=",
+        url:"/list[12]?id=&name=&page=&taskNum=&contractNum=&outsourcingNum=",
         views:{
             "content@root.payment.detail":{
                 templateUrl : "root/payment/detail/list/_res/html/index.html",
@@ -73,14 +73,6 @@ app.config(function($provide, $stateProvider){
             "content@root.payment.detail":{
                 templateUrl : "root/payment/detail/time/_res/html/index.html",
                 controller:'timeCtrl'
-            }
-        }
-    }).state("root.payment.detail.collect[12]",{
-        url:"/collect[12]?suId=&name=",
-        views:{
-            "content@root.payment.detail":{
-                templateUrl : "root/payment/detail/collect/_res/html/index.html",
-                controller:'detailCollectCtrl'
             }
         }
     }).state("root.payment.detail.import[12]",{

@@ -1,0 +1,171 @@
+<div class="content-tab list">
+    <ul class="table table-top">
+        <li class="list-head">
+            <span></span>
+            <span>运营商名称</span>
+            <span>地区</span>
+            <span>外包单位</span>
+            <span>类型</span>
+            <span>专业</span>
+            <span>派工名称</span>
+            <span>厂家</span>
+            <span></span>
+        </li>
+        <li class="list-all" ng-repeat="lists in progressLists" style="display: {{lists._delete?'none':'block'}};">
+            <section>
+                <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
+                    <p>{{$index+1+num}}</p>
+                    <p mod>{{::lists.operatorName}}</p>
+                    <p mod>{{::lists.area}}</p>
+                    <p mod>{{::lists.contractor}}</p>
+                    <p mod>{{::lists.type}}</p>
+                    <p mod>{{::lists.major}}</p>
+                    <p mod>{{::lists.taskName}}</p>
+                    <p mod>{{::lists.factory}}</p>
+                    <p>
+                        <a href="javascript:void(0)" class="more" ng-click="moreList(lists)">更多详细</a>
+                    </p>
+                </div>
+                <div class="can">
+                    <ul class="can-see" style="display: {{lists._moreList?'block':'none'}};">
+                        <li>
+                            <p class="see-parent">
+                                <span>销售合同号</span>
+                                <span>外包合同号</span>
+                                <span>派工情况</span>
+                                <span>派工金额</span>
+                                <span>实际完工状态</span>
+                                <span>完工时间</span>
+                                <span>可结算金额</span>
+                                <span>已到账金额</span>
+                            </p>
+                            <p class="see-children">
+                                <span mod>{{lists.salesContractNum}}</span>
+                                <span mod>{{lists.outsourceContractNum}}</span>
+                                <span mod>{{lists.taskCase}}</span>
+                                <span mod>{{lists.taskMoney}}</span>
+                                <span mod>{{lists.completeStatus}}</span>
+                                <span mod>{{lists.completeTime}}</span>
+                                <span mod>{{lists.clearingMoney}}</span>
+                                <span mod>{{lists.accountMoney}}</span>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="see-parent">
+                                <span>制作结算资料</span>
+                                <span>软调报告</span>
+                                <span>签字</span>
+                                <span>结算进度B</span>
+                                <span>资料上传ERP系统</span>
+                                <span>群主（项目经理）审核</span>
+                                <span>预接收申请</span>
+                                <span>外包经理审核</span>
+                            </p>
+                            <p class="see-children">
+                                <span mod>{{lists.clearingData}}</span>
+                                <span mod>{{lists.softCoreReport}}</span>
+                                <span mod>{{lists.signature}}</span>
+                                <span mod>{{lists.progressB}}</span>
+                                <span mod>{{lists.dataUploadSystem}}</span>
+                                <span mod>{{lists.managerAudit}}</span>
+                                <span mod>{{lists.acceptApply}}</span>
+                                <span mod>{{lists.outsourceAudit}}</span>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="see-parent">
+                                <span>办事处副总审批</span>
+                                <span>结算进度C</span>
+                                <span>ERP系统开发票</span>
+                                <span>电子版发票审核</span>
+                                <span>实物发票邮寄</span>
+                                <span>填写发票查询快递</span>
+                                <span>实物发票审核完成</span>
+                                <span>显示支付时间</span>
+                            </p>
+                            <p class="see-children">
+                                <span mod>{{lists.officeAudit}}</span>
+                                <span mod>{{lists.progressC}}</span>
+                                <span mod>{{lists.systemInvoice}}</span>
+                                <span mod>{{lists.electronicInvoice}}</span>
+                                <span mod>{{lists.physicalInvoice}}</span>
+                                <span mod>{{lists.fillInvoice}}</span>
+                                <span mod>{{lists.physicalInvoiceComplete}}</span>
+                                <span mod>{{lists.payTime}}</span>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="see-parent">
+                                <span>开发票</span>
+                                <span>预收帐款时间</span>
+                                <span>进度</span>
+                                <span>到货时间</span>
+                                <span>KPI</span>
+                                <span>现场实际情况（KPI）</span>
+                                <span>设备型号</span>
+                                <span>大概描述项目派工的情况备注</span>
+                            </p>
+                            <p class="see-children">
+                                <span mod>{{lists.invoice}}</span>
+                                <span mod>{{lists.advanceAccountTime}}</span>
+                                <span mod>{{lists.progress}}</span>
+                                <span mod>{{lists.arrivalTime}}</span>
+                                <span mod>{{lists.kpi}}</span>
+                                <span mod>{{lists.actualSituation}}</span>
+                                <span mod>{{lists.unitType}}</span>
+                                <span mod>{{lists.taskCaseRemark}}</span>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="see-parent">
+                                <span>总规模数</span>
+                                <span>是否可制作申请结算</span>
+                                <span>是否影响结算</span>
+                                <span>结算计划</span>
+                                <span>正在执行项目</span>
+                                <span>归属</span>
+                                <span>备注</span>
+                            </p>
+                            <p class="see-children">
+                                <span mod>{{lists.scaleNum}}</span>
+                                <span mod>{{lists.applyClearing}}</span>
+                                <span mod>{{lists.influenceClearing}}</span>
+                                <span mod>{{lists.clearingPlan}}</span>
+                                <span mod>{{lists.performProject}}</span>
+                                <span mod>{{lists.ascription}}</span>
+                                <span mod>{{lists.remark}}</span>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </li>
+    </ul>
+    <div class="module">
+        <div class="see-module">
+            <p class="see-type">体现类型</p>
+            <p class="see-description"></p>
+            <button class="btn" modclose>关闭</button>
+        </div>
+    </div>
+    <footer class="footer">
+        <pagination count="abili.itemsCount" take="abili.take" activate="abili.activatePage"></pagination>
+    </footer>
+</div>
+<div class="delete mod" ng-show="delShow">
+    <div class="del-head">
+        <h5>温馨提示</h5>
+    </div>
+    <div class="del-con">
+        <p>确定要删除这条数据？</p>
+        <div class="btn">
+            <button ng-click="delFn()">确定</button>
+            <button ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</div>
+<div id="modalbg" ng-show="delShow"></div>
+
+
+
+

@@ -1,6 +1,10 @@
 var app = angular.module('detailList', ['ng-pagination','toastr']);
 app.controller('detailListCtrl',function($scope,detailSer,toastr,$stateParams,$state,$location){
     $scope.$emit('changeId', null);
+    //监听切换搜索是否出现
+    $scope.$on('iSsearch',function(event,newIs){
+        $scope.isView = newIs;
+    });
     //获取id
     if($stateParams.id){
         switch ($stateParams.name){
@@ -34,10 +38,35 @@ app.controller('detailListCtrl',function($scope,detailSer,toastr,$stateParams,$s
             }
         });
     };
+    $scope.taskNum = $stateParams.taskNum?$stateParams.taskNum:'';
+    $scope.contractNum = $stateParams.contractNum?$stateParams.contractNum:'';
+    $scope.outsourcingNum = $stateParams.outsourcingNum?$stateParams.outsourcingNum:'';
+    if($stateParams.contractNum || $stateParams.outsourcingNum || $stateParams.taskNum){
+        $scope.$emit('isId', false);
+        $scope.isView = false;
+    }else{
+        $scope.$emit('isId', true);
+    }
+    //搜索
+    $scope.search = function(){
+        $state.go('root.payment.detail.list[12]',{contractNum:$scope.contractNum,page:1,outsourcingNum:$scope.outsourcingNum,taskNum: $scope.taskNum});
+    }
     function activatePage(page) {
+        if($scope.detailLists)return;
         var listData = {
-            page:page||1
+            page:page||1,
+            taskNum:$scope.taskNum || '',
+            contractNum:$scope.contractNum || '',
+            outsourcingNum:$scope.outsourcingNum || ''
         };
+        detailSer.countDetail(listData).then(function(response){
+            if(response.data.code==0){
+                $scope.abili.itemsCount = response.data.data;
+                $scope.num = $stateParams.page*10>10?($stateParams.page-1)*10:null;
+            }else{
+                toastr.error(response.data.msg,'温馨提示')
+            }
+        })
         detailSer.listDetail(listData).then(function(response){
               if(response.data.code==0){
                 $scope.detailLists = response.data.data;
@@ -84,13 +113,6 @@ app.controller('detailListCtrl',function($scope,detailSer,toastr,$stateParams,$s
         take: 10, //每页显示
         activatePage: activatePage
     };
-    detailSer.countDetail().then(function(response){
-        if(response.data.code==0){
-            $scope.abili.itemsCount = response.data.data;
-            $scope.num = $stateParams.page*10>10?($stateParams.page-1)*10:null;
-        }else{
-            toastr.error(response.data.msg,'温馨提示')
-        }
-    })
+    $scope.titles = ['派工单编号','派工合同号','外包合同号'];
 });
 

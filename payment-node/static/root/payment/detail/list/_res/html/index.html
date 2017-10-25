@@ -1,4 +1,13 @@
 <div class="content-tab list">
+    <div class="search-big" style="display :{{ isView?'none':'block'}}">
+        <select class="salc" ng-model="checkedName" ng-init="checkedName='派工单编号'">
+            <option ng-repeat="item in titles">{{item}}</option>
+        </select>
+        <input type="text" ng-model="taskNum" ng-show="checkedName=='派工单编号'">
+        <input type="text" ng-model="contractNum" ng-show="checkedName=='派工合同号'">
+        <input type="text" ng-model="outsourcingNum" ng-show="checkedName=='外包合同号'">
+        <a href="javascript:void(0)" ng-click="search()"><img src="/images/search2.png"></a>
+    </div>
     <ul class="table table-top">
         <li class="list-head">
             <span></span>
@@ -7,8 +16,8 @@
             <span>派工单编号</span>
             <span>派工单价</span>
             <span>合同规模数</span>
-            <span>合同规模金额</span>
-            <span>已派工量</span>
+            <span>派工合同号</span>
+            <span>外包合同号</span>
             <span></span>
         </li>
         <li class="list-all" ng-repeat="lists in detailLists" style="display: {{lists._delete?'none':'block'}};">
@@ -20,8 +29,8 @@
                     <p mod>{{::lists.taskNum}}</p>
                     <p mod>{{::lists.taskPrice}}</p>
                     <p mod>{{::lists.pactNum}}</p>
-                    <p mod>{{::lists.pactMoney}}</p>
-                    <p mod>{{::lists.pactSize}}</p>
+                    <p mod>{{::lists.contractNum}}</p>
+                    <p mod>{{::lists.outsourcingNum}}</p>
                     <p>
                         <a href="javascript:void(0)" class="more" ng-click="moreList(lists)">更多详细</a>
                     </p>
@@ -103,6 +112,7 @@
                                 <span>是否框架内</span>
                                 <span>是否有单次合同</span>
                                 <span>是否已走结算流程</span>
+                                <span>到账时间</span>
                             </p>
                             <p class="see-children">
                                 <span mod>{{::lists.moreNum}}</span>
@@ -112,6 +122,17 @@
                                 <span mod>{{::lists.frame|cover}}</span>
                                 <span mod>{{::lists.pact|cover}}</span>
                                 <span mod>{{::lists.flow|cover}}</span>
+                                <span mod>{{::lists.accountTime}}</span>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="see-parent">
+                                <span>合同规模金额</span>
+                                <span>已派工量</span>
+                            </p>
+                            <p class="see-children">
+                                <span mod>{{::lists.pactMoney}}</span>
+                                <span mod>{{::lists.pactSize}}</span>
                             </p>
                         </li>
                     </ul>

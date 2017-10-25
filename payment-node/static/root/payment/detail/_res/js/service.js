@@ -22,7 +22,12 @@ app.factory('detailSer',function ($http) {
         menuPermission:menuPermission,
         allAuditTime:allAuditTime,
         allArea:allArea,
-        summaryContrast:summaryContrast
+        summaryContrast:summaryContrast,
+        allPlanTime:allPlanTime,
+        allERPTime:allERPTime,
+        allBillTime:allBillTime,
+        editTime:editTime,
+        areaTarget:areaTarget
     };
     function listDetail(data) {
         return $http.get('/listDetail/list',{
@@ -30,8 +35,10 @@ app.factory('detailSer',function ($http) {
         })
     }
     //分页总条数
-    function countDetail(){
-        return $http.get('/countDetail/count')
+    function countDetail(data){
+        return $http.get('/countDetail/count',{
+            params: data
+        })
     }
     //添加
     function addDetail(data){
@@ -106,12 +113,31 @@ app.factory('detailSer',function ($http) {
     function allAuditTime(data) {
         return $http.get('/auditTime/time',{params:data})
     }
+    //预计支付时间
+    function allPlanTime(data) {
+        return $http.get('/planTime/time',{params:data})
+    }
+    //ERP结算审批时间
+    function allERPTime(data) {
+        return $http.get('/allERPTime/time',{params:data})
+    }
+    //发票审核时间
+    function allBillTime(data) {
+        return $http.get('/allBillTime/time',{params:data})
+    }
     //地区
     function allArea(){
         return $http.get('/allArea/area')
     }
+    //时间
+    function editTime(data){
+        return $http.post('/editTime/edit',data)
+    }
     //对比汇总
     function summaryContrast(data){
         return $http.post('/summaryContrast/summary',data)
+    }
+    function areaTarget(){
+        return $http.get('/areaTarget/id')
     }
 });
